@@ -18,12 +18,10 @@ var keypressListener = function() {
 
 var mouseClickListener = function() {
   window.addEventListener('click', function (event) {
-    if (event.target.id !== 'canvas') {
-      return;
-    }
-
     getMousePosition(event);
     input.clicks++;
+
+    console.log(event.target)
 
     console.log(input);
   });

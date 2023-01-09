@@ -13,7 +13,6 @@ var Entity = function(x, y, actions) {
     },
     update: function(Game) {
       // entity updates go here
-
     }
   }
 

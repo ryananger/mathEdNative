@@ -16,12 +16,12 @@ var UI = function({Game}) {
     var buttons = [];
 
     for (var i = 0; i < 10; i++) {
-      var value = Math.floor(Math.random() * 4);
+      // get values from Game
 
       var button = (
         <div key={'button' + i} className='button v'>
           <img className='buttonImg' src={button1}></img>
-          <div className='buttonTxt'>{value}</div>
+          <div className='buttonTxt'>{Game.numbers[i]}</div>
         </div>
       );
 
@@ -35,13 +35,13 @@ var UI = function({Game}) {
     <div className='ui float v'>
       <div className='uiHead h'>
         <div className='mathButtons h'>
-          <img src={plus} className='mathButton v'></img>
-          <img src={minus} className='mathButton v'></img>
+          <img src={plus}     className='mathButton v'></img>
+          <img src={minus}    className='mathButton v'></img>
           <img src={multiply} className='mathButton v'></img>
-          <img src={divide} className='mathButton v'></img>
+          <img src={divide}   className='mathButton v'></img>
         </div>
         <div className='mathOut'>
-          <img className='mathOutImg' src={mathOut}></img>
+          <img src={mathOut}  className='mathOutImg'></img>
         </div>
       </div>
       <div className='buttons h'>
