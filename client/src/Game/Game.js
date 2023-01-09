@@ -9,6 +9,8 @@ var Game = {
   fps: 60,
   tick: 0,
   playing: true,
+  answer: '',
+  mod: '+',
 
   entities: [],
   numbers: function() {
@@ -33,7 +35,7 @@ var Game = {
     var ch = ctx.canvas.height;
 
     if (Game.tick % 500 === 0) {
-      var question = Question(100 + Math.floor(Math.random() * (cw - 200)), 50);
+      var question = Question(100 + Math.floor(Math.random() * (cw - 200)), -50);
 
       Game.entities.push(question);
     }

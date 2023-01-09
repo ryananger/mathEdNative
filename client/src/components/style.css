@@ -64,7 +64,7 @@ html, body, #root {
 
 .mathButtons {
   width: 64%;
-  margin-left: 2vw;
+  margin-left: 1vw;
 }
 
 .mathButton {
@@ -79,17 +79,29 @@ html, body, #root {
 .mathOut {
   width: 34%;
   height: 100%;
-  margin-left: 3vw;
+  margin-left: 2vw;
   margin-right: 1vw;
+
+  position: relative;
 }
 
 .mathOutImg {
-  z-index: 5;
-  position: relative;
-  width: 100%;
+  width: 110%;
   height: 100%;
 
   filter: drop-shadow(0px 2px 1px rgba(66, 31, 20, 0.4));
+}
+
+.mathOutAnswer {
+  position: absolute;
+  font-size: 3vh;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  width: 95%;
+  text-align: center;
+  outline: none;
+  user-select: none;
 }
 
 .buttons {
@@ -132,4 +144,14 @@ html, body, #root {
 
 .buttonImg:active {
   filter: drop-shadow(0px 2px 1px rgba(66, 31, 20, 0.4));
+}
+
+input {
+  font-size: 3vh;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  width: 90%;
+  text-align: center;
+  outline: none;
 }
