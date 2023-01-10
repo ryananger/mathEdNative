@@ -9,7 +9,9 @@ var Game = {
   fps: 60,
   tick: 0,
   playing: true,
-  answer: '',
+  score: 0,
+  expression: '',
+  answer: null,
   mod: '+',
 
   entities: [],
@@ -34,7 +36,7 @@ var Game = {
     var cw = ctx.canvas.width;
     var ch = ctx.canvas.height;
 
-    if (Game.tick % 500 === 0) {
+    if (Game.tick % 250 === 0) {
       var question = Question(100 + Math.floor(Math.random() * (cw - 200)), -50);
 
       Game.entities.push(question);

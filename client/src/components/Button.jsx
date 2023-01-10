@@ -10,13 +10,13 @@ var image = buttonImages[Math.floor(Math.random() * 4)];
 var Button = function({Game, value}) {
 
   var addToExpression = function() {
-    if (Game.answer === '') {
-      Game.answer += `${value}`;
+    if (Game.expression === '') {
+      Game.expression += `${value}`;
     } else {
-      Game.answer += ` ${Game.mod} ${value}`;
+      Game.expression += ` ${Game.mod} ${value}`;
 
-      if (Game.answer.length > 9) {
-        Game.answer = Game.answer.slice(Game.answer.length - 9, Game.answer.length);
+      if (Game.expression.length > 9) {
+        Game.expression = Game.expression.slice(Game.expression.length - 9, Game.expression.length);
       }
     }
   };
