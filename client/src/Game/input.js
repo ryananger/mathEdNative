@@ -4,6 +4,7 @@ var input = {
   mx: 0,
   my: 0,
   clicks: 0,
+  lastTarget: null,
 
   keypress: null
 };
@@ -19,9 +20,8 @@ var keypressListener = function() {
 var mouseClickListener = function() {
   window.addEventListener('click', function (event) {
     getMousePosition(event);
+    input.lastTarget = event.target;
     input.clicks++;
-
-    console.log(event.target)
 
     console.log(input);
   });

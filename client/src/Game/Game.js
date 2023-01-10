@@ -11,19 +11,12 @@ var Game = {
   playing: true,
   score: 0,
   expression: '',
+  buttonsPressed: [],
   answer: null,
   mod: '+',
 
   entities: [],
-  numbers: function() {
-    var num = [];
-
-    for (var i = 0; i < 10; i++) {
-      num.push(Math.floor(Math.random() * 3) + 1);
-    }
-
-    return num;
-  }(),
+  numbers: [],
 
   togglePause: function() {
     Game.playing = !Game.playing;
@@ -70,8 +63,20 @@ var Game = {
     return function() {
       window.cancelAnimationFrame(animId);
     };
+  },
+  getNumbers: function() {
+    var num = [];
+    var n = 10 - Game.numbers.length;
+
+    for (var i = 0; i < n; i++) {
+      num.push(Math.floor(Math.random() * 3) + 1);
+    }
+
+    Game.numbers = Game.numbers.concat(num);
   }
 };
+
+Game.getNumbers();
 
 window.Game = Game;
 

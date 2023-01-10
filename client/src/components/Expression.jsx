@@ -64,11 +64,24 @@ var Expression = function({Game}) {
       }
     }
 
-    if (Game.entities[0].question === Game.answer, Game.answer) {
+    if (Game.entities[0] && Game.entities[0].question === Game.answer) {
       Game.expression = '';
       Game.entities.shift();
-      Game.score += 100;
+      Game.score += 50 * Game.buttonsPressed.length;
+
+      Game.buttonsPressed.map(function(index) {
+        var front = Game.numbers.slice(0, index);
+        var back  = Game.numbers.slice(index + 1);
+
+        Game.numbers = front.concat(back);
+      });
+
+      //Game.getNumbers();
+    } else {
+      Game.expression = '';
     }
+
+    Game.buttonsPressed = [];
   };
 
   return (

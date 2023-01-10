@@ -1,15 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import button1  from '../images/button1.png';
 import button2  from '../images/button2.png';
 import button3  from '../images/button3.png';
 import button4  from '../images/button4.png';
+import select1  from '../images/select1.png';
+import select2  from '../images/select2.png';
+import select3  from '../images/select3.png';
+import select4  from '../images/select4.png';
 
 var buttonImages = [button1, button2, button3, button4];
-var image = buttonImages[Math.floor(Math.random() * 4)];
+var selectImages = [select1, select2, select3, select4];
 
-var Button = function({Game, value}) {
+var index = Math.floor(Math.random() * 4);
+
+var Button = function({Game, value, n}) {
+  const [inExpression, setExpression] = useState(false);
+  const [image, setImage] = useState(buttonImages[index]);
+
+  if (!Game.expression && inExpression) {
+    setExpression(false);
+  }
 
   var addToExpression = function() {
+    if (inExpression) {
+      return;
+    }
+
     if (Game.expression === '') {
       Game.expression += `${value}`;
     } else {
@@ -19,7 +35,15 @@ var Button = function({Game, value}) {
         Game.expression = Game.expression.slice(Game.expression.length - 9, Game.expression.length);
       }
     }
+
+    setImage(selectImages[index]);
+    setExpression(true);
+    Game.buttonsPressed.push(n);
   };
+
+  if (!inExpression && image !== buttonImages[index]) {
+    setImage(buttonImages[index]);
+  }
 
   return (
     <div className='button v'>

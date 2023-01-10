@@ -10,7 +10,12 @@ var Question = function(x, y) {
   };
 
   blob.update = function(Game) {
-    blob.y += 1;
+    blob.y += 4;
+
+    if (blob.y > 900) {
+      Game.entities.shift();
+      Game.score -= 100;
+    }
   };
 
   return blob;

@@ -57,6 +57,14 @@ html, body, #root {
   aspect-ratio: auto 800/1420;
 }
 
+.score {
+  position: absolute;
+  top: 1vh;
+  left: 1vw;
+  font-weight: bold;
+  font-size: 3vh;
+}
+
 .uiHead {
   width: 90%;
   height: 10%;
