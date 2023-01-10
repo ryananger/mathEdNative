@@ -13,7 +13,7 @@ var selectImages = [select1, select2, select3, select4];
 
 var index = Math.floor(Math.random() * 4);
 
-var Button = function({Game, value, n}) {
+var Button = function({Game, value, id}) {
   const [inExpression, setExpression] = useState(false);
   const [image, setImage] = useState(buttonImages[index]);
 
@@ -36,13 +36,29 @@ var Button = function({Game, value, n}) {
       }
     }
 
+    if (Game.expression.length > 5) {
+      Game.display = '(' + Game.expression.slice(0, 5) + ')' + Game.expression.slice(5);
+    } else {
+      Game.display = Game.expression;
+    }
+
     setImage(selectImages[index]);
     setExpression(true);
-    Game.buttonsPressed.push(n);
+    Game.buttonsPressed.push(id);
   };
 
   if (!inExpression && image !== buttonImages[index]) {
     setImage(buttonImages[index]);
+  }
+
+  if (inExpression && Game.buttonsPressed.length > 3) {
+    console.log(id, Game.buttonsPressed[0]);
+
+    if (Game.buttonsPressed[0] === id) {
+      setExpression(false);
+      setImage(buttonImages[index]);
+      Game.buttonsPressed.shift();
+    }
   }
 
   return (

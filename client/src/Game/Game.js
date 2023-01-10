@@ -3,6 +3,7 @@ import Entity from './Entity.js';
 import Question from './Question.js';
 
 var renderTimeout;
+var buttonId = 0;
 
 var Game = {
   view: 'home',
@@ -11,7 +12,9 @@ var Game = {
   playing: true,
   score: 0,
   expression: '',
+  display: '',
   buttonsPressed: [],
+  deadButtons: 0,
   answer: null,
   mod: '+',
 
@@ -69,7 +72,7 @@ var Game = {
     var n = 10 - Game.numbers.length;
 
     for (var i = 0; i < n; i++) {
-      num.push(Math.floor(Math.random() * 3) + 1);
+      num.push({value: Math.floor(Math.random() * 3) + 1, id: buttonId++});
     }
 
     Game.numbers = Game.numbers.concat(num);

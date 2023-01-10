@@ -66,19 +66,31 @@ var Expression = function({Game}) {
 
     if (Game.entities[0] && Game.entities[0].question === Game.answer) {
       Game.expression = '';
+      Game.display = '';
       Game.entities.shift();
       Game.score += 50 * Game.buttonsPressed.length;
 
-      Game.buttonsPressed.map(function(index) {
-        var front = Game.numbers.slice(0, index);
-        var back  = Game.numbers.slice(index + 1);
+      if (Game.buttonsPressed.length >= Game.numbers.length) {
+        Game.numbers = [];
+      } else {
+        Game.buttonsPressed.map(function(id) {
+          var index;
 
-        Game.numbers = front.concat(back);
-      });
+          Game.numbers.map(function(entry, i) {
+            if (entry.id === id) {
+              index = i;
+            }
+          })
 
-      //Game.getNumbers();
+          var front = Game.numbers.slice(0, index);
+          var back  = Game.numbers.slice(index + 1);
+
+          Game.numbers = front.concat(back);
+        });
+      }
     } else {
       Game.expression = '';
+      Game.display = '';
     }
 
     Game.buttonsPressed = [];
@@ -87,7 +99,7 @@ var Expression = function({Game}) {
   return (
     <div className='mathOut v'>
       <img src={mathOut} className='mathOutImg' onClick={evaluate}></img>
-      <div className='mathOutAnswer'>{Game.expression}</div>
+      <div className='mathOutAnswer'>{Game.display}</div>
     </div>
   )
 };

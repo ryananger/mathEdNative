@@ -13,7 +13,20 @@ var keypressListener = function() {
   window.addEventListener('keyup', function (event) {
     input.keypress = event.key;
 
-    console.log(input.keypress);
+    switch (event.key) {
+      case '+':
+        Game.mod = '+';
+        break;
+      case '-':
+        Game.mod = '-';
+        break;
+        case '*':
+        Game.mod = '×';
+        break;
+        case '/':
+        Game.mod = '÷';
+        break;
+    }
   });
 };
 

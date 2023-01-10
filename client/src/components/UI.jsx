@@ -1,7 +1,7 @@
 import React    from 'react';
 
 import Button      from './Button.jsx';
-import DeadButton      from './DeadButton.jsx';
+import DeadButton  from './DeadButton.jsx';
 import MathButtons from './MathButtons.jsx';
 import Expression  from './Expression.jsx';
 
@@ -9,20 +9,29 @@ var UI = function({Game}) {
   var renderButtons = function() {
     var buttons = [];
 
-    for (var i = 0; i < Game.numbers.length; i++) {
-      var button = (
-        <Button key={'button' + i} Game={Game} value={Game.numbers[i]} n={i}/>
-      );
+    Game.deadButtons = 0;
 
-      buttons.push(button);
+    for (var i = 0; i < 10; i++) {
+      if (i < Game.numbers.length) {
+        var button = (
+          <Button key={'button' + i} Game={Game} value={Game.numbers[i].value} id={Game.numbers[i].id}/>
+        );
+
+        buttons.push(button);
+      } else {
+        Game.deadButtons++;
+
+        var button = (
+          <DeadButton key={'deadButton' + i} Game={Game}/>
+        );
+
+        buttons.push(button);
+      }
     }
 
-    for (var i = 0; i < 10 - Game.numbers.length; i++) {
-      var button = (
-        <DeadButton key={'deadButton' + i} Game={Game} n={i}/>
-      );
-
-      buttons.push(button);
+    if (Game.deadButtons === 10) {
+      Game.score += 100;
+      setTimeout(Game.getNumbers, 500);
     }
 
     return buttons;
