@@ -14,7 +14,7 @@ var Question = function(x, y) {
 
     if (blob.y > 900) {
       Game.entities.pop();
-      Game.score -= 100;
+      Game.score -= 500;
     }
   };
 

@@ -12,6 +12,7 @@ var Game = {
   playing: false,
   paused: false,
   score: 0,
+  hp: 0,
   expression: '',
   display: '',
   buttonsPressed: [],
@@ -26,11 +27,7 @@ var Game = {
     Game.playing = !Game.playing;
   },
   update: function(ctx) {
-    if (!Game.playing) {
-      return;
-    }
-
-    if (Game.paused) {
+    if (!Game.playing || Game.paused) {
       return;
     }
 
@@ -72,7 +69,6 @@ var Game = {
       window.cancelAnimationFrame(animId);
     };
   },
-
 
   getNumbers: function() {
     var num = [];
