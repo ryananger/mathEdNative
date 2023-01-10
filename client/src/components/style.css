@@ -164,3 +164,12 @@ input {
   text-align: center;
   outline: none;
 }
+
+.menuButtons {
+  width: 80%;
+  margin-bottom: 1.8vh;
+}
+
+.menuButtonImg {
+  width: 100%;
+}

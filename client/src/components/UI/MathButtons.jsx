@@ -1,16 +1,15 @@
 import React from 'react';
 
-import plus     from '../images/plus.png';
-import minus    from '../images/minus.png';
-import multiply from '../images/multiply.png';
-import divide   from '../images/divide.png';
+import plus     from '../../images/plus.png';
+import minus    from '../../images/minus.png';
+import multiply from '../../images/multiply.png';
+import divide   from '../../images/divide.png';
 
 var MathButtons = function({Game}) {
 
   var changeMod = function(e) {
     var mod = e.target.getAttribute('value');
 
-    console.log(Game.mod, mod)
     switch (mod) {
       case 'plus':
         Game.mod = '+';

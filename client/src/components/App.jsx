@@ -2,7 +2,8 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 
 import Game from '../Game/Game.js';
-import UI from './UI.jsx';
+import MenuUI from './UI/MenuUI.jsx';
+import PlayUI from './UI/PlayUI.jsx';
 import './style.css';
 
 var App = function() {
@@ -20,7 +21,8 @@ var App = function() {
 
   return (
     <div className='play v'>
-      <UI Game={Game} />
+      <MenuUI Game={Game} />
+      <PlayUI Game={Game} />
       <canvas id='canvas' className='canvas float' width='800' height='1420'/>
     </div>
   )

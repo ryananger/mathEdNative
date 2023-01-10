@@ -5,7 +5,11 @@ import DeadButton  from './DeadButton.jsx';
 import MathButtons from './MathButtons.jsx';
 import Expression  from './Expression.jsx';
 
-var UI = function({Game}) {
+var PlayUI = function({Game}) {
+  if (!Game.playing) {
+    return;
+  }
+
   var renderButtons = function() {
     var buttons = [];
 
@@ -27,6 +31,10 @@ var UI = function({Game}) {
 
         buttons.push(button);
       }
+    }
+
+    if (Game.deadButtons === 9) {
+      Game.getNumbers();
     }
 
     if (Game.deadButtons === 10) {
@@ -51,7 +59,7 @@ var UI = function({Game}) {
   )
 }
 
-export default UI;
+export default PlayUI;
 
 
 

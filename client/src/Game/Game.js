@@ -9,7 +9,7 @@ var Game = {
   view: 'home',
   fps: 60,
   tick: 0,
-  playing: true,
+  playing: false,
   score: 0,
   expression: '',
   display: '',
@@ -32,10 +32,10 @@ var Game = {
     var cw = ctx.canvas.width;
     var ch = ctx.canvas.height;
 
-    if (Game.tick % 250 === 0) {
+    if (Game.tick % 150 === 0) {
       var question = Question(100 + Math.floor(Math.random() * (cw - 200)), -50);
 
-      Game.entities.push(question);
+      Game.entities.unshift(question);
     }
 
     ctx.clearRect(0, 0, cw, ch);
@@ -67,6 +67,8 @@ var Game = {
       window.cancelAnimationFrame(animId);
     };
   },
+
+
   getNumbers: function() {
     var num = [];
     var n = 10 - Game.numbers.length;
@@ -76,6 +78,105 @@ var Game = {
     }
 
     Game.numbers = Game.numbers.concat(num);
+  },
+  evaluate: function() {
+    if (Game.entities.length === 0) {
+      return;
+    }
+
+    var split = Game.expression.split(' ');
+
+    if (split.length === 3) {
+      var a = Number(split[0]);
+      var b = Number(split[2]);
+      var mod = split[1];
+
+      switch (mod) {
+        case '+':
+          Game.answer = a + b;
+          break;
+        case '-':
+          Game.answer = a - b;
+          break;
+        case '×':
+          Game.answer = a * b;
+          break;
+        case '÷':
+          Game.answer = a / b;
+          break;
+      }
+    } else {
+      var a = Number(split[0]);
+      var b = Number(split[2]);
+      var c = Number(split[4]);
+      var mod1 = split[1];
+      var mod2 = split[3];
+
+      var result = null;
+
+      switch (mod1) {
+        case '+':
+          result = a + b;
+          break;
+        case '-':
+          result = a - b;
+          break;
+        case '×':
+          result = a * b;
+          break;
+        case '÷':
+          result = a / b;
+          break;
+      }
+
+      switch (mod2) {
+        case '+':
+          Game.answer = result + c;
+          break;
+        case '-':
+          Game.answer = result - c;
+          break;
+        case '×':
+          Game.answer = result * c;
+          break;
+        case '÷':
+          Game.answer = result / c;
+          break;
+      }
+    }
+
+    var last = Game.entities[Game.entities.length - 1];
+
+    if (last.question === Game.answer) {
+      Game.correctAnswer();
+    }
+
+    Game.expression = '';
+    Game.display = '';
+    Game.buttonsPressed = [];
+  },
+  correctAnswer: function() {
+    Game.entities.pop();
+    Game.score += 50 * Game.buttonsPressed.length;
+
+    if (Game.buttonsPressed.length >= Game.numbers.length) {
+      Game.numbers = [];
+    } else {
+      Game.buttonsPressed.map(function(id) {
+        var index;
+
+        Game.numbers.map(function(entry, i) {
+          if (entry.id === id) {
+            index = i;
+          }
+        })
+
+        var front = Game.numbers.slice(0, index);
+        var back  = Game.numbers.slice(index + 1);
+
+        Game.numbers = front.concat(back);
+      });
+    }
   }
 };
 
