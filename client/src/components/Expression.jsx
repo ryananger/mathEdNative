@@ -96,6 +96,8 @@ var Expression = function({Game}) {
     Game.buttonsPressed = [];
   };
 
+  Game.evaluate = evaluate;
+
   return (
     <div className='mathOut v'>
       <img src={mathOut} className='mathOutImg' onClick={evaluate}></img>

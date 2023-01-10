@@ -20,12 +20,34 @@ var keypressListener = function() {
       case '-':
         Game.mod = '-';
         break;
-        case '*':
+      case '*':
         Game.mod = '×';
         break;
-        case '/':
+      case '/':
         Game.mod = '÷';
         break;
+
+      case 'Enter':
+        Game.evaluate();
+        break;
+      case ' ':
+        Game.getNumbers();
+        break;
+    }
+
+    if (Number(event.key)) {
+      for (var i = 0; i < Game.numbers.length; i++) {
+        var num = Game.numbers[i];
+
+        if (num.value === Number(event.key) && Game.buttonsPressed.indexOf(num.id) === -1) {
+          Game.buttonsPressed.push(num.id);
+
+          if (Game.buttonsPressed.length > 3) {
+            Game.buttonsPressed.shift();
+          }
+          break;
+        }
+      }
     }
   });
 };

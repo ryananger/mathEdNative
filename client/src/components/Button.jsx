@@ -44,7 +44,10 @@ var Button = function({Game, value, id}) {
 
     setImage(selectImages[index]);
     setExpression(true);
-    Game.buttonsPressed.push(id);
+
+    if (Game.buttonsPressed.indexOf(id) === -1) {
+      Game.buttonsPressed.push(id);
+    }
   };
 
   if (!inExpression && image !== buttonImages[index]) {
@@ -52,13 +55,15 @@ var Button = function({Game, value, id}) {
   }
 
   if (inExpression && Game.buttonsPressed.length > 3) {
-    console.log(id, Game.buttonsPressed[0]);
-
     if (Game.buttonsPressed[0] === id) {
       setExpression(false);
       setImage(buttonImages[index]);
       Game.buttonsPressed.shift();
     }
+  }
+
+  if (!inExpression && Game.buttonsPressed.indexOf(id) >= 0) {
+    addToExpression();
   }
 
   return (
