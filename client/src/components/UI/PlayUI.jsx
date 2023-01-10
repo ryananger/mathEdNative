@@ -5,7 +5,7 @@ import DeadButton  from './DeadButton.jsx';
 import MathButtons from './MathButtons.jsx';
 import Expression  from './Expression.jsx';
 
-var PlayUI = function({Game}) {
+var PlayUI = function({Game, user}) {
   if (!Game.playing) {
     return;
   }
@@ -46,7 +46,7 @@ var PlayUI = function({Game}) {
   };
 
   return (
-    <div className='ui float v'>
+    <div className='playUi float v'>
       <div className='score'>{Game.score}</div>
       <div className='uiHead h'>
         <MathButtons Game={Game}/>

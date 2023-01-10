@@ -14,7 +14,7 @@ var keypressListener = function() {
     input.keypress = event.key;
 
     switch (event.key) {
-      case 'p':
+      case 'Escape':
         Game.paused = !Game.paused;
         break;
 

@@ -48,7 +48,16 @@ html, body, #root {
   position: absolute;
 }
 
-.ui {
+.menuUi {
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+
+  aspect-ratio: auto 800/1420;
+}
+
+.playUi {
   z-index: 10;
   width: 100%;
   height: 100%;
@@ -151,7 +160,7 @@ html, body, #root {
   top: -2px;
 }
 
-.buttonImg:active, .menuButtonImg:active {
+.buttonImg:active, .menuButtonImg:active, .formSubmit:active {
   filter: drop-shadow(0px 2px 1px rgba(66, 31, 20, 0.4));
 }
 
@@ -169,7 +178,6 @@ input {
   width: 80%;
   margin-bottom: 1.8vh;
   height: 26vh;
-  justify-content: flex-start;
 }
 
 .menuButton {
@@ -198,4 +206,54 @@ input {
   height: 100%;
 
   filter: drop-shadow(0px 3px 1px rgba(66, 31, 20, 0.3));
+}
+
+.form {
+  background-image: url('../images/formBg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  margin-top: 8vh;
+  width: 80%;
+  aspect-ratio: auto 26/21;
+}
+
+.formLabel {
+  width: 90%;
+}
+
+.formInput {
+  font-family: 'Jost';
+  font-size: 4vh;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  height: 6vh;
+  margin: 4vh;
+  width: 90%;
+  text-align: center;
+  outline: none;
+
+  border: 2px solid rgb(66, 31, 20);
+  border-style: none none solid none;
+}
+
+.formSubmit {
+  font-family: 'Jost';
+  font-size: 3vh;
+  width: 100%;
+
+  background-image: url('../images/submit.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  aspect-ratio: auto 24/4;
+  filter: drop-shadow(0px 3px 1px rgba(66, 31, 20, 0.4));
+}
+
+.formSubmit:hover {
+  background-image: url('../images/submit2.png');
+}
+
+h1 {
+  margin: 0;
 }
