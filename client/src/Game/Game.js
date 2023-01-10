@@ -10,6 +10,7 @@ var Game = {
   fps: 60,
   tick: 0,
   playing: false,
+  paused: false,
   score: 0,
   expression: '',
   display: '',
@@ -26,6 +27,10 @@ var Game = {
   },
   update: function(ctx) {
     if (!Game.playing) {
+      return;
+    }
+
+    if (Game.paused) {
       return;
     }
 

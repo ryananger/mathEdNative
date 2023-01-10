@@ -14,6 +14,15 @@ var keypressListener = function() {
     input.keypress = event.key;
 
     switch (event.key) {
+      case 'p':
+        Game.paused = !Game.paused;
+        break;
+
+      default:
+        if (Game.paused) {
+          return;
+        }
+        break;
       case '+':
         Game.mod = '+';
         break;
@@ -35,7 +44,7 @@ var keypressListener = function() {
         break;
     }
 
-    if (Number(event.key)) {
+    if (Number(event.key) && !Game.paused) {
       for (var i = 0; i < Game.numbers.length; i++) {
         var num = Game.numbers[i];
 

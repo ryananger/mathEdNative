@@ -2,18 +2,37 @@ import React    from 'react';
 import menuBar  from '../../images/menuBar.png';
 
 var MenuUI = function({Game}) {
+  if (Game.playing) {
+    return;
+  }
+
   var renderButtons = function() {
     var buttons = [];
 
-    for (var i = 0; i < 3; i++) {
-      var button = (
-        <div key={'menuButton' + i} className='menuButton h'>
-          <img className='menuButtonImg' src={menuBar}></img>
-        </div>
-      )
+    var playButton = (
+      <div key={'playButton'} className='menuButton v'>
+        <img className='menuButtonImg' src={menuBar} onClick={()=>{Game.playing = true}}></img>
+        <div className='menuButtonTxt'>PLAY!</div>
+      </div>
+    )
 
-      buttons.push(button);
-    }
+    var loginButton = (
+      <div key={'loginButton'} className='menuButton v'>
+        <img className='menuButtonImg' src={menuBar} onClick={()=>{}}></img>
+        <div className='menuButtonTxt'>SIGN IN</div>
+      </div>
+    )
+
+    var leaderboardButton = (
+      <div key={'leaderboardButton'} className='menuButton v'>
+        <img className='menuButtonImg' src={menuBar} onClick={()=>{}}></img>
+        <div className='menuButtonTxt'>LEADERBOARD</div>
+      </div>
+    )
+
+    buttons.push(playButton);
+    buttons.push(loginButton);
+    buttons.push(leaderboardButton);
 
     return buttons;
   };

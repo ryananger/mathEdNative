@@ -147,11 +147,11 @@ html, body, #root {
   color: rgb(66, 31, 20);
 }
 
-.button:hover, .mathButton:hover {
+.button:hover, .mathButton:hover, .menuButton:hover {
   top: -2px;
 }
 
-.buttonImg:active {
+.buttonImg:active, .menuButtonImg:active {
   filter: drop-shadow(0px 2px 1px rgba(66, 31, 20, 0.4));
 }
 
@@ -168,8 +168,34 @@ input {
 .menuButtons {
   width: 80%;
   margin-bottom: 1.8vh;
+  height: 26vh;
+  justify-content: flex-start;
+}
+
+.menuButton {
+  position: relative;
+  width: 100%;
+  height: 30%;
+
+  margin-bottom: 1vh;
+}
+
+.menuButtonTxt {
+  z-index: 10;
+  user-select: none;
+  pointer-events: none;
+  max-width: 100%;
+  font-size: 4vh;
+  font-weight: bolder;
+  color: rgb(66, 31, 20);
 }
 
 .menuButtonImg {
+  z-index: 5;
+  position: absolute;
+  object-fit: fill;
   width: 100%;
+  height: 100%;
+
+  filter: drop-shadow(0px 3px 1px rgba(66, 31, 20, 0.3));
 }

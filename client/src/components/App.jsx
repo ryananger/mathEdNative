@@ -8,7 +8,7 @@ import './style.css';
 
 var App = function() {
   const [updates, updateReact] = useState(0);
-  const updateInterval = 100;
+  const updateInterval = 25;
 
   const reactLoop = function() {
     setTimeout(function() {
