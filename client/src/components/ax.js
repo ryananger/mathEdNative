@@ -20,7 +20,7 @@ var ax = {
   getLeaderboard: function() {
     axios.get(urlBase + 'leaderboard')
       .then(function(response) {
-        console.log(response);
+        Game.leaderBoard = response.data;
       })
   }
 };

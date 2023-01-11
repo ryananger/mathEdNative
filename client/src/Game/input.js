@@ -67,7 +67,7 @@ var mouseClickListener = function() {
     input.lastTarget = event.target;
     input.clicks++;
 
-    console.log(input);
+    //console.log(input);
   });
 };
 

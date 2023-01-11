@@ -53,10 +53,11 @@ var images = {
 for (var set in images) {
   images[set].map(function(url) {
     var img = new Image();
+    var thisSet = set;
 
     img.src = url;
     img.onload = function() {
-      console.log(img);
+      console.log(`Loaded image for ${thisSet}`);
     }
   })
 }

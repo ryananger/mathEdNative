@@ -220,6 +220,28 @@ input {
   margin-top: 8vh;
   width: 80%;
   aspect-ratio: auto 26/21;
+  color: rgb(70, 32, 21);
+}
+
+.leaderBoard {
+  background-image: url('../images/formBg.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  margin-top: 8vh;
+  width: 80%;
+  aspect-ratio: auto 64/51;
+  color: rgb(70, 32, 21);
+}
+
+.leaderBoard {
+  padding: 1vw;
+  justify-content: flex-start;
+}
+
+.highScore {
+  width: 90%;
+  font-size: 3vh;
 }
 
 .formLabel {

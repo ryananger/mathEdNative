@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ax from '../ax.js';
 import images from '../loadImages.js';
 
@@ -6,6 +6,7 @@ var menuBar = images.menuBar[0];
 
 var MenuUI = function({Game, user}) {
   const [formOpen, openForm] = useState(false);
+  const [boardOpen, openBoard] = useState(false);
 
   var playGame = function() {
     Game.setView('play');
@@ -25,7 +26,7 @@ var MenuUI = function({Game, user}) {
     if (!user) {
       var loginButton = (
         <div key={'loginButton'} className='menuButton v'>
-          <img className='menuButtonImg' src={menuBar} onClick={()=>{openForm(true)}}></img>
+          <img className='menuButtonImg' src={menuBar} onClick={formToggle}/>
           <div className='menuButtonTxt'>SIGN IN</div>
         </div>
       )
@@ -33,16 +34,26 @@ var MenuUI = function({Game, user}) {
 
     var leaderboardButton = (
       <div key={'leaderboardButton'} className='menuButton v'>
-        <img className='menuButtonImg' src={menuBar} onClick={ax.getLeaderboard}></img>
+        <img className='menuButtonImg' src={menuBar} onClick={boardToggle}/>
         <div className='menuButtonTxt'>LEADERBOARD</div>
       </div>
-    )
+    );
 
     buttons.push(playButton);
     buttons.push(loginButton);
     buttons.push(leaderboardButton);
 
     return buttons;
+  };
+
+  var boardToggle = function() {
+    openBoard(!boardOpen);
+    openForm(false);
+  };
+
+  var formToggle = function() {
+    openForm(!formOpen);
+    openBoard(false);
   };
 
   var handleSubmit = function(e) {
@@ -89,9 +100,36 @@ var MenuUI = function({Game, user}) {
     return form;
   };
 
+  var renderLeaderboard = function() {
+    if (!boardOpen) {
+      return;
+    }
+
+    var entries = [];
+
+    Game.leaderBoard.map(function(entry, i) {
+      entries.push(
+        <div key={'hs' + i} className='highScore h'>
+          <div>{entry.username}</div>
+          <div>{entry.highScore}</div>
+        </div>
+      )
+    })
+
+    var board = (
+      <div className='leaderBoard v'>
+        <h1>HIGH SCORES</h1>
+        {entries}
+      </div>
+    )
+
+    return board;
+  };
+
   return (
     <div className='menuUi float v'>
       {renderForm()}
+      {renderLeaderboard()}
       <div></div>
       <div className='menuButtons v'>
         {renderButtons()}

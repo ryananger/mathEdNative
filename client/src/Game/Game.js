@@ -4,6 +4,8 @@ import Question from './Question.js';
 import Jupiter  from './Jupiter.js';
 
 import images from '../components/loadImages.js';
+import ax from '../components/ax.js';
+
 var bg = new Image();
 bg.src = images.bgImages[0];
 
@@ -11,6 +13,37 @@ var renderTimeout;
 var buttonId = 0;
 
 var Game = {
+  init: function() {
+    Game.fps = 60;
+    Game.tick = 0;
+
+    Game.playing = false;
+    Game.paused =  false;
+    Game.over =    false;
+
+    Game.score = 0;
+    Game.hp = 0;
+
+    Game.expression = '';
+    Game.display = '';
+    Game.answer = null;
+    Game.mod = '+';
+
+    Game.buttonsPressed = [];
+    Game.deadButtons = 0;
+
+    Game.entities = [];
+    Game.numbers = [];
+
+    Game.questionSpeed = 2;
+    Game.jupiter = Jupiter(0, -1500);
+    Game.jupiterFalling = false;
+
+    Game.getNumbers();
+    Game.leaderBoard;
+
+    ax.getLeaderboard();
+  },
   togglePause: function() {
     Game.playing = !Game.playing;
   },
@@ -182,30 +215,6 @@ var Game = {
         Game.numbers = front.concat(back);
       });
     }
-  },
-
-  init: function() {
-    Game.fps = 60;
-    Game.tick = 0;
-    Game.playing = false;
-    Game.paused =  false;
-    Game.over =    false;
-    Game.score = 0;
-    Game.hp = 0;
-    Game.expression = '';
-    Game.display = '';
-    Game.answer = null;
-    Game.mod = '+';
-    Game.buttonsPressed = [];
-    Game.deadButtons = 0;
-    Game.entities = [];
-    Game.numbers = [];
-    Game.questionSpeed = 2;
-
-    Game.jupiter = Jupiter(0, -1500);
-    Game.jupiterFalling = false;
-
-    Game.getNumbers();
   }
 };
 
