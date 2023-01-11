@@ -10,11 +10,12 @@ var Question = function(x, y) {
   };
 
   blob.update = function(Game) {
-    blob.y += 4;
+    blob.y += 20;
 
     if (blob.y > 900) {
       Game.entities.pop();
       Game.score -= 500;
+      Game.hp++;
     }
   };
 

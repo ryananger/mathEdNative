@@ -1,9 +1,12 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 
+import images from './loadImages.js';
+
 import Game from '../Game/Game.js';
 import MenuUI from './UI/MenuUI.jsx';
 import PlayUI from './UI/PlayUI.jsx';
+
 import './style.css';
 
 var user;
@@ -11,7 +14,7 @@ var user;
 if (!document.cookie) {
   user = null;
 } else {
-  user = document.cookie.split()[0].slice(0, 8);
+  user = document.cookie.split()[0].slice(8);
   console.log(user);
 }
 

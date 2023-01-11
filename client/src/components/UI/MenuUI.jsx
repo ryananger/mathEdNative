@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import menuBar  from '../../images/menuBar.png';
+import images from '../loadImages.js';
+
+var menuBar = images.menuBar[0];
 
 var MenuUI = function({Game, user}) {
   if (Game.playing) {

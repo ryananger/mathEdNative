@@ -1,9 +1,5 @@
 import React from 'react';
-
-import plus     from '../../images/plus.png';
-import minus    from '../../images/minus.png';
-import multiply from '../../images/multiply.png';
-import divide   from '../../images/divide.png';
+import images from '../loadImages.js';
 
 var MathButtons = function({Game}) {
 
@@ -28,10 +24,10 @@ var MathButtons = function({Game}) {
 
   return (
     <div className='mathButtons h'>
-      <img src={plus}     value='plus'     className='mathButton v' onClick={changeMod}></img>
-      <img src={minus}    value='minus'    className='mathButton v' onClick={changeMod}></img>
-      <img src={multiply} value='multiply' className='mathButton v' onClick={changeMod}></img>
-      <img src={divide}   value='divide'   className='mathButton v' onClick={changeMod}></img>
+      <img src={images.mathImages[0]} value='plus'     className='mathButton v' onClick={changeMod}></img>
+      <img src={images.mathImages[1]} value='minus'    className='mathButton v' onClick={changeMod}></img>
+      <img src={images.mathImages[2]} value='multiply' className='mathButton v' onClick={changeMod}></img>
+      <img src={images.mathImages[3]} value='divide'   className='mathButton v' onClick={changeMod}></img>
     </div>
   )
 };

@@ -2,6 +2,10 @@ import input from './input.js';
 import Entity from './Entity.js';
 import Question from './Question.js';
 
+import images from '../components/loadImages.js';
+var bg = new Image();
+bg.src = images.bgImages[0];
+
 var renderTimeout;
 var buttonId = 0;
 
@@ -27,20 +31,25 @@ var Game = {
     Game.playing = !Game.playing;
   },
   update: function(ctx) {
+    var cw = ctx.canvas.width;
+    var ch = ctx.canvas.height;
+
+    ctx.clearRect(0, 0, cw, ch);
+    ctx.drawImage(bg, 0, 0, cw, ch);
+
     if (!Game.playing || Game.paused) {
       return;
     }
 
-    var cw = ctx.canvas.width;
-    var ch = ctx.canvas.height;
+    if (Game.hp < 12) {
+      bg.src = images.bgImages[Game.hp];
+    }
 
-    if (Game.tick % 150 === 0) {
+    if (Game.tick % 50 === 0) {
       var question = Question(100 + Math.floor(Math.random() * (cw - 200)), -50);
 
       Game.entities.unshift(question);
     }
-
-    ctx.clearRect(0, 0, cw, ch);
 
     Game.entities.map(function(entity) {
       entity.update(Game);

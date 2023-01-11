@@ -1,10 +1,10 @@
 import React from 'react';
-import mathOut  from '../../images/mathOut.png';
+import images from '../loadImages.js';
 
 var Expression = function({Game}) {
   return (
     <div className='mathOut v'>
-      <img src={mathOut} className='mathOutImg' onClick={Game.evaluate}></img>
+      <img src={images.mathOut[0]} className='mathOutImg' onClick={Game.evaluate}></img>
       <div className='mathOutAnswer'>{Game.display}</div>
     </div>
   )
