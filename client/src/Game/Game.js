@@ -1,6 +1,7 @@
 import input from './input.js';
 import Entity from './Entity.js';
 import Question from './Question.js';
+import Jupiter  from './Jupiter.js';
 
 import images from '../components/loadImages.js';
 var bg = new Image();
@@ -10,23 +11,6 @@ var renderTimeout;
 var buttonId = 0;
 
 var Game = {
-  view: 'home',
-  fps: 60,
-  tick: 0,
-  playing: false,
-  paused: false,
-  score: 0,
-  hp: 0,
-  expression: '',
-  display: '',
-  buttonsPressed: [],
-  deadButtons: 0,
-  answer: null,
-  mod: '+',
-
-  entities: [],
-  numbers: [],
-
   togglePause: function() {
     Game.playing = !Game.playing;
   },
@@ -37,15 +21,23 @@ var Game = {
     ctx.clearRect(0, 0, cw, ch);
     ctx.drawImage(bg, 0, 0, cw, ch);
 
-    if (!Game.playing || Game.paused) {
-      return;
+    if (Game.score > 0) {
+      Game.questionSpeed = 2 * (1 + (Math.floor(Game.score/2000)));
     }
 
     if (Game.hp < 12) {
       bg.src = images.bgImages[Game.hp];
+    } else if (Game.hp > 13) {
+      Game.jupiter.crash(Game);
+      Game.jupiter.update(Game);
+      Game.jupiter.draw(Game, ctx);
     }
 
-    if (Game.tick % 50 === 0) {
+    if (!Game.playing || Game.paused || Game.over) {
+      return;
+    }
+
+    if (Game.tick % 150 === 0) {
       var question = Question(100 + Math.floor(Math.random() * (cw - 200)), -50);
 
       Game.entities.unshift(question);
@@ -60,6 +52,7 @@ var Game = {
     var ctx = document.getElementById('canvas').getContext('2d');
 
     ctx.font = "72px Jost";
+    ctx.fillStyle = 'rgb(70, 32, 21)';
 
     var animId;
     var render = function() {
@@ -187,10 +180,33 @@ var Game = {
         Game.numbers = front.concat(back);
       });
     }
+  },
+
+  init: function() {
+    Game.fps = 60;
+    Game.tick = 0;
+    Game.playing = false;
+    Game.paused =  false;
+    Game.over =    false;
+    Game.score = 0;
+    Game.hp = 0;
+    Game.expression = '';
+    Game.display = '';
+    Game.answer = null;
+    Game.mod = '+';
+    Game.buttonsPressed = [];
+    Game.deadButtons = 0;
+    Game.entities = [];
+    Game.numbers = [];
+    Game.questionSpeed = 2;
+
+    Game.getNumbers();
+
+    Game.jupiter = Jupiter(0, -1500);
   }
 };
 
-Game.getNumbers();
+Game.init();
 
 window.Game = Game;
 

@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import images from './loadImages.js';
 
 import Game from '../Game/Game.js';
+import GameOver from './GameOver.jsx';
 import MenuUI from './UI/MenuUI.jsx';
 import PlayUI from './UI/PlayUI.jsx';
 
@@ -33,8 +34,9 @@ var App = function() {
 
   return (
     <div className='play v'>
-      <MenuUI Game={Game} user={user}/>
-      <PlayUI Game={Game} user={user}/>
+      <MenuUI   Game={Game} user={user}/>
+      <PlayUI   Game={Game} user={user}/>
+      <GameOver Game={Game} user={user}/>
       <canvas id='canvas' className='canvas float' width='800' height='1420'/>
     </div>
   )
