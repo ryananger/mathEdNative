@@ -23,7 +23,8 @@ var App = function() {
     if (cookie.user) {
       return {
         name: cookie.user,
-        highScore: cookie.highScore
+        highScore: cookie.highScore,
+        sessionId: cookie.sessionId
       }
     } else {
       return null;

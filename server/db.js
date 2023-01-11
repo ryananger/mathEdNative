@@ -9,12 +9,7 @@ mongoose.connect(url, options);
 const userSchema = new mongoose.Schema({
   username:     String,
   sessionId:    String,
-  signUpDate:   String,
-
-  scores:     [Number],
-  highscore:  Number,
-
-  profile_description: String
+  highScore:    Number
 });
 
 const User = new mongoose.model('User', userSchema);

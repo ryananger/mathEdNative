@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ax from '../ax.js';
 import images from '../loadImages.js';
 
 var menuBar = images.menuBar[0];
@@ -32,7 +33,7 @@ var MenuUI = function({Game, user}) {
 
     var leaderboardButton = (
       <div key={'leaderboardButton'} className='menuButton v'>
-        <img className='menuButtonImg' src={menuBar} onClick={()=>{}}></img>
+        <img className='menuButtonImg' src={menuBar} onClick={ax.getLeaderboard}></img>
         <div className='menuButtonTxt'>LEADERBOARD</div>
       </div>
     )
@@ -49,13 +50,21 @@ var MenuUI = function({Game, user}) {
 
     var form = document.getElementById('userForm');
     var username  = form.username.value;
-    var sessionId = `${username}_session${(new Date()).valueOf()}`
+    var sessionId = `${username}_session${(new Date()).valueOf()}`;
 
     openForm(false);
 
     if (!username) {
       return;
     }
+
+    var user = {
+      username,
+      sessionId,
+      highScore: 0
+    };
+
+    ax.newUser(user);
 
     document.cookie = `user=${username};`;
     document.cookie = `sessionId=${sessionId};`;
