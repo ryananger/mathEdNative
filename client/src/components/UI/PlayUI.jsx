@@ -6,10 +6,6 @@ import MathButtons from './MathButtons.jsx';
 import Expression  from './Expression.jsx';
 
 var PlayUI = function({Game, user}) {
-  if (!Game.playing) {
-    return;
-  }
-
   var renderButtons = function() {
     var buttons = [];
 
@@ -45,9 +41,24 @@ var PlayUI = function({Game, user}) {
     return buttons;
   };
 
+  var renderHighscore = function() {
+    if (user) {
+      return user.highScore;
+    } else {
+      return Game.score;
+    }
+  };
+
   return (
     <div className='playUi float v'>
-      <div className='score'>{Game.score}</div>
+      <div className='score h'>
+        <div>
+          {Game.score}
+        </div>
+        <div>
+          {renderHighscore()}
+        </div>
+      </div>
       <div className='uiHead h'>
         <MathButtons Game={Game}/>
         <Expression  Game={Game}/>

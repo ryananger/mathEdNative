@@ -43,11 +43,11 @@ var images = {
   selectImages,
   mathImages,
   bgImages,
-  menuBar: [menuBar],
+  menuBar:   [menuBar],
   deadImage: [deadImage],
-  mathOut: [mathOut],
-  gameOver: [gameOver],
-  jupiter: [jupiter]
+  mathOut:   [mathOut],
+  gameOver:  [gameOver],
+  jupiter:   [jupiter]
 };
 
 for (var set in images) {

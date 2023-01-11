@@ -31,6 +31,8 @@ var Game = {
       Game.jupiter.crash(Game);
       Game.jupiter.update(Game);
       Game.jupiter.draw(Game, ctx);
+      Game.jupiterFalling = true;
+      Game.playing = false;
     }
 
     if (!Game.playing || Game.paused || Game.over) {
@@ -200,9 +202,10 @@ var Game = {
     Game.numbers = [];
     Game.questionSpeed = 2;
 
-    Game.getNumbers();
-
     Game.jupiter = Jupiter(0, -1500);
+    Game.jupiterFalling = false;
+
+    Game.getNumbers();
   }
 };
 

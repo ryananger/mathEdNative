@@ -7,36 +7,59 @@ import Game from '../Game/Game.js';
 import GameOver from './GameOver.jsx';
 import MenuUI from './UI/MenuUI.jsx';
 import PlayUI from './UI/PlayUI.jsx';
+import cookieParse from './cookieParse.js';
 
 import './style.css';
 
-var user;
-
-if (!document.cookie) {
-  user = null;
-} else {
-  user = document.cookie.split()[0].slice(8);
-  console.log(user);
-}
-
 var App = function() {
   const [updates, updateReact] = useState(0);
-  const updateInterval = 25;
+  const updateInterval = 50;
+
+  const [view, setView] = useState('menu');
+  Game.setView = setView;
+
+  const cookie = cookieParse();
+  const user   = function() {
+    if (cookie.user) {
+      return {
+        name: cookie.user,
+        highScore: cookie.highScore
+      }
+    } else {
+      return null;
+    }
+  }();
 
   const reactLoop = function() {
+    if (!Game.playing) {
+      return;
+    }
+
     setTimeout(function() {
       updateReact(updates + 1);
     }, updateInterval);
   };
 
-  useEffect(reactLoop, [updates]);
+  const renderView = function() {
+    if (view === 'menu') {
+      return <MenuUI Game={Game} user={user}/>;
+    }
+
+    if (view === 'play' && Game.playing) {
+      return <PlayUI Game={Game} user={user}/>;
+    }
+
+    if (view === 'gameover') {
+      return <GameOver Game={Game} user={user}/>;
+    }
+  };
+
+  useEffect(reactLoop, [updates, Game.playing]);
   useEffect(Game.gameLoop, []);
 
   return (
     <div className='play v'>
-      <MenuUI   Game={Game} user={user}/>
-      <PlayUI   Game={Game} user={user}/>
-      <GameOver Game={Game} user={user}/>
+      {renderView()}
       <canvas id='canvas' className='canvas float' width='800' height='1420'/>
     </div>
   )

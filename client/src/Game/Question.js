@@ -14,8 +14,11 @@ var Question = function(x, y) {
 
     if (blob.y > 900) {
       Game.entities.pop();
-      Game.score -= 500;
       Game.hp++;
+
+      if (!Game.jupiterFalling) {
+        Game.score -= 250;
+      }
     }
   };
 

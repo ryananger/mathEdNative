@@ -13,9 +13,10 @@ var Jupiter = function(x, y) {
 
   jupiter.crash = function(Game) {
     if (jupiter.y < 0) {
-      jupiter.y += 4;
+      jupiter.y += 6;
     } else {
       Game.over = true;
+      Game.setView('gameover');
     }
   };
 

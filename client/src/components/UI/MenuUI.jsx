@@ -4,18 +4,19 @@ import images from '../loadImages.js';
 var menuBar = images.menuBar[0];
 
 var MenuUI = function({Game, user}) {
-  if (Game.playing) {
-    return;
-  }
-
   const [formOpen, openForm] = useState(false);
+
+  var playGame = function() {
+    Game.setView('play');
+    Game.playing = true;
+  };
 
   var renderButtons = function() {
     var buttons = [];
 
     var playButton = (
       <div key={'playButton'} className='menuButton v'>
-        <img className='menuButtonImg' src={menuBar} onClick={()=>{Game.playing = true}}></img>
+        <img className='menuButtonImg' src={menuBar} onClick={playGame}></img>
         <div className='menuButtonTxt'>PLAY!</div>
       </div>
     )
@@ -56,8 +57,9 @@ var MenuUI = function({Game, user}) {
       return;
     }
 
-    document.cookie = `username=${username};`;
+    document.cookie = `user=${username};`;
     document.cookie = `sessionId=${sessionId};`;
+    document.cookie = `highScore=0`;
   };
 
   var renderForm = function() {
