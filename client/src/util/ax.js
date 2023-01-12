@@ -17,7 +17,7 @@ var ax = {
         console.log(response);
       })
   },
-  getLeaderboard: function() {
+  getLeaderboard: function(Game) {
     axios.get(urlBase + 'leaderboard')
       .then(function(response) {
         Game.leaderBoard = response.data;

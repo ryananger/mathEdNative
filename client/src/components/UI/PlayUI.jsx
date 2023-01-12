@@ -1,4 +1,4 @@
-import React    from 'react';
+import React, {useState} from 'react';
 
 import Button      from './Button.jsx';
 import DeadButton  from './DeadButton.jsx';
@@ -6,6 +6,8 @@ import MathButtons from './MathButtons.jsx';
 import Expression  from './Expression.jsx';
 
 var PlayUI = function({Game, user}) {
+  const [infoOpen,  openInfo] = useState(true);
+
   var renderButtons = function() {
     var buttons = [];
 
@@ -49,8 +51,31 @@ var PlayUI = function({Game, user}) {
     }
   };
 
+  var renderInfo = function() {
+    if (!infoOpen) {
+      return;
+    }
+
+    var info = (
+      <div className='info v'>
+        Do math to stop the numbers from falling!
+        <br/>
+        Press M to mute, Escape to pause.
+        <br/>
+        Click on the equation to fire.
+      </div>
+    )
+
+    setTimeout(function() {
+      openInfo(false);
+    }, 8000);
+
+    return info;
+  };
+
   return (
     <div className='playUi float v'>
+      {renderInfo()}
       <div className='score h'>
         <div>
           {Game.score}

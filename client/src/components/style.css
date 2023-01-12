@@ -67,6 +67,16 @@ html, body, #root {
   aspect-ratio: auto 800/1420;
 }
 
+.info {
+  position: absolute;
+  top: 3vh;
+  text-align: center;
+  padding: 2vh;
+  margin-bottom: 40vh;
+  font-size: 3vh;
+  color: rgb(70, 32, 21);
+}
+
 .score {
   color: rgb(70, 32, 21);
   position: absolute;

@@ -43,7 +43,7 @@ var Game = {
     Game.getNumbers();
     Game.leaderBoard;
 
-    ax.getLeaderboard();
+    ax.getLeaderboard(Game);
   },
   togglePause: function() {
     Game.playing = !Game.playing;
@@ -227,7 +227,5 @@ var Game = {
 };
 
 Game.init();
-
-window.Game = Game;
 
 export default Game;

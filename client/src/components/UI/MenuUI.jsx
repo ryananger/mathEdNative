@@ -5,7 +5,7 @@ import images from '../../util/loadImages.js';
 var menuBar = images.urls.menuBar[0];
 
 var MenuUI = function({Game, user}) {
-  const [formOpen, openForm] = useState(false);
+  const [formOpen,  openForm]  = useState(false);
   const [boardOpen, openBoard] = useState(false);
 
   var playGame = function() {
@@ -60,7 +60,7 @@ var MenuUI = function({Game, user}) {
     e.preventDefault();
 
     var form = document.getElementById('userForm');
-    var username  = form.username.value;
+    var username  = form.username.value.replace(/[\W_]+/g, '');
     var sessionId = `${username}_session${(new Date()).valueOf()}`;
 
     openForm(false);
@@ -125,6 +125,8 @@ var MenuUI = function({Game, user}) {
 
     return board;
   };
+
+
 
   return (
     <div className='menuUi float v'>
