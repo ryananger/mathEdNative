@@ -31,7 +31,7 @@ module.exports = {
       directory: path.join(__dirname, 'client/dist'),
     },
     compress: true,
-    port: 3141,
+    port: 4000,
   },
 
   plugins: [

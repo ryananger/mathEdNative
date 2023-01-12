@@ -1,2 +1,4 @@
+/client/dist/
 /node_modules/
-ryscott_main.pem
+ryscott_main.pemi
+webpack.config.js

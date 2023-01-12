@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-var urlBase = `http://localhost:4001/`;
+var urlBase = `http://3.142.68.139:4001/`;
 
 var ax = {
   newUser: function(user) {

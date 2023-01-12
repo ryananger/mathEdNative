@@ -46,6 +46,14 @@ var keypressListener = function() {
         // Game.pulse.reset();
         // Game.pulse.pulsing = true;
         break;
+      case 'm':
+	var audio = document.getElementById('music');
+        
+	if (audio.volume === 0) {
+		audio.volume = 0.15;
+	} else {
+		audio.volume = 0;
+	}
     }
 
     if (Number(event.key) && !Game.paused) {
@@ -73,8 +81,10 @@ var mouseClickListener = function() {
 
     var audio = document.getElementById('music');
 
-    audio.volume = 0.15;
-    audio.play();
+    if (audio.paused) {
+	audio.volume = 0.15;
+	audio.play();
+    }
 
     //console.log(input);
   });
