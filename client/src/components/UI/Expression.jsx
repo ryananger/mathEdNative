@@ -1,5 +1,5 @@
 import React from 'react';
-import images from '../loadImages.js';
+import images from '../../util/loadImages.js';
 
 var Expression = function({Game}) {
   return (

@@ -4,8 +4,8 @@ import Question from './Question.js';
 import Pulse from './Pulse.js';
 import Jupiter  from './Jupiter.js';
 
-import images from '../components/loadImages.js';
-import ax from '../components/ax.js';
+import images from '../util/loadImages.js';
+import ax from '../util/ax.js';
 
 var bgs = images.loaded.bgImages;
 
@@ -199,7 +199,11 @@ var Game = {
   correctAnswer: function() {
     Game.pulse.pulsing = true;
     setTimeout(()=>{Game.entities.pop()}, 150);
-    Game.score += 50 * Game.buttonsPressed.length;
+    Game.score += 100;
+
+    if (Game.buttonsPressed.length === 3) {
+      Game.score += 100;
+    }
 
     if (Game.buttonsPressed.length >= Game.numbers.length) {
       Game.numbers = [];

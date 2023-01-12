@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import images from '../loadImages.js';
+import images from '../../util/loadImages.js';
 
 var buttonImages = images.urls.buttonImages;
 var selectImages = images.urls.selectImages;
 
-var index = Math.floor(Math.random() * 4);
-
 var Button = function({Game, value, id}) {
   const [inExpression, setExpression] = useState(false);
+
+  const [index, setIndex] = useState(Math.floor(Math.random() * 4));
   const [image, setImage] = useState(buttonImages[index]);
 
   if (!Game.expression && inExpression) {

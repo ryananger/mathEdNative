@@ -1,5 +1,5 @@
 import menuBar  from '../images/menuBar.png';
-import deadImage  from '../images/deadButton.png';
+import deadImage  from '../images/buttons/deadButton.png';
 import mathOut  from '../images/mathOut.png';
 
 import button1  from '../images/buttons/button1.png';
@@ -12,35 +12,36 @@ import select2  from '../images/buttons/select2.png';
 import select3  from '../images/buttons/select3.png';
 import select4  from '../images/buttons/select4.png';
 
-import plus     from '../images/plus.png';
-import minus    from '../images/minus.png';
-import multiply from '../images/multiply.png';
-import divide   from '../images/divide.png';
+import plus     from '../images/mathButtons/plus.png';
+import minus    from '../images/mathButtons/minus.png';
+import multiply from '../images/mathButtons/multiply.png';
+import divide   from '../images/mathButtons/divide.png';
 
-import bg0      from '../images/mathgame.png';
-import bg1      from '../images/mathgame_dying1.png';
-import bg2      from '../images/mathgame_dying2.png';
-import bg3      from '../images/mathgame_dying3.png';
-import bg4      from '../images/mathgame_dying4.png';
-import bg5      from '../images/mathgame_dying5.png';
-import bg6      from '../images/mathgame_dying6.png';
-import bg7      from '../images/mathgame_dying7.png';
-import bg8      from '../images/mathgame_dying8.png';
-import bg9      from '../images/mathgame_dying9.png';
-import bg10     from '../images/mathgame_dying10.png';
-import bg11     from '../images/mathgame_dying11.png';
-import bg12     from '../images/mathgame_dying12.png';
+import bg0      from '../images/bgs/mathgame.png';
+import bg1      from '../images/bgs/mathgame_dying1.png';
+import bg2      from '../images/bgs/mathgame_dying2.png';
+import bg3      from '../images/bgs/mathgame_dying3.png';
+import bg4      from '../images/bgs/mathgame_dying4.png';
+import bg5      from '../images/bgs/mathgame_dying5.png';
+import bg6      from '../images/bgs/mathgame_dying6.png';
+import bg7      from '../images/bgs/mathgame_dying7.png';
+import bg8      from '../images/bgs/mathgame_dying8.png';
+import bg9      from '../images/bgs/mathgame_dying9.png';
+import bg10     from '../images/bgs/mathgame_dying10.png';
+import bg11     from '../images/bgs/mathgame_dying11.png';
+import bg12     from '../images/bgs/mathgame_dying12.png';
+
 import gameOver from '../images/game_over.png';
 
-import p1   from '../images/mathgame_pulse1.png';
-import p2   from '../images/mathgame_pulse2.png';
-import p3   from '../images/mathgame_pulse3.png';
-import p4   from '../images/mathgame_pulse4.png';
-import p5   from '../images/mathgame_pulse5.png';
-import p6   from '../images/mathgame_pulse6.png';
-import p7   from '../images/mathgame_pulse7.png';
-import p8   from '../images/mathgame_pulse8.png';
-import p9   from '../images/mathgame_pulse9.png';
+import p1   from '../images/pulse/mathgame_pulse1.png';
+import p2   from '../images/pulse/mathgame_pulse2.png';
+import p3   from '../images/pulse/mathgame_pulse3.png';
+import p4   from '../images/pulse/mathgame_pulse4.png';
+import p5   from '../images/pulse/mathgame_pulse5.png';
+import p6   from '../images/pulse/mathgame_pulse6.png';
+import p7   from '../images/pulse/mathgame_pulse7.png';
+import p8   from '../images/pulse/mathgame_pulse8.png';
+import p9   from '../images/pulse/mathgame_pulse9.png';
 
 import jupiter  from '../images/jupiter.png';
 

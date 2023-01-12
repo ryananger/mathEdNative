@@ -1,5 +1,5 @@
 import Entity from './Entity.js';
-import images from '../components/loadImages.js';
+import images from '../util/loadImages.js';
 
 var imgs = images.loaded.pulseImages;
 

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import images from '../loadImages.js';
+import images from '../../util/loadImages.js';
 
 var DeadButton = function({Game}) {
   return (

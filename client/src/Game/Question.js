@@ -12,7 +12,7 @@ var Question = function(x, y) {
   blob.update = function(Game) {
     blob.y += Game.questionSpeed;
 
-    if (blob.y > 900) {
+    if (blob.y > 950) {
       Game.entities.pop();
       Game.hp++;
 

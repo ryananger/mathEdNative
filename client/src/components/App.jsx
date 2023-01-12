@@ -1,35 +1,24 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 
-import images from './loadImages.js';
+import images from '../util/loadImages.js';
+import cookieHandle from '../util/cookieHandle.js';
 
 import Game from '../Game/Game.js';
 import GameOver from './GameOver.jsx';
 import MenuUI from './UI/MenuUI.jsx';
 import PlayUI from './UI/PlayUI.jsx';
-import cookieParse from './cookieParse.js';
 
 import './style.css';
 
 var App = function() {
   const [updates, updateReact] = useState(0);
+  const [view, setView] = useState('menu');
+
+  const user   = cookieHandle.user();
   const updateInterval = 50;
 
-  const [view, setView] = useState('menu');
   Game.setView = setView;
-
-  const cookie = cookieParse();
-  const user   = function() {
-    if (cookie.user) {
-      return {
-        name: cookie.user,
-        highScore: cookie.highScore,
-        sessionId: cookie.sessionId
-      }
-    } else {
-      return null;
-    }
-  }();
 
   const reactLoop = function() {
     if (!Game.playing) {
@@ -42,17 +31,17 @@ var App = function() {
   };
 
   const renderView = function() {
+    switch (view) {
+      case 'menu':
+        return <MenuUI   Game={Game} user={user}/>;
+      case 'play':
+        if (!Game.playing) {
+          return;
+        }
 
-    if (view === 'menu') {
-      return <MenuUI Game={Game} user={user}/>;
-    }
-
-    if (view === 'play' && Game.playing) {
-      return <PlayUI Game={Game} user={user}/>;
-    }
-
-    if (view === 'gameover') {
-      return <GameOver Game={Game} user={user}/>;
+        return <PlayUI   Game={Game} user={user}/>;
+      case 'gameover':
+        return <GameOver Game={Game} user={user}/>;
     }
   };
 

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import ax from '../ax.js';
-import images from '../loadImages.js';
+import ax from '../../util/ax.js';
+import images from '../../util/loadImages.js';
 
 var menuBar = images.urls.menuBar[0];
 
