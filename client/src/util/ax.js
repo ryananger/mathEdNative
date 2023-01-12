@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-var urlBase = `http://3.142.68.139:4001/`;
+var urlBase = process.env.URL;
 
 var ax = {
   newUser: function(user) {

@@ -47,14 +47,16 @@ var keypressListener = function() {
         // Game.pulse.pulsing = true;
         break;
       case 'm':
-	var audio = document.getElementById('music');
-        
-	if (audio.volume === 0) {
-		audio.volume = 0.15;
-	} else {
-		audio.volume = 0;
-	}
+        var audio = document.getElementById('music');
+
+        if (audio.volume === 0) {
+          audio.volume = 0.15;
+        } else {
+          audio.volume = 0;
+        }
+        break;
     }
+
 
     if (Number(event.key) && !Game.paused) {
       for (var i = 0; i < Game.numbers.length; i++) {
