@@ -60,7 +60,7 @@ var MenuUI = function({Game, user}) {
     e.preventDefault();
 
     var form = document.getElementById('userForm');
-    var username  = form.username.value.replace(/[\W_]+/g, '');
+    var username  = form.username.value.replaceAll(/[\W_]+/g, '');
     var sessionId = `${username}_session${(new Date()).valueOf()}`;
 
     openForm(false);
@@ -125,8 +125,6 @@ var MenuUI = function({Game, user}) {
 
     return board;
   };
-
-
 
   return (
     <div className='menuUi float v'>

@@ -15,7 +15,7 @@ var App = function() {
   const [updates, updateReact] = useState(0);
   const [view, setView] = useState('menu');
 
-  const user   = cookieHandle.user();
+  const user = cookieHandle.user();
   const updateInterval = 50;
 
   Game.setView = setView;
@@ -33,13 +33,13 @@ var App = function() {
   const renderView = function() {
     switch (view) {
       case 'menu':
-        return <MenuUI   Game={Game} user={user}/>;
+        return <MenuUI Game={Game} user={user}/>;
       case 'play':
         if (!Game.playing) {
           return;
         }
 
-        return <PlayUI   Game={Game} user={user}/>;
+        return <PlayUI Game={Game} user={user}/>;
       case 'gameover':
         return <GameOver Game={Game} user={user}/>;
     }

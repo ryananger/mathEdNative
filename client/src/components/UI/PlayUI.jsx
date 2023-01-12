@@ -59,12 +59,14 @@ var PlayUI = function({Game, user}) {
     var info = (
       <div className='info v'>
         Do math to stop the numbers from falling!
+        <br/><br/>
+        Click on the buttons or use numpad, then click on the expression or press Enter to fire.
+        <br/><br/>
+        <small>Press Spacebar to refill your numbers.</small>
         <br/>
-        Press M to mute, Escape to pause.
-        <br/>
-        Click on the equation to fire.
+        <small>Press M to mute, Escape to pause.</small>
       </div>
-    )
+    );
 
     setTimeout(function() {
       openInfo(false);
