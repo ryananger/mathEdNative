@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ax from '../ax.js';
 import images from '../loadImages.js';
 
-var menuBar = images.menuBar[0];
+var menuBar = images.urls.menuBar[0];
 
 var MenuUI = function({Game, user}) {
   const [formOpen, openForm] = useState(false);

@@ -42,6 +42,10 @@ var keypressListener = function() {
       case ' ':
         Game.getNumbers();
         break;
+      case 'p':
+        // Game.pulse.reset();
+        // Game.pulse.pulsing = true;
+        break;
     }
 
     if (Number(event.key) && !Game.paused) {
@@ -66,6 +70,11 @@ var mouseClickListener = function() {
     getMousePosition(event);
     input.lastTarget = event.target;
     input.clicks++;
+
+    var audio = document.getElementById('music');
+
+    audio.volume = 0.15;
+    audio.play();
 
     //console.log(input);
   });

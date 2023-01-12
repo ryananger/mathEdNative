@@ -1,13 +1,13 @@
 import input from './input.js';
 import Entity from './Entity.js';
 import Question from './Question.js';
+import Pulse from './Pulse.js';
 import Jupiter  from './Jupiter.js';
 
 import images from '../components/loadImages.js';
 import ax from '../components/ax.js';
 
-var bg = new Image();
-bg.src = images.bgImages[0];
+var bgs = images.loaded.bgImages;
 
 var renderTimeout;
 var buttonId = 0;
@@ -36,6 +36,7 @@ var Game = {
     Game.numbers = [];
 
     Game.questionSpeed = 2;
+    Game.pulse = Pulse();
     Game.jupiter = Jupiter(0, -1500);
     Game.jupiterFalling = false;
 
@@ -50,17 +51,16 @@ var Game = {
   update: function(ctx) {
     var cw = ctx.canvas.width;
     var ch = ctx.canvas.height;
+    var background = bgs[Game.hp] || bgs[12];
 
     ctx.clearRect(0, 0, cw, ch);
-    ctx.drawImage(bg, 0, 0, cw, ch);
+    ctx.drawImage(background, 0, 0, cw, ch);
 
     if (Game.score > 0) {
-      Game.questionSpeed = 2 * (1 + (Math.floor(Game.score/2000)));
+      Game.questionSpeed = 2 * (1 + ((Math.floor(Game.score/2000)))/2);
     }
 
-    if (Game.hp < 12) {
-      bg.src = images.bgImages[Game.hp];
-    } else if (Game.hp > 13) {
+    if (Game.hp > 13) {
       Game.jupiter.crash(Game);
       Game.jupiter.update(Game);
       Game.jupiter.draw(Game, ctx);
@@ -68,11 +68,14 @@ var Game = {
       Game.playing = false;
     }
 
+    Game.pulse.update(Game);
+    Game.pulse.draw(Game, ctx);
+
     if (!Game.playing || Game.paused || Game.over) {
       return;
     }
 
-    if (Game.tick % 150 === 0) {
+    if (Game.tick % 120 === 0) {
       var question = Question(100 + Math.floor(Math.random() * (cw - 200)), -50);
 
       Game.entities.unshift(question);
@@ -194,7 +197,8 @@ var Game = {
     Game.buttonsPressed = [];
   },
   correctAnswer: function() {
-    Game.entities.pop();
+    Game.pulse.pulsing = true;
+    setTimeout(()=>{Game.entities.pop()}, 150);
     Game.score += 50 * Game.buttonsPressed.length;
 
     if (Game.buttonsPressed.length >= Game.numbers.length) {

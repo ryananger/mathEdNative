@@ -42,6 +42,7 @@ var App = function() {
   };
 
   const renderView = function() {
+
     if (view === 'menu') {
       return <MenuUI Game={Game} user={user}/>;
     }
@@ -60,8 +61,9 @@ var App = function() {
 
   return (
     <div className='play v'>
-      {renderView()}
       <canvas id='canvas' className='canvas float' width='800' height='1420'/>
+
+      {renderView()}
     </div>
   )
 }

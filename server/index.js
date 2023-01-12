@@ -38,7 +38,7 @@ app.get('/leaderboard', function(req, res) {
       var sendBody = [];
 
       response.map(function(entry) {
-        if (entry.highScore > 0 && sendBody.length < 5) {
+        if (entry.highScore > 0 && sendBody.length < 6) {
           sendBody.push({
             username: entry.username,
             highScore: entry.highScore

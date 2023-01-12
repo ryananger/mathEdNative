@@ -24,10 +24,10 @@ var MathButtons = function({Game}) {
 
   return (
     <div className='mathButtons h'>
-      <img src={images.mathImages[0]} value='plus'     className='mathButton v' onClick={changeMod}></img>
-      <img src={images.mathImages[1]} value='minus'    className='mathButton v' onClick={changeMod}></img>
-      <img src={images.mathImages[2]} value='multiply' className='mathButton v' onClick={changeMod}></img>
-      <img src={images.mathImages[3]} value='divide'   className='mathButton v' onClick={changeMod}></img>
+      <img src={images.urls.mathImages[0]} value='plus'     className='mathButton v' onClick={changeMod}></img>
+      <img src={images.urls.mathImages[1]} value='minus'    className='mathButton v' onClick={changeMod}></img>
+      <img src={images.urls.mathImages[2]} value='multiply' className='mathButton v' onClick={changeMod}></img>
+      <img src={images.urls.mathImages[3]} value='divide'   className='mathButton v' onClick={changeMod}></img>
     </div>
   )
 };

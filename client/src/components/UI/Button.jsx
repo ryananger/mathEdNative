@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import images from '../loadImages.js';
 
-var buttonImages = images.buttonImages;
-var selectImages = images.selectImages;
+var buttonImages = images.urls.buttonImages;
+var selectImages = images.urls.selectImages;
 
 var index = Math.floor(Math.random() * 4);
 

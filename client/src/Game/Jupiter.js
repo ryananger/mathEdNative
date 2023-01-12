@@ -1,8 +1,7 @@
 import Entity from './Entity.js';
 import images from '../components/loadImages.js';
 
-var img = new Image();
-img.src = images.jupiter;
+var img = images.loaded.jupiter[0];
 
 var Jupiter = function(x, y) {
   var jupiter = Entity(x, y);

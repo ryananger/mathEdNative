@@ -45,7 +45,7 @@ var PlayUI = function({Game, user}) {
     if (user) {
       return user.highScore;
     } else {
-      return Game.score;
+      return '';
     }
   };
 
