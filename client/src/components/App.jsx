@@ -9,8 +9,6 @@ import GameOver from './GameOver.jsx';
 import MenuUI from './UI/MenuUI.jsx';
 import PlayUI from './UI/PlayUI.jsx';
 
-import './style.css';
-
 var App = function() {
   const [updates, updateReact] = useState(0);
   const [view, setView] = useState('menu');
