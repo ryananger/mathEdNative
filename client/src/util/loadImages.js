@@ -1,6 +1,8 @@
 import menuBar  from '../images/menuBar.png';
-import deadImage  from '../images/buttons/deadButton.png';
+import blank     from '../images/buttons/blankButton.png';
 import mathOut  from '../images/mathOut.png';
+import formBg   from '../images/formBg.png';
+import submit   from '../images/submit.png';
 
 import button1  from '../images/buttons/button1.png';
 import button2  from '../images/buttons/button2.png';
@@ -58,10 +60,12 @@ var urls = {
   bgImages,
   pulseImages,
   menuBar:   [menuBar],
-  deadImage: [deadImage],
+  blank:     [blank],
   mathOut:   [mathOut],
   gameOver:  [gameOver],
-  jupiter:   [jupiter]
+  jupiter:   [jupiter],
+  formBg:    [formBg],
+  submit:    [submit]
 };
 
 var count = 0;
