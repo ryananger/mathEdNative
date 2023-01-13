@@ -28,8 +28,12 @@ module.exports = {
         use: ['style-loader','css-loader']
       },
       {
-        test: /\.(png|webp|svg|jpg|jpeg|gif)$/i,
+        test: /\.(webp)$/i,
         use: ['file-loader', 'webp-loader'],
+      },
+      {
+        test: /\.(png)$/,
+        type: 'asset/resource'
       }
     ]
   },

@@ -228,4 +228,6 @@ var Game = {
 
 Game.init();
 
+window.Game = Game;
+
 export default Game;
