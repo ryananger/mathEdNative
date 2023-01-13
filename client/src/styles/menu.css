@@ -45,7 +45,7 @@
 /* FORM */
 
 .form {
-  background-image: url('../images/formBg.png');
+  background-image: url('../images/webp/formBg.webp');
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -90,7 +90,7 @@ input {
   font-size: 3vh;
   width: 100%;
 
-  background-image: url('../images/submit.png');
+  background-image: url('../images/webp/submit.webp');
   background-repeat: no-repeat;
   background-size: cover;
   aspect-ratio: auto 24/4;
@@ -98,7 +98,7 @@ input {
 }
 
 .formSubmit:hover {
-  background-image: url('../images/submit2.png');
+  background-image: url('../images/webp/submit2.webp');
 }
 
 .menuButton:hover {
@@ -112,7 +112,7 @@ input {
 /* LEADERBOARD */
 
 .leaderBoard {
-  background-image: url('../images/formBg.png');
+  background-image: url('../images/webp/formBg.webp');
   background-repeat: no-repeat;
   background-size: contain;
 

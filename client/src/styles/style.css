@@ -51,7 +51,7 @@ html, body, #root {
 #canvas {
   z-index: 0;
   background-size: contain;
-  background-image: url('../images/bgs/mathgame.png');
+  background-image: url('../images/bgs/webp/mathgame.webp');
 
   height: 100%;
   border: 4px solid rgb(66, 31, 20);
@@ -71,7 +71,7 @@ html, body, #root {
 
 .gameOver {
   z-index: 100;
-  background-image: url('../images/game_over.png');
+  background-image: url('../images/webp/game_over.webp');
   width: 100%;
   height: 100%;
   font-size: 5vh;

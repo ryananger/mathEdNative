@@ -2,11 +2,19 @@ const path = require("path");
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: "./client/src/index.jsx",
   output: {
     path: path.join(__dirname, 'client/dist'),
     filename: "bundle.js"
+  },
+  optimization: {
+    minimize: true
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
   },
   module: {
     rules: [
@@ -20,8 +28,8 @@ module.exports = {
         use: ['style-loader','css-loader']
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        test: /\.(png|webp|svg|jpg|jpeg|gif)$/i,
+        use: ['file-loader', 'webp-loader'],
       }
     ]
   },
