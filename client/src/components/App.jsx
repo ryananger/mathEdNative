@@ -47,7 +47,7 @@ var App = function() {
   useEffect(Game.gameLoop, []);
 
   return (
-    <div className='play v'>
+    <div id='play' className='play v'>
       <canvas id='canvas' className='canvas float' width='800' height='1420'/>
 
       {renderView()}
