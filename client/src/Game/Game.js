@@ -1,11 +1,11 @@
-import input from './input.js';
-import Entity from './Entity.js';
+import input    from './input.js';
+import Entity   from './Entity.js';
 import Question from './Question.js';
-import Pulse from './Pulse.js';
+import Pulse    from './Pulse.js';
 import Jupiter  from './Jupiter.js';
 
 import images from '../util/loadImages.js';
-import ax from '../util/ax.js';
+import ax     from '../util/ax.js';
 
 var bgs = images.loaded.bgImages;
 

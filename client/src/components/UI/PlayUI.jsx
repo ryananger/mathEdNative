@@ -5,7 +5,7 @@ import DeadButton  from './DeadButton.jsx';
 import MathButtons from './MathButtons.jsx';
 import Expression  from './Expression.jsx';
 
-var PlayUI = function({Game, user}) {
+const PlayUI = function({Game, user}) {
   const [infoOpen,  openInfo] = useState(true);
 
   var renderButtons = function() {

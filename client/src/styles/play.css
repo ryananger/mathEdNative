@@ -34,7 +34,7 @@
 }
 
 .mathButtons {
-  width: 52%;
+  width: 58%;
   margin-left: 1vw;
 }
 
@@ -117,4 +117,27 @@
 
 .buttonImg:active {
   filter: drop-shadow(0px 2px 1px rgba(66, 31, 20, 0.4));
+}
+
+@media screen and (max-width: 520px) {
+  .uiHead {
+    width: 96%;
+  }
+
+  .mathButtons {
+    width: 62%;
+  }
+
+  .mathButton {
+    width: 24%;
+  }
+
+  .mathOutImg {
+    width: 101%;
+  }
+
+  .buttons {
+    width: 96%;
+    margin-bottom: 1vh;
+  }
 }

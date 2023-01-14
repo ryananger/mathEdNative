@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import ax from '../../util/ax.js';
+import ax     from '../../util/ax.js';
 import images from '../../util/loadImages.js';
 
-var menuBar = images.urls.menuBar[0];
+const menuBar = images.urls.menuBar[0];
 
-var MenuUI = function({Game, user}) {
+const MenuUI = function({Game, user}) {
   const [formOpen,  openForm]  = useState(false);
   const [boardOpen, openBoard] = useState(false);
 

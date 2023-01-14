@@ -1,15 +1,13 @@
-import React from 'react';
-import {useEffect, useState} from 'react';
-
-import images from '../util/loadImages.js';
+import React, {useEffect, useState} from 'react';
+import images       from '../util/loadImages.js';
 import cookieHandle from '../util/cookieHandle.js';
 
-import Game from '../Game/Game.js';
+import Game     from '../Game/Game.js';
 import GameOver from './GameOver.jsx';
-import MenuUI from './UI/MenuUI.jsx';
-import PlayUI from './UI/PlayUI.jsx';
+import MenuUI   from './UI/MenuUI.jsx';
+import PlayUI   from './UI/PlayUI.jsx';
 
-var App = function() {
+const App = function() {
   const [updates, updateReact] = useState(0);
   const [view, setView] = useState('menu');
 
