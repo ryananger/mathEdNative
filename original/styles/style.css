@@ -1,0 +1,80 @@
+/* ----------------------------------- */
+
+.v {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.h {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.float {
+  position: absolute;
+}
+
+h1 {
+  margin: 0;
+}
+
+h3 {
+  font-size: 3vh;
+}
+
+/* ----------------------------------- */
+
+html, body, #root {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  background-color: rgb(155, 100, 78);
+
+  font-family: 'Jost';
+}
+
+.play {
+  position: relative;
+  aspect-ratio: auto 800/1420;
+  height: 90vh;
+}
+
+#canvas {
+  z-index: 0;
+  background-size: contain;
+  background-image: url('../images/bgs/webp/mathgame.webp');
+
+  height: 100%;
+  border: 4px solid rgb(66, 31, 20);
+}
+
+@media screen and (max-width: 520px) {
+  .play {
+    width:  100vw;
+    height: 100vh;
+    aspect-ratio: unset;
+  }
+
+  #canvas {
+    border: none;
+  }
+}
+
+.gameOver {
+  z-index: 100;
+  background-image: url('../images/webp/game_over.webp');
+  width: 100%;
+  height: 100%;
+  font-size: 5vh;
+  color: #e2bab5;
+  text-align: center;
+}
