@@ -10,15 +10,13 @@ var Question = function(x, y) {
   };
 
   blob.update = function(Game) {
-    blob.y += Game.questionSpeed;
+    var units = Game.height/5000;
 
-    if (blob.y > 950) {
+    blob.y += Game.questionSpeed * units;
+
+    if (blob.y > Game.height*0.66) {
       Game.entities.pop();
       Game.hp++;
-
-      if (!Game.jupiterFalling) {
-        Game.score -= 250;
-      }
     }
   };
 

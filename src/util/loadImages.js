@@ -1,5 +1,6 @@
 import {Asset} from 'expo-asset';
-import {Image} from 'react-native-canvas';
+import {Image} from 'react-native';
+import {Image as CanvasImage} from 'react-native-canvas';
 
 const menuBar  = Asset.fromModule(require('../Game/images/webp/menuBar.webp'));
 const blank    = Asset.fromModule(require('../Game/images/buttons/webp/blankButton.webp'));
@@ -21,6 +22,11 @@ const plus     = Asset.fromModule(require('../Game/images/mathButtons/webp/plus.
 const minus    = Asset.fromModule(require('../Game/images/mathButtons/webp/minus.webp'));
 const multiply = Asset.fromModule(require('../Game/images/mathButtons/webp/multiply.webp'));
 const divide   = Asset.fromModule(require('../Game/images/mathButtons/webp/divide.webp'));
+
+const plus2     = Asset.fromModule(require('../Game/images/mathButtons/webp/plus.webp'));
+const minus2    = Asset.fromModule(require('../Game/images/mathButtons/webp/minus.webp'));
+const multiply2 = Asset.fromModule(require('../Game/images/mathButtons/webp/multiply.webp'));
+const divide2   = Asset.fromModule(require('../Game/images/mathButtons/webp/divide.webp'));
 
 const bg0      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame.webp'));
 const bg1      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying1.webp'));
@@ -52,7 +58,7 @@ const jupiter  = Asset.fromModule(require('../Game/images/webp/jupiter.webp'));
 
 var buttonImages = [button1, button2, button3, button4];
 var selectImages = [select1, select2, select3, select4];
-var mathImages   = [plus, minus, multiply, divide];
+var mathImages   = [plus, minus, multiply, divide, plus2, minus2, multiply2, divide2];
 var bgImages     = [bg0, bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8, bg9, bg10, bg11, bg12];
 var pulseImages  = [p1, p2, p3, p4, p5, p6, p7, p8, p9];
 
@@ -72,41 +78,35 @@ var assets = {
 };
 
 var canvasImages = {};
-var loadedAll = false;
 var count = 0;
 var loadedCount = 0;
+var loadedAll = false;
 
 var loadAll = function(canvas, setReady) {
-  var loaded = [];
+  var promises = [];
 
   for (var set in assets) {
-    loaded = loaded.concat(assets[set].map(function(asset) {
-      count++;
-
-      return asset.downloadAsync();
-    }))
-
     canvasImages[set] = assets[set].map(function(asset) {
-      var image = new Image(canvas);
+      promises.push(asset.downloadAsync());
+
+      var image = new CanvasImage(canvas);
       image.src = asset.uri;
 
-      image.addEventListener('load', function() {
-        loadedCount++;
+      return {image: image, source: asset.uri};
+    });
+  };
 
-        if (loadedCount === count) {
-          setReady(true);
-        }
-      });
-
-      return image;
+  Promise.all(promises)
+    .then(function(r) {
+      setReady(true);
     })
-  }
+    .catch(function(err) {
+      console.log(err);
+    })
 
   var images = {
-    assets: assets,
-    loaded: loaded,
-    canvasImages: canvasImages,
-    loadedAll: false
+    canvasImages,
+    loadedAll
   };
 
   return images;

@@ -1,20 +1,18 @@
 import Entity from './Entity.js';
 import images from '../util/loadImages.js';
 
-var imgs = images.loaded.pulseImages;
-
 var Pulse = function() {
   var pulse = Entity(0, 0);
 
-  pulse.imgs = imgs;
   pulse.img   = 0;
-
   pulse.ticks = 0;
   pulse.pulsing = false;
 
   pulse.draw = function(Game, ctx) {
+    var imgs = Game.images.pulseImages;
+
     if (pulse.pulsing) {
-      ctx.drawImage(imgs[pulse.img], 0, 0, ctx.canvas.width, ctx.canvas.height);
+      ctx.drawImage(imgs[pulse.img].image, 0, 0, ctx.canvas.width, ctx.canvas.height);
     }
   };
 
@@ -22,7 +20,7 @@ var Pulse = function() {
     if (pulse.pulsing) {
       pulse.ticks++;
 
-      if (pulse.ticks % 2 === 0) {
+      if (pulse.ticks % 4 === 0) {
         if (pulse.img < 4) {
           pulse.img++;
         } else if (pulse.ticks % 6 === 0) {

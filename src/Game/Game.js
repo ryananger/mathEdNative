@@ -1,6 +1,12 @@
 import {Asset} from 'expo-asset';
 import Image from 'react-native-canvas';
 
+import Entity from './Entity.js';
+import Question from './Question.js';
+import Pulse from './Pulse.js';
+import Jupiter from './Jupiter.js';
+
+var buttonId = 0;
 var renderTimeout;
 var Game = {
   init: function() {
@@ -24,13 +30,16 @@ var Game = {
 
     Game.entities = [];
     Game.numbers = [];
+    Game.in = false;
 
-    // Game.questionSpeed = 2;
-    // Game.pulse = Pulse();
-    // Game.jupiter = Jupiter(0, -1500);
-    // Game.jupiterFalling = false;
+    Game.questionSpeed = 2;
+    Game.spawnRate = 400;
 
-    // Game.getNumbers();
+    Game.pulse = Pulse();
+    Game.jupiter = Jupiter(0, -1500);
+    Game.jupiterFalling = false;
+
+    Game.getNumbers();
     // Game.leaderBoard;
 
     // ax.getLeaderboard(Game);
@@ -39,41 +48,70 @@ var Game = {
     Game.playing = !Game.playing;
   },
   update: function(ctx) {
-    var canvas = Game.canvas;
     var cw = ctx.canvas.width;
     var ch = ctx.canvas.height;
     var bgs = Game.images.bgImages;
 
-    var background = bgs[Game.hp] || bgs[12];
+    var background = bgs[Game.hp] ? bgs[Game.hp].image : bgs[12].image;
 
     ctx.clearRect(0, 0, cw, ch);
     ctx.drawImage(background, 0, 0, cw, ch);
 
-    ctx.fillText(Game.tick, 10, 100);
+    var text = '';
 
-    // if (Game.score > 0) {
-    //   Game.questionSpeed = 2 * (1 + ((Math.floor(Game.score/2000)))/2);
-    // }
+    ctx.fillText(text, 10, 100);
 
-    // if (Game.hp > 13) {
-    //   Game.jupiter.crash(Game);
-    //   Game.jupiter.update(Game);
-    //   Game.jupiter.draw(Game, ctx);
-    //   Game.jupiterFalling = true;
-    //   Game.playing = false;
-    // }
+    if (Game.tick > 1000 && Game.tick % 50 === 0 && !Game.playing) {
+      if (Game.in) {
+        Game.hp--;
+      } else {
+        Game.hp++;
+      }
 
-    // Game.pulse.update(Game);
-    // Game.pulse.draw(Game, ctx);
+      if (Game.hp > 15) {
+        Game.in = true;
+      }
 
-    // if (!Game.playing || Game.paused || Game.over) {
-    //   return;
-    // }
+      if (Game.hp === 0) {
+        Game.in = false;
+      }
+    }
 
-    if (Game.tick % 120 === 0) {
-      // var question = Question(100 + Math.floor(Math.random() * (cw - 200)), -50);
+    if (Game.hp > 13 && Game.playing) {
+      Game.jupiter.crash(Game);
+      Game.jupiter.update(Game);
+      Game.jupiter.draw(Game, ctx);
+      Game.jupiterFalling = true;
+    }
 
-      // Game.entities.unshift(question);
+    if (!Game.playing || Game.paused || Game.over) {
+      return;
+    }
+
+    if (Game.score >= 0) {
+      Game.questionSpeed = 1 + (Game.score/5000);
+    }
+
+    var baseRate = 400;
+    var mod = Math.floor(Game.score/1000);
+
+    Game.spawnRate = baseRate - (mod*10);
+
+    Game.pulse.update(Game);
+    Game.pulse.draw(Game, ctx);
+
+    if (Game.entities.length === 0) {
+      var question = Question(100 + Math.floor(Math.random() * (cw - 200)), 0);
+
+      Game.entities.unshift(question);
+
+      Game.tick -= (Game.tick % Game.spawnRate) - 1;
+    }
+
+    if (Game.tick % Game.spawnRate === 0) {
+      var question = Question(100 + Math.floor(Math.random() * (cw - 200)), 0);
+
+      Game.entities.unshift(question);
     }
 
     Game.entities.map(function(entity) {
@@ -81,15 +119,12 @@ var Game = {
       entity.draw(Game, ctx);
     });
   },
-  gameLoop: function(canvas, images) {
-    if (!canvas) {
+  gameLoop: function(ctx, images) {
+    if (!ctx || !images.bgImages) {
       return;
     }
 
-    Game.canvas = canvas;
-    Game.images = images.canvasImages;
-
-    var ctx = canvas.getContext('2d');
+    Game.images = images;
 
     ctx.font = '24px sans-serif';
     ctx.fillStyle = 'rgb(70, 32, 21)';
@@ -100,8 +135,10 @@ var Game = {
       Game.update(ctx);
       Game.tick++;
 
+      requestAnimationFrame(render);
+
       renderTimeout = setTimeout(function() {
-        animId = requestAnimationFrame(render);
+        // animId = ;
       }, 1000/Game.fps);
     };
 
