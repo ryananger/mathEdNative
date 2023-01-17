@@ -6,11 +6,6 @@ import sources from '../util/sourceImages.js';
 var expression = sources.mathOut[0];
 
 const Expression = function({Game}) {
-  var pulse = function() {
-    Game.pulse.reset();
-    Game.pulse.pulsing = true;
-  };
-
   return (
       <Pressable onPress={Game.evaluate} style={styles.play.expression}>
         <ImageBackground source={expression} style={styles.play.expressionImg}>

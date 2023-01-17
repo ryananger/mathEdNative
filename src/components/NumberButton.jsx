@@ -22,23 +22,7 @@ const NumberButton = function({Game, value, id}) {
       return;
     }
 
-    if (Game.expression === '') {
-      Game.expression += `${value}`;
-    } else {
-      Game.expression += ` ${Game.mod} ${value}`;
-
-      if (Game.expression.length > 9) {
-        Game.expression = Game.expression.slice(Game.expression.length - 9, Game.expression.length);
-      }
-    }
-
-    if (Game.expression.length > 5) {
-      Game.display = '(' + Game.expression.slice(0, 5) + ')' + Game.expression.slice(5);
-    } else {
-      Game.display = Game.expression;
-    }
-
-    console.log(Game.display);
+    Game.handleExpression(value);
 
     setSelect(true);
     setExpression(true);
@@ -52,19 +36,14 @@ const NumberButton = function({Game, value, id}) {
     setSelect(false);
   }
 
-  if (inExpression && Game.buttonsPressed.length > 3) {
-    if (Game.buttonsPressed[0] === id) {
-      setExpression(false);
-      setSelect(false);
-      Game.buttonsPressed.shift();
-    }
-  }
+  if (inExpression &&
+      Game.buttonsPressed.length > 3 &&
+      Game.buttonsPressed[0] === id) {
 
-  // var toggle = function() {
-  //   Game.expression += JSON.stringify(value);
-  //   console.log(Game.expression)
-  //   setSelect(!selected);
-  // };
+        setExpression(false);
+        setSelect(false);
+        Game.buttonsPressed.shift();
+  }
 
   return (
       <Pressable onPress={addToExpression} style={styles.play.button}>

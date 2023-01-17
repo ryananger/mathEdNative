@@ -8,6 +8,8 @@ import Jupiter from './Jupiter.js';
 
 var buttonId = 0;
 var renderTimeout;
+var baseRate = 400;
+
 var Game = {
   init: function() {
     Game.fps = 60;
@@ -57,61 +59,24 @@ var Game = {
     ctx.clearRect(0, 0, cw, ch);
     ctx.drawImage(background, 0, 0, cw, ch);
 
-    var text = '';
-
-    ctx.fillText(text, 10, 100);
-
-    if (Game.tick > 1000 && Game.tick % 50 === 0 && !Game.playing) {
-      if (Game.in) {
-        Game.hp--;
-      } else {
-        Game.hp++;
-      }
-
-      if (Game.hp > 15) {
-        Game.in = true;
-      }
-
-      if (Game.hp === 0) {
-        Game.in = false;
-      }
-    }
-
-    if (Game.hp > 13 && Game.playing) {
-      Game.jupiter.crash(Game);
-      Game.jupiter.update(Game);
-      Game.jupiter.draw(Game, ctx);
-      Game.jupiterFalling = true;
-    }
+    bgEffect();
 
     if (!Game.playing || Game.paused || Game.over) {
       return;
     }
 
-    if (Game.score >= 0) {
-      Game.questionSpeed = 1 + (Game.score/5000);
-    }
-
-    var baseRate = 400;
-    var mod = Math.floor(Game.score/1000);
-
-    Game.spawnRate = baseRate - (mod*10);
+    jupiterFalls(ctx);
+    adjustDifficulty();
 
     Game.pulse.update(Game);
     Game.pulse.draw(Game, ctx);
 
-    if (Game.entities.length === 0) {
-      var question = Question(100 + Math.floor(Math.random() * (cw - 200)), 0);
+    if (Game.entities.length === 0 || Game.tick % Game.spawnRate === 0) {
+      if (!Game.entities[0]) {
+        Game.tick = Game.spawnRate/2;
+      }
 
-      Game.entities.unshift(question);
-
-      Game.tick -= (Game.tick % Game.spawnRate) - 1;
-    }
-
-    if (Game.tick % Game.spawnRate === 0) {
-      var question = Question(100 + Math.floor(Math.random() * (cw - 200)), 0);
-
-      Game.entities.unshift(question);
+      spawnQuestion(cw);
     }
 
     Game.entities.map(function(entity) {
@@ -136,10 +101,6 @@ var Game = {
       Game.tick++;
 
       requestAnimationFrame(render);
-
-      renderTimeout = setTimeout(function() {
-        // animId = ;
-      }, 1000/Game.fps);
     };
 
     render();
@@ -158,6 +119,23 @@ var Game = {
     }
 
     Game.numbers = Game.numbers.concat(num);
+  },
+  handleExpression: function(value) {
+    if (Game.expression === '') {
+      Game.expression += `${value}`;
+    } else {
+      Game.expression += ` ${Game.mod} ${value}`;
+
+      if (Game.expression.length > 9) {
+        Game.expression = Game.expression.slice(Game.expression.length - 9, Game.expression.length);
+      }
+    }
+
+    if (Game.expression.length > 5) {
+      Game.display = '(' + Game.expression.slice(0, 5) + ')' + Game.expression.slice(5);
+    } else {
+      Game.display = Game.expression;
+    }
   },
   evaluate: function() {
     if (Game.entities.length === 0) {
@@ -237,8 +215,9 @@ var Game = {
   },
   correctAnswer: function() {
     Game.pulse.pulsing = true;
-    setTimeout(()=>{Game.entities.pop()}, 150);
     Game.score += 100;
+
+    setTimeout(()=>{Game.entities.pop()}, 150);
 
     if (Game.buttonsPressed.length === 3) {
       Game.score += 100;
@@ -263,6 +242,50 @@ var Game = {
       });
     }
   }
+};
+
+var bgEffect = function() {
+  if (Game.tick > 1000 && Game.tick % 50 === 0 && !Game.playing) {
+    if (Game.in) {
+      Game.hp--;
+    } else {
+      Game.hp++;
+    }
+
+    if (Game.hp > 15) {
+      Game.in = true;
+    }
+
+    if (Game.hp === 0) {
+      Game.in = false;
+    }
+  }
+};
+
+var jupiterFalls = function (ctx) {
+  if (Game.hp > 13) {
+    Game.jupiterFalling = true;
+
+    Game.jupiter.crash(Game);
+    Game.jupiter.update(Game);
+    Game.jupiter.draw(Game, ctx);
+  }
+};
+
+var adjustDifficulty = function() {
+  if (Game.score >= 0) {
+    Game.questionSpeed = 1 + (Game.score/5000);
+  }
+
+  var mod = Math.floor(Game.score/1000);
+
+  Game.spawnRate = baseRate - (mod*10);
+};
+
+var spawnQuestion = function(cw) {
+  var question = Question(100 + Math.floor(Math.random() * (cw - 200)), 0);
+
+  Game.entities.unshift(question);
 };
 
 Game.init();

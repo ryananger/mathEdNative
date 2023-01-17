@@ -12,60 +12,31 @@ const MathButton = function({Game, type}) {
   var source = selected ? buttons[type + 4] : buttons[type];
   var style  = selected ? styles.play.mathSelectImg : styles.play.mathButtonImg;
 
-  var toggle = function() {
-    switch (index) {
+  var thisMod = function() {
+    switch (type) {
       case 0:
-        Game.mod = '+';
-        break;
+        return '+';
       case 1:
-        Game.mod = '-';
-        break;
+        return '-';
       case 2:
-        Game.mod = '×';
-        break;
+        return '×';
       case 3:
-        Game.mod = '÷';
-        break;
+        return '÷';
     };
+  }()
+
+  var toggle = function() {
+    Game.mod = thisMod;
   };
 
   useEffect(function() {
-    switch (index) {
-      case 0:
-        if (Game.mod === '+') {
-          setSelect(true);
-        } else {
-          setSelect(false);
-        }
-        break;
-      case 1:
-        if (Game.mod === '-') {
-          setSelect(true);
-        } else {
-          setSelect(false);
-        }
-        break;
-      case 2:
-        if (Game.mod === '×') {
-          setSelect(true);
-        } else {
-          setSelect(false);
-        }
-        break;
-      case 3:
-        if (Game.mod === '÷') {
-          setSelect(true);
-        } else {
-          setSelect(false);
-        }
-        break;
-    }
+    setSelect(Game.mod === thisMod);
   }, [Game.mod]);
 
   return (
-      <Pressable onPress={toggle} style={styles.play.mathButton}>
-        <Image source={source} style={style}/>
-      </Pressable>
+    <Pressable onPress={toggle} style={styles.play.mathButton}>
+      <Image source={source} style={style}/>
+    </Pressable>
   )
 };
 

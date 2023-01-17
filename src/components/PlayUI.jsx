@@ -3,17 +3,16 @@ import {Text, View, useWindowDimensions} from 'react-native';
 import styles from '../styles.js';
 
 import NumberButton from './NumberButton.jsx';
-import DeadButton from './DeadButton.jsx';
-import MathButton from './MathButton.jsx';
-import Expression from './Expression.jsx';
+import DeadButton   from './DeadButton.jsx';
+import MathButton   from './MathButton.jsx';
+import Expression   from './Expression.jsx';
 
 const PlayUI = function({Game, images, hidden}) {
   const {height, width} = useWindowDimensions();
 
   var renderButtons = function() {
     var buttons = [];
-
-    Game.deadButtons = 0;
+    var deadButtons = 0;
 
     for (var i = 0; i < 10; i++) {
       if (i < Game.numbers.length) {
@@ -23,7 +22,7 @@ const PlayUI = function({Game, images, hidden}) {
 
         buttons.push(button);
       } else {
-        Game.deadButtons++;
+        deadButtons++;
 
         var button = (
           <DeadButton key={'button' + i} Game={Game}/>
@@ -33,11 +32,11 @@ const PlayUI = function({Game, images, hidden}) {
       }
     }
 
-    if (Game.deadButtons === 9) {
+    if (deadButtons === 9) {
       Game.getNumbers();
     }
 
-    if (Game.deadButtons === 10) {
+    if (deadButtons === 10) {
       Game.score += 100;
       setTimeout(Game.getNumbers, 500);
     }
@@ -52,9 +51,9 @@ const PlayUI = function({Game, images, hidden}) {
   return (
     <View style={styles.play.view}>
       <Text style={{top: '-58%', left: 10, fontSize: 20, fontWeight: 'bold', color: 'rgb(70, 32, 21)'}}>
-        {Game.score}....
-        {Game.spawnRate}....
-        {Game.questionSpeed}
+        {Game.score}
+        {/*....{Game.spawnRate}....
+        {Game.questionSpeed} */}
       </Text>
 
       <View style={styles.play.buttonContainer}>
