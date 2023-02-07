@@ -3,6 +3,7 @@ import Image from 'react-native-canvas';
 
 import Entity from './Entity.js';
 import Question from './Question.js';
+import Robot from './Robot.js';
 import Pulse from './Pulse.js';
 import Jupiter from './Jupiter.js';
 
@@ -38,6 +39,7 @@ var Game = {
     Game.spawnRate = 400;
 
     Game.pulse = Pulse();
+    Game.robot = Robot(268, 451);
     Game.jupiter = Jupiter(0, -1500);
     Game.jupiterFalling = false;
 
@@ -60,6 +62,9 @@ var Game = {
     ctx.drawImage(background, 0, 0, cw, ch);
 
     bgEffect();
+
+    Game.robot.update(Game);
+    Game.robot.draw(Game, ctx);
 
     if (!Game.playing || Game.paused || Game.over) {
       return;
@@ -92,7 +97,6 @@ var Game = {
     Game.images = images;
 
     ctx.font = '24px sans-serif';
-    ctx.fillStyle = 'rgb(70, 32, 21)';
 
     var animId;
     var render = function() {
@@ -274,7 +278,7 @@ var jupiterFalls = function (ctx) {
 
 var adjustDifficulty = function() {
   if (Game.score >= 0) {
-    Game.questionSpeed = 1 + (Game.score/5000);
+    Game.questionSpeed = 4 + (Game.score/5000);
   }
 
   var mod = Math.floor(Game.score/1000);
@@ -283,7 +287,7 @@ var adjustDifficulty = function() {
 };
 
 var spawnQuestion = function(cw) {
-  var question = Question(100 + Math.floor(Math.random() * (cw - 200)), 0);
+  var question = Question(50 + Math.floor(Math.random() * (cw - 100)), -50);
 
   Game.entities.unshift(question);
 };

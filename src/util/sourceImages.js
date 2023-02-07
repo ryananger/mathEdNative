@@ -1,58 +1,59 @@
-import {Asset} from 'expo-asset';
-import FastImage from 'react-native-fast-image';
+var imgType = '.webp';
 
-const menuBar  = require('../Game/images/webp/menuBar.webp');
-const blank    = require('../Game/images/buttons/webp/blankButton.webp');
-const mathOut  = require('../Game/images/webp/mathOut.webp');
-const formBg   = require('../Game/images/webp/formBg.webp');
-const submit   = require('../Game/images/webp/submit.webp');
+const menuBar  = require(`../../assets/images/menuBar${imgType}`);
+const blank    = require(`../../assets/images/buttons/blankButton${imgType}`);
+const mathOut  = require(`../../assets/images/mathOut${imgType}`);
+const formBg   = require(`../../assets/images/formBg${imgType}`);
+const submit   = require(`../../assets/images/submit${imgType}`);
 
-const button1  = require('../Game/images/buttons/webp/button1.webp');
-const button2  = require('../Game/images/buttons/webp/button2.webp');
-const button3  = require('../Game/images/buttons/webp/button3.webp');
-const button4  = require('../Game/images/buttons/webp/button4.webp');
+const button1  = require(`../../assets/images/buttons/button1${imgType}`);
+const button2  = require(`../../assets/images/buttons/button2${imgType}`);
+const button3  = require(`../../assets/images/buttons/button3${imgType}`);
+const button4  = require(`../../assets/images/buttons/button4${imgType}`);
 
-const select1  = require('../Game/images/buttons/webp/select1.webp');
-const select2  = require('../Game/images/buttons/webp/select2.webp');
-const select3  = require('../Game/images/buttons/webp/select3.webp');
-const select4  = require('../Game/images/buttons/webp/select4.webp');
+const select1  = require(`../../assets/images/buttons/select1${imgType}`);
+const select2  = require(`../../assets/images/buttons/select2${imgType}`);
+const select3  = require(`../../assets/images/buttons/select3${imgType}`);
+const select4  = require(`../../assets/images/buttons/select4${imgType}`);
 
-const plus     = require('../Game/images/mathButtons/webp/plus.webp');
-const minus    = require('../Game/images/mathButtons/webp/minus.webp');
-const multiply = require('../Game/images/mathButtons/webp/multiply.webp');
-const divide   = require('../Game/images/mathButtons/webp/divide.webp');
-const plus2     = require('../Game/images/mathButtons/webp/plus_select.webp');
-const minus2    = require('../Game/images/mathButtons/webp/minus_select.webp');
-const multiply2 = require('../Game/images/mathButtons/webp/multiply_select.webp');
-const divide2   = require('../Game/images/mathButtons/webp/divide_select.webp');
+const plus     = require(`../../assets/images/mathButtons/plus${imgType}`);
+const minus    = require(`../../assets/images/mathButtons/minus${imgType}`);
+const multiply = require(`../../assets/images/mathButtons/multiply${imgType}`);
+const divide   = require(`../../assets/images/mathButtons/divide${imgType}`);
+const plus2     = require(`../../assets/images/mathButtons/plus_select${imgType}`);
+const minus2    = require(`../../assets/images/mathButtons/minus_select${imgType}`);
+const multiply2 = require(`../../assets/images/mathButtons/multiply_select${imgType}`);
+const divide2   = require(`../../assets/images/mathButtons/divide_select${imgType}`);
 
-const bg0      = require('../Game/images/bgs/webp/mathgame.webp');
-const bg1      = require('../Game/images/bgs/webp/mathgame_dying1.webp');
-const bg2      = require('../Game/images/bgs/webp/mathgame_dying2.webp');
-const bg3      = require('../Game/images/bgs/webp/mathgame_dying3.webp');
-const bg4      = require('../Game/images/bgs/webp/mathgame_dying4.webp');
-const bg5      = require('../Game/images/bgs/webp/mathgame_dying5.webp');
-const bg6      = require('../Game/images/bgs/webp/mathgame_dying6.webp');
-const bg7      = require('../Game/images/bgs/webp/mathgame_dying7.webp');
-const bg8      = require('../Game/images/bgs/webp/mathgame_dying8.webp');
-const bg9      = require('../Game/images/bgs/webp/mathgame_dying9.webp');
-const bg10     = require('../Game/images/bgs/webp/mathgame_dying10.webp');
-const bg11     = require('../Game/images/bgs/webp/mathgame_dying11.webp');
-const bg12     = require('../Game/images/bgs/webp/mathgame_dying12.webp');
+const bg0      = require(`../../assets/images/bgs/mathgame${imgType}`);
+const bg1      = require(`../../assets/images/bgs/mathgame_dying1${imgType}`);
+const bg2      = require(`../../assets/images/bgs/mathgame_dying2${imgType}`);
+const bg3      = require(`../../assets/images/bgs/mathgame_dying3${imgType}`);
+const bg4      = require(`../../assets/images/bgs/mathgame_dying4${imgType}`);
+const bg5      = require(`../../assets/images/bgs/mathgame_dying5${imgType}`);
+const bg6      = require(`../../assets/images/bgs/mathgame_dying6${imgType}`);
+const bg7      = require(`../../assets/images/bgs/mathgame_dying7${imgType}`);
+const bg8      = require(`../../assets/images/bgs/mathgame_dying8${imgType}`);
+const bg9      = require(`../../assets/images/bgs/mathgame_dying9${imgType}`);
+const bg10     = require(`../../assets/images/bgs/mathgame_dying10${imgType}`);
+const bg11     = require(`../../assets/images/bgs/mathgame_dying11${imgType}`);
+const bg12     = require(`../../assets/images/bgs/mathgame_dying12${imgType}`);
 
-const gameOver = require('../Game/images/webp/game_over.webp');
+const gameOver = require(`../../assets/images/game_over${imgType}`);
 
-const p1   = require('../Game/images/pulse/webp/mathgame_pulse1.webp');
-const p2   = require('../Game/images/pulse/webp/mathgame_pulse2.webp');
-const p3   = require('../Game/images/pulse/webp/mathgame_pulse3.webp');
-const p4   = require('../Game/images/pulse/webp/mathgame_pulse4.webp');
-const p5   = require('../Game/images/pulse/webp/mathgame_pulse5.webp');
-const p6   = require('../Game/images/pulse/webp/mathgame_pulse6.webp');
-const p7   = require('../Game/images/pulse/webp/mathgame_pulse7.webp');
-const p8   = require('../Game/images/pulse/webp/mathgame_pulse8.webp');
-const p9   = require('../Game/images/pulse/webp/mathgame_pulse9.webp');
+const p1   = require(`../../assets/images/pulse/mathgame_pulse1${imgType}`);
+const p2   = require(`../../assets/images/pulse/mathgame_pulse2${imgType}`);
+const p3   = require(`../../assets/images/pulse/mathgame_pulse3${imgType}`);
+const p4   = require(`../../assets/images/pulse/mathgame_pulse4${imgType}`);
+const p5   = require(`../../assets/images/pulse/mathgame_pulse5${imgType}`);
+const p6   = require(`../../assets/images/pulse/mathgame_pulse6${imgType}`);
+const p7   = require(`../../assets/images/pulse/mathgame_pulse7${imgType}`);
+const p8   = require(`../../assets/images/pulse/mathgame_pulse8${imgType}`);
+const p9   = require(`../../assets/images/pulse/mathgame_pulse9${imgType}`);
 
-const jupiter  = require('../Game/images/webp/jupiter.webp');
+const jupiter  = require(`../../assets/images/jupiter${imgType}`);
+const blob     = require(`../../assets/images/blob${imgType}`);
+const robot    = require(`../../assets/images/robot${imgType}`);
 
 var buttonImages = [button1, button2, button3, button4];
 var selectImages = [select1, select2, select3, select4];
@@ -72,28 +73,9 @@ var assets = {
   gameOver:  [gameOver],
   jupiter:   [jupiter],
   formBg:    [formBg],
-  submit:    [submit]
+  submit:    [submit],
+  blob:      [blob],
+  robot:     [robot]
 };
-
-const loadImage = async (filePath) => {
-  const [{ localUri }] = await Asset.loadAsync(filePath);
-  return localUri;
-};
-
-const preloadImages = async function() {
-  for (var set in assets) {
-    const sources = await Promise.all(
-      assets[set].map(async (uri) => ({
-        uri: await loadImage(uri)
-      }))
-    );
-
-    FastImage.preload(sources)
-
-    console.log(set);
-  }
-};
-
-// preloadImages();
 
 export default assets;

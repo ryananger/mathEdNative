@@ -2,59 +2,63 @@ import {Asset} from 'expo-asset';
 import {Image} from 'react-native';
 import {Image as CanvasImage} from 'react-native-canvas';
 
-const menuBar  = Asset.fromModule(require('../Game/images/webp/menuBar.webp'));
-const blank    = Asset.fromModule(require('../Game/images/buttons/webp/blankButton.webp'));
-const mathOut  = Asset.fromModule(require('../Game/images/webp/mathOut.webp'));
-const formBg   = Asset.fromModule(require('../Game/images/webp/formBg.webp'));
-const submit   = Asset.fromModule(require('../Game/images/webp/submit.webp'));
+var imgType = '.webp';
 
-const button1  = Asset.fromModule(require('../Game/images/buttons/webp/button1.webp'));
-const button2  = Asset.fromModule(require('../Game/images/buttons/webp/button2.webp'));
-const button3  = Asset.fromModule(require('../Game/images/buttons/webp/button3.webp'));
-const button4  = Asset.fromModule(require('../Game/images/buttons/webp/button4.webp'));
+const menuBar  = Asset.fromModule(require(`../../assets/images/menuBar${imgType}`));
+const blank    = Asset.fromModule(require(`../../assets/images/buttons/blankButton${imgType}`));
+const mathOut  = Asset.fromModule(require(`../../assets/images/mathOut${imgType}`));
+const formBg   = Asset.fromModule(require(`../../assets/images/formBg${imgType}`));
+const submit   = Asset.fromModule(require(`../../assets/images/submit${imgType}`));
 
-const select1  = Asset.fromModule(require('../Game/images/buttons/webp/select1.webp'));
-const select2  = Asset.fromModule(require('../Game/images/buttons/webp/select2.webp'));
-const select3  = Asset.fromModule(require('../Game/images/buttons/webp/select3.webp'));
-const select4  = Asset.fromModule(require('../Game/images/buttons/webp/select4.webp'));
+const button1  = Asset.fromModule(require(`../../assets/images/buttons/button1${imgType}`));
+const button2  = Asset.fromModule(require(`../../assets/images/buttons/button2${imgType}`));
+const button3  = Asset.fromModule(require(`../../assets/images/buttons/button3${imgType}`));
+const button4  = Asset.fromModule(require(`../../assets/images/buttons/button4${imgType}`));
 
-const plus     = Asset.fromModule(require('../Game/images/mathButtons/webp/plus.webp'));
-const minus    = Asset.fromModule(require('../Game/images/mathButtons/webp/minus.webp'));
-const multiply = Asset.fromModule(require('../Game/images/mathButtons/webp/multiply.webp'));
-const divide   = Asset.fromModule(require('../Game/images/mathButtons/webp/divide.webp'));
+const select1  = Asset.fromModule(require(`../../assets/images/buttons/select1${imgType}`));
+const select2  = Asset.fromModule(require(`../../assets/images/buttons/select2${imgType}`));
+const select3  = Asset.fromModule(require(`../../assets/images/buttons/select3${imgType}`));
+const select4  = Asset.fromModule(require(`../../assets/images/buttons/select4${imgType}`));
 
-const plus2     = Asset.fromModule(require('../Game/images/mathButtons/webp/plus.webp'));
-const minus2    = Asset.fromModule(require('../Game/images/mathButtons/webp/minus.webp'));
-const multiply2 = Asset.fromModule(require('../Game/images/mathButtons/webp/multiply.webp'));
-const divide2   = Asset.fromModule(require('../Game/images/mathButtons/webp/divide.webp'));
+const plus     = Asset.fromModule(require(`../../assets/images/mathButtons/plus${imgType}`));
+const minus    = Asset.fromModule(require(`../../assets/images/mathButtons/minus${imgType}`));
+const multiply = Asset.fromModule(require(`../../assets/images/mathButtons/multiply${imgType}`));
+const divide   = Asset.fromModule(require(`../../assets/images/mathButtons/divide${imgType}`));
 
-const bg0      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame.webp'));
-const bg1      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying1.webp'));
-const bg2      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying2.webp'));
-const bg3      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying3.webp'));
-const bg4      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying4.webp'));
-const bg5      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying5.webp'));
-const bg6      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying6.webp'));
-const bg7      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying7.webp'));
-const bg8      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying8.webp'));
-const bg9      = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying9.webp'));
-const bg10     = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying10.webp'));
-const bg11     = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying11.webp'));
-const bg12     = Asset.fromModule(require('../Game/images/bgs/webp/mathgame_dying12.webp'));
+const plus2     = Asset.fromModule(require(`../../assets/images/mathButtons/plus${imgType}`));
+const minus2    = Asset.fromModule(require(`../../assets/images/mathButtons/minus${imgType}`));
+const multiply2 = Asset.fromModule(require(`../../assets/images/mathButtons/multiply${imgType}`));
+const divide2   = Asset.fromModule(require(`../../assets/images/mathButtons/divide${imgType}`));
 
-const gameOver = Asset.fromModule(require('../Game/images/webp/game_over.webp'));
+const bg0      = Asset.fromModule(require(`../../assets/images/bgs/mathgame${imgType}`));
+const bg1      = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying1${imgType}`));
+const bg2      = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying2${imgType}`));
+const bg3      = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying3${imgType}`));
+const bg4      = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying4${imgType}`));
+const bg5      = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying5${imgType}`));
+const bg6      = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying6${imgType}`));
+const bg7      = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying7${imgType}`));
+const bg8      = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying8${imgType}`));
+const bg9      = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying9${imgType}`));
+const bg10     = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying10${imgType}`));
+const bg11     = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying11${imgType}`));
+const bg12     = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying12${imgType}`));
 
-const p1   = Asset.fromModule(require('../Game/images/pulse/webp/mathgame_pulse1.webp'));
-const p2   = Asset.fromModule(require('../Game/images/pulse/webp/mathgame_pulse2.webp'));
-const p3   = Asset.fromModule(require('../Game/images/pulse/webp/mathgame_pulse3.webp'));
-const p4   = Asset.fromModule(require('../Game/images/pulse/webp/mathgame_pulse4.webp'));
-const p5   = Asset.fromModule(require('../Game/images/pulse/webp/mathgame_pulse5.webp'));
-const p6   = Asset.fromModule(require('../Game/images/pulse/webp/mathgame_pulse6.webp'));
-const p7   = Asset.fromModule(require('../Game/images/pulse/webp/mathgame_pulse7.webp'));
-const p8   = Asset.fromModule(require('../Game/images/pulse/webp/mathgame_pulse8.webp'));
-const p9   = Asset.fromModule(require('../Game/images/pulse/webp/mathgame_pulse9.webp'));
+const gameOver = Asset.fromModule(require(`../../assets/images/game_over${imgType}`));
 
-const jupiter  = Asset.fromModule(require('../Game/images/webp/jupiter.webp'));
+const p1   = Asset.fromModule(require(`../../assets/images/pulse/mathgame_pulse1${imgType}`));
+const p2   = Asset.fromModule(require(`../../assets/images/pulse/mathgame_pulse2${imgType}`));
+const p3   = Asset.fromModule(require(`../../assets/images/pulse/mathgame_pulse3${imgType}`));
+const p4   = Asset.fromModule(require(`../../assets/images/pulse/mathgame_pulse4${imgType}`));
+const p5   = Asset.fromModule(require(`../../assets/images/pulse/mathgame_pulse5${imgType}`));
+const p6   = Asset.fromModule(require(`../../assets/images/pulse/mathgame_pulse6${imgType}`));
+const p7   = Asset.fromModule(require(`../../assets/images/pulse/mathgame_pulse7${imgType}`));
+const p8   = Asset.fromModule(require(`../../assets/images/pulse/mathgame_pulse8${imgType}`));
+const p9   = Asset.fromModule(require(`../../assets/images/pulse/mathgame_pulse9${imgType}`));
+
+const jupiter  = Asset.fromModule(require(`../../assets/images/jupiter${imgType}`));
+const blob     = Asset.fromModule(require(`../../assets/images/blob${imgType}`));
+const robot    = Asset.fromModule(require(`../../assets/images/robot${imgType}`));
 
 var buttonImages = [button1, button2, button3, button4];
 var selectImages = [select1, select2, select3, select4];
@@ -74,7 +78,9 @@ var assets = {
   gameOver:  [gameOver],
   jupiter:   [jupiter],
   formBg:    [formBg],
-  submit:    [submit]
+  submit:    [submit],
+  blob:      [blob],
+  robot:     [robot]
 };
 
 var canvasImages = {};

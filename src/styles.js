@@ -67,29 +67,30 @@ var styles = {
       flexDirection: 'column'
     },
     mathButtons: {
-      marginLeft: 4,
+      marginLeft: 9,
+      marginRight: 8,
       flexDirection: 'row',
       alignItems: 'center',
       height: '30%'
     },
     mathButton: {
+      justifyContent: 'center',
+      alignItems: 'center',
       height: '90%',
       aspectRatio: 1/1,
       margin: 1
     },
     mathButtonImg: {
-      height: '100%',
-      aspectRatio: 1/1,
+      height: '90%',
+      aspectRatio: 1/1
     },
     mathSelectImg: {
       height: '105%',
-      aspectRatio: 1/1,
-      left: '-2.5%',
-      top: '-2.5%'
+      aspectRatio: 1/1
     },
     expression: {
       width: '31%',
-      marginLeft: 1,
+      marginLeft: 3,
       aspectRatio: 280/135
     },
     expressionImg: {

@@ -50,7 +50,7 @@ const PlayUI = function({Game, images, hidden}) {
 
   return (
     <View style={styles.play.view}>
-      <Text style={{top: '-58%', left: 10, fontSize: 20, fontWeight: 'bold', color: 'rgb(70, 32, 21)'}}>
+      <Text style={{top: '-62%', left: 10, fontSize: 20, fontWeight: 'bold', color: 'rgb(70, 32, 21)'}}>
         {Game.score}
         {/*....{Game.spawnRate}....
         {Game.questionSpeed} */}
@@ -73,6 +73,3 @@ const PlayUI = function({Game, images, hidden}) {
 }
 
 export default PlayUI;
-
-
-

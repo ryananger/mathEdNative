@@ -9,7 +9,8 @@ const MathButton = function({Game, type}) {
   const [selected, setSelect] = useState(false);
 
   var index = type;
-  var source = selected ? buttons[type + 4] : buttons[type];
+  // var source = selected ? buttons[type + 4] : buttons[type];
+  var source = buttons[type];
   var style  = selected ? styles.play.mathSelectImg : styles.play.mathButtonImg;
 
   var thisMod = function() {
@@ -23,7 +24,7 @@ const MathButton = function({Game, type}) {
       case 3:
         return '÷';
     };
-  }()
+  }();
 
   var toggle = function() {
     Game.mod = thisMod;

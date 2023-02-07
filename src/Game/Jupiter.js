@@ -1,5 +1,4 @@
 import Entity from './Entity.js';
-import images from '../util/loadImages.js';
 
 var Jupiter = function(x, y) {
   var jupiter = Entity(x, y);
