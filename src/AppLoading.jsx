@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react';
 import {Text, View, useWindowDimensions} from 'react-native';
 import styles from './styles.js';
 
-const AppLoading = function({loaded}) {
+const AppLoading = function() {
   const {height, width} = useWindowDimensions();
   const [visible, setVisible] = useState(true);
 
-  if (loaded && visible) {
+  if (visible) {
     setTimeout(function() {
       setVisible(false);
-    }, 2500);
+    }, 3000);
   }
 
   if (!visible) {

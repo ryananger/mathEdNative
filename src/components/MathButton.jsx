@@ -9,9 +9,8 @@ const MathButton = function({Game, type}) {
   const [selected, setSelect] = useState(false);
 
   var index = type;
-  // var source = selected ? buttons[type + 4] : buttons[type];
-  var source = buttons[type];
-  var style  = selected ? styles.play.mathSelectImg : styles.play.mathButtonImg;
+  var src1 = buttons[type];
+  var src2 = buttons[type + 4];
 
   var thisMod = function() {
     switch (type) {
@@ -36,7 +35,8 @@ const MathButton = function({Game, type}) {
 
   return (
     <Pressable onPress={toggle} style={styles.play.mathButton}>
-      <Image source={source} style={style}/>
+      <Image source={src1} style={selected ? {height: '0%', width: '0%'} : styles.play.mathButtonImg}/>
+      <Image source={src2} style={selected ? styles.play.mathSelectImg : {height: '0%', width: '0%'}}/>
     </Pressable>
   )
 };

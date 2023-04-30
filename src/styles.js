@@ -85,7 +85,7 @@ var styles = {
       aspectRatio: 1/1
     },
     mathSelectImg: {
-      height: '105%',
+      height: '110%',
       aspectRatio: 1/1
     },
     expression: {

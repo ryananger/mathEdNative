@@ -69,7 +69,7 @@ const App = function() {
   return (
     <SafeAreaView style={styles.main(fonts, width, height)}>
       <StatusBar style="auto" hidden/>
-      <AppLoading loaded={ready}/>
+      <AppLoading />
       <ImageBackground source={bg}>
         <MenuUI Game={Game} style={styles.absolute} hidden={view !== 'menu'}/>
         <PlayUI Game={Game} style={styles.absolute} hidden={view !== 'play'}/>

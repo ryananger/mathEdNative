@@ -25,10 +25,10 @@ const minus    = Asset.fromModule(require(`../../assets/images/mathButtons/minus
 const multiply = Asset.fromModule(require(`../../assets/images/mathButtons/multiply${imgType}`));
 const divide   = Asset.fromModule(require(`../../assets/images/mathButtons/divide${imgType}`));
 
-const plus2     = Asset.fromModule(require(`../../assets/images/mathButtons/plus${imgType}`));
-const minus2    = Asset.fromModule(require(`../../assets/images/mathButtons/minus${imgType}`));
-const multiply2 = Asset.fromModule(require(`../../assets/images/mathButtons/multiply${imgType}`));
-const divide2   = Asset.fromModule(require(`../../assets/images/mathButtons/divide${imgType}`));
+const plus2     = Asset.fromModule(require(`../../assets/images/mathButtons/plus_select${imgType}`));
+const minus2    = Asset.fromModule(require(`../../assets/images/mathButtons/minus_select${imgType}`));
+const multiply2 = Asset.fromModule(require(`../../assets/images/mathButtons/multiply_select${imgType}`));
+const divide2   = Asset.fromModule(require(`../../assets/images/mathButtons/divide_select${imgType}`));
 
 const bg0      = Asset.fromModule(require(`../../assets/images/bgs/mathgame${imgType}`));
 const bg1      = Asset.fromModule(require(`../../assets/images/bgs/mathgame_dying1${imgType}`));
@@ -105,6 +105,8 @@ var loadAll = function(canvas, setReady) {
   Promise.all(promises)
     .then(function(r) {
       setReady(true);
+
+      console.log('All images loaded!');
     })
     .catch(function(err) {
       console.log(err);
