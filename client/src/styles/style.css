@@ -37,7 +37,7 @@ html, body, #root {
 
   width: 100%;
   height: 100%;
-  background-color: rgb(155, 100, 78);
+  background-color: rgb(114, 67, 76);
 
   font-family: 'Jost';
 }
@@ -71,7 +71,7 @@ html, body, #root {
 
 .gameOver {
   z-index: 100;
-  background-image: url('../images/webp/game_over.webp');
+  background-color: #462015;
   width: 100%;
   height: 100%;
   font-size: 5vh;

@@ -3,6 +3,7 @@ import Entity   from './Entity.js';
 import Question from './Question.js';
 import Pulse    from './Pulse.js';
 import Jupiter  from './Jupiter.js';
+import Robot    from './Robot.js';
 
 import images from '../util/loadImages.js';
 import ax     from '../util/ax.js';
@@ -11,10 +12,10 @@ var bgs = images.loaded.bgImages;
 
 var renderTimeout;
 var buttonId = 0;
+var baseRate = 250;
 
 var Game = {
   init: function() {
-    Game.fps = 60;
     Game.tick = 0;
 
     Game.playing = false;
@@ -36,14 +37,16 @@ var Game = {
     Game.numbers = [];
 
     Game.questionSpeed = 2;
+
     Game.pulse = Pulse();
+    Game.robot = Robot();
     Game.jupiter = Jupiter(0, -1500);
     Game.jupiterFalling = false;
 
     Game.getNumbers();
-    Game.leaderBoard;
+    // Game.leaderBoard;
 
-    ax.getLeaderboard(Game);
+    // ax.getLeaderboard(Game);
   },
   togglePause: function() {
     Game.playing = !Game.playing;
@@ -51,34 +54,36 @@ var Game = {
   update: function(ctx) {
     var cw = ctx.canvas.width;
     var ch = ctx.canvas.height;
+
+    Game.width  = cw;
+    Game.height = ch;
+
     var background = bgs[Game.hp] || bgs[12];
 
     ctx.clearRect(0, 0, cw, ch);
     ctx.drawImage(background, 0, 0, cw, ch);
 
-    if (Game.score > 0) {
-      Game.questionSpeed = 2 * (1 + ((Math.floor(Game.score/2000)))/2);
-    }
+    bgEffect();
 
-    if (Game.hp > 13) {
-      Game.jupiter.crash(Game);
-      Game.jupiter.update(Game);
-      Game.jupiter.draw(Game, ctx);
-      Game.jupiterFalling = true;
-      Game.playing = false;
-    }
-
-    Game.pulse.update(Game);
-    Game.pulse.draw(Game, ctx);
+    Game.robot.update(Game);
+    Game.robot.draw(Game, ctx);
 
     if (!Game.playing || Game.paused || Game.over) {
       return;
     }
 
-    if (Game.tick % 120 === 0) {
-      var question = Question(100 + Math.floor(Math.random() * (cw - 200)), -50);
+    jupiterFalls(ctx);
+    adjustDifficulty();
 
-      Game.entities.unshift(question);
+    Game.pulse.update(Game);
+    Game.pulse.draw(Game, ctx);
+
+    if (Game.entities.length === 0 || Game.tick % Game.spawnRate === 0) {
+      if (!Game.entities[0]) {
+        Game.tick = Game.spawnRate/2;
+      }
+
+      spawnQuestion(cw);
     }
 
     Game.entities.map(function(entity) {
@@ -89,25 +94,18 @@ var Game = {
   gameLoop: function() {
     var ctx = document.getElementById('canvas').getContext('2d');
 
-    ctx.font = "72px Jost";
+    ctx.font = "40px Jost";
     ctx.fillStyle = 'rgb(70, 32, 21)';
 
     var animId;
     var render = function() {
-      clearTimeout(renderTimeout);
       Game.update(ctx);
       Game.tick++;
 
-      renderTimeout = setTimeout(function() {
-        animId = window.requestAnimationFrame(render);
-      }, 1000/Game.fps);
+      animId = window.requestAnimationFrame(render);
     };
 
     render();
-
-    return function() {
-      window.cancelAnimationFrame(animId);
-    };
   },
 
   getNumbers: function() {
@@ -198,7 +196,7 @@ var Game = {
   },
   correctAnswer: function() {
     Game.pulse.pulsing = true;
-    setTimeout(()=>{Game.entities.pop()}, 150);
+    setTimeout(()=>{Game.entities.pop()}, 100);
     Game.score += 100;
 
     if (Game.buttonsPressed.length === 3) {
@@ -224,6 +222,53 @@ var Game = {
       });
     }
   }
+};
+
+var bgEffect = function() {
+  if (Game.tick > 250 && Game.tick % 10 === 0 && !Game.playing) {
+    if (Game.in) {
+      Game.hp--;
+    } else {
+      Game.hp++;
+    }
+
+    if (Game.hp > 15) {
+      Game.in = true;
+    }
+
+    if (Game.hp === 0) {
+      Game.in = false;
+      Game.tick = 0;
+    }
+  }
+};
+
+var jupiterFalls = function (ctx) {
+  if (Game.hp > 13) {
+    Game.jupiterFalling = true;
+
+    Game.jupiter.crash(Game);
+    Game.jupiter.update(Game);
+    Game.jupiter.draw(Game, ctx);
+  }
+};
+
+var adjustDifficulty = function() {
+  if (Game.score >= 0) {
+    Game.questionSpeed = 4 + (Game.score/5000);
+  }
+
+  var mod = Math.floor(Game.score/500);
+
+  Game.spawnRate = baseRate - mod;
+
+  console.log(Game.spawnRate, Game.questionSpeed);
+};
+
+var spawnQuestion = function(cw) {
+  var question = Question(50 + Math.floor(Math.random() * (cw - 100)), -50);
+
+  Game.entities.unshift(question);
 };
 
 Game.init();

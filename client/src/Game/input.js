@@ -42,9 +42,8 @@ var keypressListener = function() {
       case ' ':
         Game.getNumbers();
         break;
-      case 'p':
-        // Game.pulse.reset();
-        // Game.pulse.pulsing = true;
+      case 'g':
+        console.log(Game);
         break;
       case 'm':
         var audio = document.getElementById('music');

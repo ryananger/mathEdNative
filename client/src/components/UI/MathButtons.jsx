@@ -23,10 +23,10 @@ const MathButtons = function({Game}) {
 
   return (
     <div className='mathButtons h'>
-      <img src={images.urls.mathImages[0]} value='plus'     className='mathButton v' onClick={changeMod}></img>
-      <img src={images.urls.mathImages[1]} value='minus'    className='mathButton v' onClick={changeMod}></img>
-      <img src={images.urls.mathImages[2]} value='multiply' className='mathButton v' onClick={changeMod}></img>
-      <img src={images.urls.mathImages[3]} value='divide'   className='mathButton v' onClick={changeMod}></img>
+      <img src={Game.mod === '+' ? images.urls.mathImages[4] : images.urls.mathImages[0]} value='plus'     className='mathButton v' onClick={changeMod}></img>
+      <img src={Game.mod === '-' ? images.urls.mathImages[5] : images.urls.mathImages[1]} value='minus'    className='mathButton v' onClick={changeMod}></img>
+      <img src={Game.mod === '×' ? images.urls.mathImages[6] : images.urls.mathImages[2]} value='multiply' className='mathButton v' onClick={changeMod}></img>
+      <img src={Game.mod === '÷' ? images.urls.mathImages[7] : images.urls.mathImages[3]} value='divide'   className='mathButton v' onClick={changeMod}></img>
     </div>
   )
 };

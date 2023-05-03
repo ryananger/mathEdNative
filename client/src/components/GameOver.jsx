@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import ax     from '../util/ax.js';
-import images from '../util/loadImages.js';
 
 const GameOver = function({Game, user}) {
   var mod = '';

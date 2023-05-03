@@ -11,6 +11,7 @@ const MenuUI = function({Game, user}) {
   var playGame = function() {
     Game.setView('play');
     Game.playing = true;
+    Game.hp = 0;
   };
 
   var renderButtons = function() {

@@ -19,6 +19,11 @@ import minus    from '../images/mathButtons/webp/minus.webp';
 import multiply from '../images/mathButtons/webp/multiply.webp';
 import divide   from '../images/mathButtons/webp/divide.webp';
 
+import plus2     from '../images/mathButtons/webp/plus_select.webp';
+import minus2    from '../images/mathButtons/webp/minus_select.webp';
+import multiply2 from '../images/mathButtons/webp/multiply_select.webp';
+import divide2   from '../images/mathButtons/webp/divide_select.webp';
+
 import bg0      from '../images/bgs/webp/mathgame.webp';
 import bg1      from '../images/bgs/webp/mathgame_dying1.webp';
 import bg2      from '../images/bgs/webp/mathgame_dying2.webp';
@@ -46,10 +51,12 @@ import p8   from '../images/pulse/webp/mathgame_pulse8.webp';
 import p9   from '../images/pulse/webp/mathgame_pulse9.webp';
 
 import jupiter  from '../images/webp/jupiter.webp';
+import robot    from '../images/webp/robot.webp';
+import blob     from '../images/webp/blob.webp';
 
 var buttonImages = [button1, button2, button3, button4];
 var selectImages = [select1, select2, select3, select4];
-var mathImages   = [plus, minus, multiply, divide];
+var mathImages   = [plus, minus, multiply, divide, plus2, minus2, multiply2, divide2];
 var bgImages     = [bg0, bg1, bg2, bg3, bg4, bg5, bg6, bg7, bg8, bg9, bg10, bg11, bg12];
 var pulseImages  = [p1, p2, p3, p4, p5, p6, p7, p8, p9];
 
@@ -65,7 +72,9 @@ var urls = {
   gameOver:  [gameOver],
   jupiter:   [jupiter],
   formBg:    [formBg],
-  submit:    [submit]
+  submit:    [submit],
+  robot:     [robot],
+  blob:      [blob]
 };
 
 var count = 0;

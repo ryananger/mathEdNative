@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import Button      from './Button.jsx';
 import DeadButton  from './DeadButton.jsx';
-import MathButtons from './MathButtons.jsx';
+import MathButton  from './MathButton.jsx';
 import Expression  from './Expression.jsx';
 
 const PlayUI = function({Game, user}) {
@@ -87,7 +87,12 @@ const PlayUI = function({Game, user}) {
         </div>
       </div>
       <div className='uiHead h'>
-        <MathButtons Game={Game}/>
+        <div className='mathButtons h'>
+          <MathButton Game={Game} type={0}/>
+          <MathButton Game={Game} type={1}/>
+          <MathButton Game={Game} type={2}/>
+          <MathButton Game={Game} type={3}/>
+        </div>
         <Expression  Game={Game}/>
       </div>
       <div className='buttons h'>

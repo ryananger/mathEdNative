@@ -7,7 +7,7 @@ var Pulse = function() {
   var pulse = Entity(0, 0);
 
   pulse.imgs = imgs;
-  pulse.img   = 0;
+  pulse.img  = 0;
 
   pulse.ticks = 0;
   pulse.pulsing = false;
