@@ -61,6 +61,8 @@ var keypressListener = function() {
         var num = Game.numbers[i];
 
         if (num.value === Number(event.key) && Game.buttonsPressed.indexOf(num.id) === -1) {
+          Game.playAudio(Game.clickAudio);
+
           Game.buttonsPressed.push(num.id);
 
           if (Game.buttonsPressed.length > 3) {

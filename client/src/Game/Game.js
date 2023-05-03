@@ -1,4 +1,7 @@
 import input    from './input.js';
+import click       from '../../dist/public/click.mp3';
+import pulse       from '../../dist/public/pulse.mp3';
+
 import Entity   from './Entity.js';
 import Question from './Question.js';
 import Pulse    from './Pulse.js';
@@ -196,6 +199,7 @@ var Game = {
 
     if (last.question === Game.answer) {
       Game.correctAnswer();
+      Game.playAudio(Game.pulseAudio);
     }
 
     Game.expression = '';
@@ -229,6 +233,11 @@ var Game = {
         Game.numbers = front.concat(back);
       });
     }
+  },
+  playAudio: function(audio) {
+    audio.pause();
+    audio.currentTime = 0;
+    audio.play();
   }
 };
 
@@ -251,7 +260,7 @@ var bgEffect = function() {
   }
 };
 
-var jupiterFalls = function (ctx) {
+var jupiterFalls = function(ctx) {
   if (Game.hp > 13 && Game.playing) {
     Game.jupiterFalling = true;
 
@@ -263,10 +272,10 @@ var jupiterFalls = function (ctx) {
 
 var adjustDifficulty = function() {
   if (Game.score >= 0) {
-    Game.questionSpeed = 4 + (Game.score/5000);
+    Game.questionSpeed = 4 + (Game.score/4000);
   }
 
-  var mod = Math.floor(Game.score/500);
+  var mod = Math.floor(Game.score/175);
 
   Game.spawnRate = baseRate - mod;
 };
@@ -279,6 +288,10 @@ var spawnQuestion = function(cw) {
 
 Game.init();
 
-window.Game = Game;
+Game.clickAudio = new Audio(click);
+Game.pulseAudio = new Audio(pulse);
+
+Game.clickAudio.volume = 0.3;
+Game.pulseAudio.volume = 0.15;
 
 export default Game;

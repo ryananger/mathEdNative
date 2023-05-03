@@ -84,6 +84,8 @@ const PlayUI = function({user}) {
       <div className='score h'>
         <div>
           {Game.score}
+          {/* <br/>
+          {Game.questionSpeed}, {Game.spawnRate} */}
         </div>
         <div>
           {renderHighscore()}

@@ -32,7 +32,7 @@ module.exports = {
         use: ['file-loader', 'webp-loader'],
       },
       {
-        test: /\.(png)$/,
+        test: /\.(png|mp3)$/,
         type: 'asset/resource'
       }
     ]
