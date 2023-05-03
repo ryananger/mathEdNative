@@ -40,7 +40,7 @@ var keypressListener = function() {
         Game.evaluate();
         break;
       case ' ':
-        Game.getNumbers();
+        Game.getNumbers(true);
         break;
       case 'g':
         console.log(Game);
@@ -55,7 +55,6 @@ var keypressListener = function() {
         }
         break;
     }
-
 
     if (Number(event.key) && !Game.paused) {
       for (var i = 0; i < Game.numbers.length; i++) {
@@ -83,11 +82,9 @@ var mouseClickListener = function() {
     var audio = document.getElementById('music');
 
     if (audio.paused) {
-	audio.volume = 0.15;
-	audio.play();
+      audio.volume = 0.15;
+      audio.play();
     }
-
-    //console.log(input);
   });
 };
 

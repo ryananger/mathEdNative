@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const url = 'mongodb://localhost:27017/mathEd';
+const url = process.env.MONGO;
 const options = {useNewUrlParser: true, useUnifiedTopology: true};
 
 mongoose.set('strictQuery', true);

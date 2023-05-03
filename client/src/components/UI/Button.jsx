@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Game   from '../../Game/Game.js';
 import images from '../../util/loadImages.js';
 
 const buttonImages = images.urls.buttonImages;
 const selectImages = images.urls.selectImages;
 
-const Button = function({value, id}) {
+const Button = function({pressed, value, id}) {
   const [inExpression, setExpression] = useState(false);
 
   const [index, setIndex] = useState(Math.floor(Math.random() * 4));
-  const [image, setImage] = useState(buttonImages[index]);
+  const [image, setImage] = useState(pressed ? selectImages[index] : buttonImages[index]);
 
   if (!Game.expression && inExpression) {
     setExpression(false);
@@ -51,7 +51,6 @@ const Button = function({value, id}) {
   if (inExpression && Game.buttonsPressed.length > 3) {
     if (Game.buttonsPressed[0] === id) {
       setExpression(false);
-      setImage(buttonImages[index]);
       Game.buttonsPressed.shift();
     }
   }
@@ -59,6 +58,14 @@ const Button = function({value, id}) {
   if (!inExpression && Game.buttonsPressed.indexOf(id) !== -1) {
     addToExpression();
   }
+
+  useEffect(()=>{
+    if (pressed) {
+      setImage(selectImages[index]);
+    } else {
+      setImage(buttonImages[index]);
+    }
+  }, [pressed]);
 
   return (
     <div className='button v'>

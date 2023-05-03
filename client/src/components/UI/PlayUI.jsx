@@ -16,8 +16,10 @@ const PlayUI = function({user}) {
 
     for (var i = 0; i < 10; i++) {
       if (i < Game.numbers.length) {
+        var pressed = Game.buttonsPressed.indexOf(Game.numbers[i].id) !== -1;
+
         var button = (
-          <Button key={'button' + i} Game={Game} value={Game.numbers[i].value} id={Game.numbers[i].id}/>
+          <Button key={'button' + i} pressed={pressed} value={Game.numbers[i].value} id={Game.numbers[i].id}/>
         );
 
         buttons.push(button);
@@ -25,7 +27,7 @@ const PlayUI = function({user}) {
         Game.deadButtons++;
 
         var button = (
-          <DeadButton key={'deadButton' + i} Game={Game}/>
+          <DeadButton key={'deadButton' + i}/>
         );
 
         buttons.push(button);

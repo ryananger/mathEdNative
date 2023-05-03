@@ -44,9 +44,9 @@ var Game = {
     Game.jupiterFalling = false;
 
     Game.getNumbers();
-    // Game.leaderBoard;
+    Game.leaderBoard;
 
-    // ax.getLeaderboard(Game);
+    ax.getLeaderboard(Game);
   },
   togglePause: function() {
     Game.playing = !Game.playing;
@@ -68,11 +68,12 @@ var Game = {
     Game.robot.update(Game);
     Game.robot.draw(Game, ctx);
 
+    jupiterFalls(ctx);
+
     if (!Game.playing || Game.paused || Game.over) {
       return;
     }
 
-    jupiterFalls(ctx);
     adjustDifficulty();
 
     Game.pulse.update(Game);
@@ -110,9 +111,14 @@ var Game = {
     render();
   },
 
-  getNumbers: function() {
+  getNumbers: function(replace) {
     var num = [];
     var n = 10 - Game.numbers.length;
+
+    if (replace && n === 0) {
+      Game.numbers = [];
+      n = 10;
+    }
 
     for (var i = 0; i < n; i++) {
       num.push({value: Math.floor(Math.random() * 3) + 1, id: buttonId++});
@@ -246,7 +252,7 @@ var bgEffect = function() {
 };
 
 var jupiterFalls = function (ctx) {
-  if (Game.hp > 13) {
+  if (Game.hp > 13 && Game.playing) {
     Game.jupiterFalling = true;
 
     Game.jupiter.crash(Game);

@@ -37,7 +37,8 @@ html, body, #root {
 
   width: 100%;
   height: 100%;
-  background-color: rgb(114, 67, 76);
+  /* background: linear-gradient(to top, rgb(34, 16, 26), rgb(114, 67, 76) 80%); */
+  background: rgb(114, 67, 76);
 
   font-family: 'Jost';
 }
