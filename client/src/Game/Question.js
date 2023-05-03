@@ -6,14 +6,13 @@ var Question = function(x, y) {
 
   blob.question = Math.floor(Math.random() * 7) + 1;
   blob.width = 160 + Math.floor(Math.random() * 80);
-  // blob.width = 160;
   blob.height = blob.width;
 
   var img = images.loaded.blob[0];
 
   var sq = 200;
   var frame = 0;
-  var frameSpeed = 8 + Math.floor(Math.random() * 6);
+  var frameSpeed = 6 + Math.floor(Math.random() * 8);
   var tick = 0;
 
   blob.draw = function(Game, ctx) {
@@ -27,7 +26,7 @@ var Question = function(x, y) {
     ctx.drawImage(img, ...slice, ...paint);
 
     ctx.fillStyle = '#e2bab5';
-    ctx.fillText(blob.question, blob.x - 12, blob.y + 24);
+    ctx.fillText(blob.question, blob.x - 14, blob.y + 24);
   };
 
   blob.update = function(Game) {
