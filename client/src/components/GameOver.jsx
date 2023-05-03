@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
+import Game   from '../Game/Game.js';
 import ax     from '../util/ax.js';
 
-const GameOver = function({Game, user}) {
+const GameOver = function({setView, user}) {
   var mod = '';
 
   if (user) {
@@ -15,8 +16,8 @@ const GameOver = function({Game, user}) {
   }
 
   setTimeout(function() {
+    setView('menu');
     Game.init();
-    Game.setView('menu');
   }, 5000);
 
   return (

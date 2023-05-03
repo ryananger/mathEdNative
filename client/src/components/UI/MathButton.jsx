@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import Game   from '../../Game/Game.js';
 import images from '../../util/loadImages.js';
 
-const MathButton = function({Game, type}) {
+const MathButton = function({type}) {
   const [selected, setSelect] = useState(false);
 
   var src1 = images.urls.mathImages[type];

@@ -1,15 +1,16 @@
 import React, {useState, useEffect} from 'react';
+import Game   from '../../Game/Game.js';
 import ax     from '../../util/ax.js';
 import images from '../../util/loadImages.js';
 
 const menuBar = images.urls.menuBar[0];
 
-const MenuUI = function({Game, user}) {
+const MenuUI = function({setView, user}) {
   const [formOpen,  openForm]  = useState(false);
   const [boardOpen, openBoard] = useState(false);
 
   var playGame = function() {
-    Game.setView('play');
+    setView('play');
     Game.playing = true;
     Game.hp = 0;
   };

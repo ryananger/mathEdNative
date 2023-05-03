@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
+import Game        from '../../Game/Game.js';
 
 import Button      from './Button.jsx';
 import DeadButton  from './DeadButton.jsx';
 import MathButton  from './MathButton.jsx';
 import Expression  from './Expression.jsx';
 
-const PlayUI = function({Game, user}) {
+const PlayUI = function({user}) {
   const [infoOpen,  openInfo] = useState(true);
 
   var renderButtons = function() {

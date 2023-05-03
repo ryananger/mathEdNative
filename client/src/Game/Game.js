@@ -99,6 +99,8 @@ var Game = {
 
     var animId;
     var render = function() {
+      window.cancelAnimationFrame(animId);
+
       Game.update(ctx);
       Game.tick++;
 
@@ -226,7 +228,7 @@ var Game = {
 
 var bgEffect = function() {
   if (Game.tick > 250 && Game.tick % 10 === 0 && !Game.playing) {
-    if (Game.in) {
+    if (Game.in && Game.hp > 0) {
       Game.hp--;
     } else {
       Game.hp++;
@@ -261,8 +263,6 @@ var adjustDifficulty = function() {
   var mod = Math.floor(Game.score/500);
 
   Game.spawnRate = baseRate - mod;
-
-  console.log(Game.spawnRate, Game.questionSpeed);
 };
 
 var spawnQuestion = function(cw) {

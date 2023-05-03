@@ -1,7 +1,8 @@
 import React from 'react';
+import Game   from '../../Game/Game.js';
 import images from '../../util/loadImages.js';
 
-const MathButtons = function({Game}) {
+const MathButtons = function() {
   var changeMod = function(e) {
     var mod = e.target.getAttribute('value');
 

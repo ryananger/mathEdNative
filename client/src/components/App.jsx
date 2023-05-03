@@ -14,10 +14,13 @@ const App = function() {
   const user = cookieHandle.user();
   const updateInterval = 50;
 
-  Game.setView = setView;
-
   const reactLoop = function() {
     if (!Game.playing) {
+      return;
+    }
+
+    if (Game.over) {
+      setView('gameover');
       return;
     }
 
@@ -29,15 +32,15 @@ const App = function() {
   const renderView = function() {
     switch (view) {
       case 'menu':
-        return <MenuUI Game={Game} user={user}/>;
+        return <MenuUI setView={setView} user={user}/>;
       case 'play':
         if (!Game.playing) {
           return;
         }
 
-        return <PlayUI Game={Game} user={user}/>;
+        return <PlayUI user={user}/>;
       case 'gameover':
-        return <GameOver Game={Game} user={user}/>;
+        return <GameOver setView={setView} user={user}/>;
     }
   };
 

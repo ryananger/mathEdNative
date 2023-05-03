@@ -15,7 +15,6 @@ var Jupiter = function(x, y) {
       jupiter.y += 6;
     } else {
       Game.over = true;
-      Game.setView('gameover');
     }
   };
 
