@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-//const controller = require('./controller.js');
 const app = express();
 const dotenv = require('dotenv');
 

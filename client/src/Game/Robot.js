@@ -31,6 +31,10 @@ var Robot = function() {
         frame++;
       }
 
+      if (Math.random() < 0.005) {
+        Game.playAudio(Game.audio.droid1);
+      }
+
       if (frame > 6) {
         frame = 0;
       }

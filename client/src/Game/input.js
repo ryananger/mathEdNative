@@ -46,12 +46,12 @@ var keypressListener = function() {
         console.log(Game);
         break;
       case 'm':
-        var audio = document.getElementById('music');
+        var music = document.getElementById('music');
 
-        if (audio.volume === 0) {
-          audio.volume = 0.15;
+        if (music.volume === 0) {
+          music.volume = 0.15;
         } else {
-          audio.volume = 0;
+          music.volume = 0;
         }
         break;
     }
@@ -61,7 +61,7 @@ var keypressListener = function() {
         var num = Game.numbers[i];
 
         if (num.value === Number(event.key) && Game.buttonsPressed.indexOf(num.id) === -1) {
-          Game.playAudio(Game.clickAudio);
+          Game.playAudio(Game.audio.click);
 
           Game.buttonsPressed.push(num.id);
 
@@ -81,11 +81,11 @@ var mouseClickListener = function() {
     input.lastTarget = event.target;
     input.clicks++;
 
-    var audio = document.getElementById('music');
+    var music = document.getElementById('music');
 
-    if (audio.paused) {
-      audio.volume = 0.15;
-      audio.play();
+    if (music.paused) {
+      music.volume = 0.15;
+      music.play();
     }
   });
 };

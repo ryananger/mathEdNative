@@ -16,7 +16,7 @@ const Button = function({pressed, value, id}) {
   }
 
   var addToExpression = function() {
-    Game.playAudio(Game.clickAudio);
+    Game.playAudio(Game.audio.click);
 
     if (inExpression) {
       return;

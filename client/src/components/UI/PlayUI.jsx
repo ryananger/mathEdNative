@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Game        from '../../Game/Game.js';
 
 import Button      from './Button.jsx';
@@ -7,7 +7,8 @@ import MathButton  from './MathButton.jsx';
 import Expression  from './Expression.jsx';
 
 const PlayUI = function({user}) {
-  const [infoOpen,  openInfo] = useState(true);
+  const [loaded, setLoaded] = useState(false);
+  const [infoOpen, openInfo] = useState(true);
 
   var renderButtons = function() {
     var buttons = [];
@@ -61,7 +62,7 @@ const PlayUI = function({user}) {
 
     var info = (
       <div className='info v'>
-        Do math to stop the numbers from falling!
+        Do math because the sky is falling!
         <br/><br/>
         Click on the buttons or use numpad, then click on the expression or press Enter to fire.
         <br/><br/>
@@ -71,12 +72,25 @@ const PlayUI = function({user}) {
       </div>
     );
 
-    setTimeout(function() {
-      openInfo(false);
-    }, 8000);
-
     return info;
   };
+
+  useEffect(()=>{
+    setTimeout(function() {
+      openInfo(false);
+      setLoaded(true);
+    }, 8000);
+  }, []);
+
+  useEffect(()=>{
+    if (!loaded) {return;}
+
+    if (Game.paused) {
+      openInfo(true);
+    } else {
+      openInfo(false);
+    }
+  }, [Game.paused]);
 
   return (
     <div className='playUi float v'>

@@ -52,7 +52,7 @@ html, body, #root {
 #canvas {
   z-index: 0;
   background-size: contain;
-  background-image: url('../images/bgs/webp/mathgame.webp');
+  background-image: url('../images/bgs/mathgame.webp');
 
   height: 100%;
   border: 4px solid rgb(66, 31, 20);

@@ -1,15 +1,13 @@
-import input    from './input.js';
-import click       from '../../dist/public/click.mp3';
-import pulse       from '../../dist/public/pulse.mp3';
+import ax     from '../util/ax.js';
+import images from '../util/loadImages.js';
+import audio  from '../util/audio.js';
+import input  from './input.js';
 
-import Entity   from './Entity.js';
 import Question from './Question.js';
 import Pulse    from './Pulse.js';
 import Jupiter  from './Jupiter.js';
 import Robot    from './Robot.js';
-
-import images from '../util/loadImages.js';
-import ax     from '../util/ax.js';
+import Chicken  from './Chicken.js';
 
 var bgs = images.loaded.bgImages;
 
@@ -19,6 +17,7 @@ var baseRate = 250;
 
 var Game = {
   init: function() {
+    Game.audio = audio;
     Game.tick = 0;
 
     Game.playing = false;
@@ -36,7 +35,7 @@ var Game = {
     Game.buttonsPressed = [];
     Game.deadButtons = 0;
 
-    Game.entities = [];
+    Game.questions = [];
     Game.numbers = [];
 
     Game.questionSpeed = 2;
@@ -45,6 +44,12 @@ var Game = {
     Game.robot = Robot();
     Game.jupiter = Jupiter(0, -1500);
     Game.jupiterFalling = false;
+
+    Game.chickens = [];
+
+    for (var i = 0; i < 4; i++) {
+      Game.chickens.push(Chicken(i * 15));
+    }
 
     Game.getNumbers();
     Game.leaderBoard;
@@ -71,6 +76,11 @@ var Game = {
     Game.robot.update(Game);
     Game.robot.draw(Game, ctx);
 
+    Game.chickens.map(function(chicken) {
+      chicken.update(Game);
+      chicken.draw(Game, ctx);
+    });
+
     jupiterFalls(ctx);
 
     if (!Game.playing || Game.paused || Game.over) {
@@ -82,17 +92,17 @@ var Game = {
     Game.pulse.update(Game);
     Game.pulse.draw(Game, ctx);
 
-    if (Game.entities.length === 0 || Game.tick % Game.spawnRate === 0) {
-      if (!Game.entities[0]) {
+    if (Game.questions.length === 0 || Game.tick % Game.spawnRate === 0) {
+      if (!Game.questions[0]) {
         Game.tick = Game.spawnRate/2;
       }
 
       spawnQuestion(cw);
     }
 
-    Game.entities.map(function(entity) {
-      entity.update(Game);
-      entity.draw(Game, ctx);
+    Game.questions.map(function(question) {
+      question.update(Game);
+      question.draw(Game, ctx);
     });
   },
   gameLoop: function() {
@@ -130,7 +140,7 @@ var Game = {
     Game.numbers = Game.numbers.concat(num);
   },
   evaluate: function() {
-    if (Game.entities.length === 0) {
+    if (Game.questions.length === 0) {
       return;
     }
 
@@ -195,11 +205,13 @@ var Game = {
       }
     }
 
-    var last = Game.entities[Game.entities.length - 1];
+    var last = Game.questions[Game.questions.length - 1];
 
     if (last.question === Game.answer) {
       Game.correctAnswer();
-      Game.playAudio(Game.pulseAudio);
+      Game.playAudio(Game.audio.pulse);
+    } else {
+      Game.playAudio(Game.audio.droid2);
     }
 
     Game.expression = '';
@@ -208,7 +220,7 @@ var Game = {
   },
   correctAnswer: function() {
     Game.pulse.pulsing = true;
-    setTimeout(()=>{Game.entities.pop()}, 100);
+    setTimeout(()=>{Game.questions.pop()}, 100);
     Game.score += 100;
 
     if (Game.buttonsPressed.length === 3) {
@@ -217,6 +229,7 @@ var Game = {
 
     if (Game.buttonsPressed.length >= Game.numbers.length) {
       Game.numbers = [];
+      Game.playAudio(Game.audio.bigScore);
     } else {
       Game.buttonsPressed.map(function(id) {
         var index;
@@ -283,15 +296,9 @@ var adjustDifficulty = function() {
 var spawnQuestion = function(cw) {
   var question = Question(50 + Math.floor(Math.random() * (cw - 100)), -50);
 
-  Game.entities.unshift(question);
+  Game.questions.unshift(question);
 };
 
 Game.init();
-
-Game.clickAudio = new Audio(click);
-Game.pulseAudio = new Audio(pulse);
-
-Game.clickAudio.volume = 0.3;
-Game.pulseAudio.volume = 0.15;
 
 export default Game;

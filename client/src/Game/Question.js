@@ -16,17 +16,15 @@ var Question = function(x, y) {
   var tick = 0;
 
   blob.draw = function(Game, ctx) {
-    if (Game.jupiterFalling) {
-      return;
-    }
-
     var slice = [frame * sq, 0, sq, sq];
     var paint = [blob.x - blob.width/2, blob.y - blob.height/2, blob.width, blob.height];
 
     ctx.drawImage(img, ...slice, ...paint);
 
-    ctx.fillStyle = '#e2bab5';
-    ctx.fillText(blob.question, blob.x - 14, blob.y + 24);
+    if (!Game.jupiterFalling) {
+      ctx.fillStyle = '#e2bab5';
+      ctx.fillText(blob.question, blob.x - 14, blob.y + 24);
+    }
   };
 
   blob.update = function(Game) {
@@ -35,8 +33,9 @@ var Question = function(x, y) {
     blob.y += Game.questionSpeed * units;
 
     if (blob.y > Game.height*0.64) {
-      Game.entities.pop();
+      Game.questions.pop();
       Game.hp++;
+      Game.playAudio(Game.audio.bkaw);
     }
 
     tick++;
