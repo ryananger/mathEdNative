@@ -13,10 +13,10 @@ const app    = express();
 const User = require('./db.js');
 const dist = path.join(__dirname, '../client/dist');
 
-// var options = {
-//   key:  fs.readFileSync(process.env.HTTPS_KEY),
-//   cert: fs.readFileSync(process.env.HTTPS_CERT)
-// };
+var options = {
+  key:  fs.readFileSync(process.env.HTTPS_KEY),
+  cert: fs.readFileSync(process.env.HTTPS_CERT)
+};
 
 app.use(cors());
 app.use(express.json());
@@ -66,5 +66,5 @@ app.get('/leaderboard', function(req, res) {
 
 const PORT = 4001;
 http.createServer(app).listen(PORT);
-// https.createServer(options, app).listen(443);
+https.createServer(options, app).listen(443);
 console.log(`Server listening at http://localhost:${PORT}`);
