@@ -62,11 +62,39 @@ const App = function() {
   useEffect(Game.gameLoop, []);
 
   return (
-    <div id='play' className='play v'>
-      <canvas id='canvas' className='canvas float' width='800' height='1420'/>
+    <div className='main h'>
+      <div className='wing v'>
+        this is jupiterFalls, an edutainment proof of concept for early math education (and beyond!)
+        <br/><br/>
+        there is an increasing need for alternative education solutions and this aims to be accessible and effective.
+        <br/><br/>
+        it's still a work in progress, but the long term goal is to expand this into a suite of games that can supplement a complete K-12 curriculum,
+        with individualized content generated in real time.
+        <br/><br/>
+        math seemed an easy enough subject to start with, and I'm trying to think through game concepts that could increase in difficulty as the learner progresses. I'm open to ideas and feedback.
+      </div>
+      <div id='play' className='play v'>
+        <canvas id='canvas' className='canvas float' width='800' height='1420'/>
 
-      {renderView()}
+        {renderView()}
+      </div>
+      <div className='wing v'>
+        click on the buttons or use numpad, then click on the expression or press Enter to fire.
+        <br/><br/>
+        <small>press Spacebar to refill your numbers.</small>
+        <br/>
+        <small>press M to mute, Escape to pause.</small>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div style={{textAlign: 'center'}}>
+          <a href='https://gen.inkvessels.art'>ink.gen</a><br/>
+          <a href='https://inkvessels.art'>ink.vessels</a>
+        </div>
+      </div>
     </div>
+
   )
 
 
