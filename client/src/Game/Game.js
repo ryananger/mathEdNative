@@ -128,6 +128,10 @@ var Game = {
     var num = [];
     var n = 10 - Game.numbers.length;
 
+    Game.expression = '';
+    Game.display = '';
+    Game.buttonsPressed = [];
+
     if (replace && n === 0) {
       Game.numbers = [];
       n = 10;
