@@ -47,13 +47,19 @@ const App = function() {
   useEffect(reactLoop, [updates, Game.playing]);
   useEffect(Game.gameLoop, []);
 
-  return (
-    <div id='play' className='play v'>
-      <canvas id='canvas' className='canvas float' width='800' height='1420'/>
+  if (window.innerWidth < 640) {
+    return <>please view on desktop, mobile coming soon</>;
+  } else {
+    return (
+      <div id='play' className='play v'>
+        <canvas id='canvas' className='canvas float' width='800' height='1420'/>
 
-      {renderView()}
-    </div>
-  )
+        {renderView()}
+      </div>
+    )
+  }
+
+
 }
 
 export default App;
