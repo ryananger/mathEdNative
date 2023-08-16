@@ -94,11 +94,11 @@ for (var set in urls) {
     img.onload = function() {
       loadedCount++;
 
-      console.log(`Loaded image for ${thisSet}`);
+      // console.log(`Loaded image for ${thisSet}`);
 
       if (loadedCount === count) {
         images.loadedAll = true;
-        console.log('Loaded all images.');
+        // console.log('Loaded all images.');
       }
     }
 
