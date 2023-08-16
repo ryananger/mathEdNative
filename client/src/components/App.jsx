@@ -58,11 +58,27 @@ const App = function() {
     }
   };
 
+  const makeBars = function(num) {
+    var bars = [];
+
+    for (var i = 0; i < num; i++) {
+      var rand = Math.floor(Math.random()*25);
+
+      bars.push(<div className='bar' style={{top: (rand + 55) + 'px'}}/>);
+    }
+
+    bars.push(<div className='bar' style={{top: '80px'}}/>);
+    bars.push(<div className='bar' style={{bottom: '80px'}}/>);
+
+    return bars;
+  };
+
   useEffect(reactLoop, [updates, Game.playing]);
   useEffect(Game.gameLoop, []);
 
   return (
     <div className='main h'>
+      {makeBars(5)}
       <div className='wing v'>
         this is jupiterFalls, an edutainment proof of concept for early math education (and beyond!)
         <br/><br/>
