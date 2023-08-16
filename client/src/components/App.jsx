@@ -7,6 +7,14 @@ import GameOver from './GameOver.jsx';
 import MenuUI   from './UI/MenuUI.jsx';
 import PlayUI   from './UI/PlayUI.jsx';
 
+const barNums = [];
+
+for (var i = 0; i < 5; i++) {
+  var rand = Math.floor(Math.random()*25);
+
+  barNums.push(rand + 55);
+}
+
 const App = function() {
   const [updates, updateReact] = useState(0);
   const [view, setView] = useState('menu');
@@ -48,9 +56,7 @@ const App = function() {
     var bars = [];
 
     for (var i = 0; i < num; i++) {
-      var rand = Math.floor(Math.random()*25);
-
-      bars.push(<div className='bar' key={`bar0${i}`} style={{top: (rand + 55) + 'px'}}/>);
+      bars.push(<div className='bar' key={`bar0${i}`} style={{top: barNums[i] + 'px'}}/>);
     }
 
     bars.push(<div className='bar' key='barTop' style={{top: '80px'}}/>);
