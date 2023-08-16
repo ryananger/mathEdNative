@@ -288,7 +288,7 @@ var adjustDifficulty = function() {
     Game.questionSpeed = 3 + (Game.score/4000);
   }
 
-  var mod = Math.floor(Game.score/250);
+  var mod = Math.floor(Game.score/175);
 
   Game.spawnRate = baseRate - mod;
 };
