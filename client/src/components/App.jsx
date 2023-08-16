@@ -61,13 +61,6 @@ const App = function() {
   useEffect(reactLoop, [updates, Game.playing]);
   useEffect(Game.gameLoop, []);
 
-  if (window.innerWidth < 640) {
-    console.log(window.innerWidth)
-    return (
-      <div id='play' className='play v'>please view on desktop, mobile coming soon</div>
-    )
-  }
-
   return (
     <div id='play' className='play v'>
       <canvas id='canvas' className='canvas float' width='800' height='1420'/>
