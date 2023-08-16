@@ -94,18 +94,17 @@ for (var set in urls) {
     img.onload = function() {
       loadedCount++;
 
+      console.log(`Loaded image for ${thisSet}`);
+
       if (loadedCount === count) {
         images.loadedAll = true;
+        console.log('Loaded all images.');
       }
-
-      console.log(`Loaded image for ${thisSet}`);
     }
 
     return img;
   })
 }
-
-console.log(loaded);
 
 var images = {
   urls: urls,

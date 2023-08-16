@@ -62,7 +62,7 @@ const MenuUI = function({setView, user}) {
     e.preventDefault();
 
     var form = document.getElementById('userForm');
-    var username  = form.username.value.replaceAll(/[\W_]+/g, '');
+    var username  = form.username.value.replaceAll(/[\W_.]+/g, '');
     var sessionId = `${username}_session${(new Date()).valueOf()}`;
 
     openForm(false);
