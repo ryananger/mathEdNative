@@ -105,9 +105,11 @@ const App = function() {
         {renderView()}
       </div>
       <div className='wing v'>
-        click on the buttons or use numpad, then click on the expression or press Enter to fire.
-        <br/><br/>
-        <small>press Spacebar to refill your numbers.</small>
+        click on the buttons or use (numpad), then click on the expression (Enter).
+        <br/><br/>up to 3 numbers can be added to an expression.
+        <br/><small>&emsp;(ex. (2 + 1) x 2 = 6)</small>
+        <br/>
+        <small>click an empty square (Spacebar) to refill/refresh your numbers.</small>
         <br/>
         <small>press M to mute, Escape to pause.</small>
         <br/>
