@@ -14,20 +14,6 @@ const App = function() {
   const user = cookieHandle.user();
   const updateInterval = 50;
 
-  if (window.innerWidth < 640) {
-    console.log(window.innerWidth)
-    return (
-      <div style={{textAlign: 'center', color: '#ffc89d'}}>
-        please view on desktop,
-        <br/>
-        mobile coming soon
-        <br/>
-        <br/>
-        thx
-      </div>
-    )
-  }
-
   const reactLoop = function() {
     if (!Game.playing) {
       return;
@@ -72,6 +58,24 @@ const App = function() {
 
     return bars;
   };
+
+  if (window.innerWidth < 640) {
+    return (
+      <div style={{textAlign: 'center', color: '#ffc89d'}}>
+        {makeBars(5)}
+        please view on desktop,
+        <br/>
+        mobile coming soon
+        <br/>
+        <br/>
+        <small>
+          or check out my art store at <a href='https://inkvessels.art'>ink.vessels</a>
+        </small>
+        <br/><br/>
+        thx
+      </div>
+    )
+  }
 
   useEffect(reactLoop, [updates, Game.playing]);
   useEffect(Game.gameLoop, []);
