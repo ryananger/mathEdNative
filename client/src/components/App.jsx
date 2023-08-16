@@ -64,11 +64,11 @@ const App = function() {
     for (var i = 0; i < num; i++) {
       var rand = Math.floor(Math.random()*25);
 
-      bars.push(<div className='bar' style={{top: (rand + 55) + 'px'}}/>);
+      bars.push(<div className='bar' key={`bar0${i}`} style={{top: (rand + 55) + 'px'}}/>);
     }
 
-    bars.push(<div className='bar' style={{top: '80px'}}/>);
-    bars.push(<div className='bar' style={{bottom: '80px'}}/>);
+    bars.push(<div className='bar' key='barTop' style={{top: '80px'}}/>);
+    bars.push(<div className='bar' key='barBot' style={{bottom: '80px'}}/>);
 
     return bars;
   };
