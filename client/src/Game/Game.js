@@ -13,7 +13,7 @@ var bgs = images.loaded.bgImages;
 
 var renderTimeout;
 var buttonId = 0;
-var baseRate = 250;
+var baseRate = 500;
 
 var Game = {
   init: function() {
@@ -285,10 +285,10 @@ var jupiterFalls = function(ctx) {
 
 var adjustDifficulty = function() {
   if (Game.score >= 0) {
-    Game.questionSpeed = 4 + (Game.score/4000);
+    Game.questionSpeed = 3 + (Game.score/4000);
   }
 
-  var mod = Math.floor(Game.score/175);
+  var mod = Math.floor(Game.score/250);
 
   Game.spawnRate = baseRate - mod;
 };
