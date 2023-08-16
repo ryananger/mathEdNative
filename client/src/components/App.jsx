@@ -48,7 +48,9 @@ const App = function() {
   useEffect(Game.gameLoop, []);
 
   if (window.innerWidth < 640) {
-    return <>please view on desktop, mobile coming soon</>;
+    return (
+      <div id='play' className='play v'>please view on desktop, mobile coming soon</div>
+    );
   } else {
     return (
       <div id='play' className='play v'>
