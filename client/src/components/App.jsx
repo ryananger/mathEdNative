@@ -14,6 +14,20 @@ const App = function() {
   const user = cookieHandle.user();
   const updateInterval = 50;
 
+  if (window.innerWidth < 640) {
+    console.log(window.innerWidth)
+    return (
+      <div style={{textAlign: 'center', color: '#ffc89d'}}>
+        please view on desktop,
+        <br/>
+        mobile coming soon
+        <br/>
+        <br/>
+        thx
+      </div>
+    )
+  }
+
   const reactLoop = function() {
     if (!Game.playing) {
       return;
@@ -48,18 +62,19 @@ const App = function() {
   useEffect(Game.gameLoop, []);
 
   if (window.innerWidth < 640) {
+    console.log(window.innerWidth)
     return (
       <div id='play' className='play v'>please view on desktop, mobile coming soon</div>
-    );
-  } else {
-    return (
-      <div id='play' className='play v'>
-        <canvas id='canvas' className='canvas float' width='800' height='1420'/>
-
-        {renderView()}
-      </div>
     )
   }
+
+  return (
+    <div id='play' className='play v'>
+      <canvas id='canvas' className='canvas float' width='800' height='1420'/>
+
+      {renderView()}
+    </div>
+  )
 
 
 }
