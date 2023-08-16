@@ -1,5 +1,7 @@
 /client/dist/
 /node_modules/
-ryscott_main.pem
+jupiterFalls_key.pem
 webpack.config.js
 .env
+.gitignore
+package-lock.json
