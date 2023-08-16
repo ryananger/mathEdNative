@@ -6,7 +6,7 @@ var ax = {
   newUser: function(user) {
     axios.post(urlBase + 'users', user)
       .then(function(response) {
-        console.log(response);
+        //console.log(response);
       })
   },
   postScore: function(score, sessionId) {
@@ -14,7 +14,7 @@ var ax = {
 
     axios.post(url, {highScore: score})
       .then(function(response) {
-        console.log(response);
+        //console.log(response);
       })
   },
   getLeaderboard: function(Game) {

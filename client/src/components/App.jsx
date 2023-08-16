@@ -89,6 +89,10 @@ const App = function() {
         <br/>
         <br/>
         <div style={{textAlign: 'center'}}>
+          --xx--
+          <br/><br/>
+          I made the art, too. Related projects below.
+          <br/><br/>
           <a href='https://gen.inkvessels.art'>ink.gen</a><br/>
           <a href='https://inkvessels.art'>ink.vessels</a>
         </div>

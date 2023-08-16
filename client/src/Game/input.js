@@ -43,7 +43,7 @@ var keypressListener = function() {
         Game.getNumbers(true);
         break;
       case 'g':
-        console.log(Game);
+        //console.log(Game);
         break;
       case 'm':
         var music = document.getElementById('music');
