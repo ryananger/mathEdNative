@@ -3,6 +3,8 @@ import Game   from '../../Game/Game.js';
 import ax     from '../../util/ax.js';
 import images from '../../util/loadImages.js';
 
+import Loading     from './Loading.jsx';
+
 const menuBar = images.urls.menuBar[0];
 
 const MenuUI = function({setView, user}) {
@@ -11,6 +13,7 @@ const MenuUI = function({setView, user}) {
 
   var playGame = function() {
     setView('play');
+
     Game.playing = true;
     Game.hp = 0;
   };
@@ -85,12 +88,10 @@ const MenuUI = function({setView, user}) {
   };
 
   var renderForm = function() {
-    if (!formOpen) {
-      return;
-    }
+    var style = {opacity: (formOpen ? 1 : 0)};
 
     var form = (
-      <form className='form v' id='userForm'>
+      <form className='form v' id='userForm' style={style}>
         <label className='formLabel v'>
           <h1>Username:</h1>
           <input type='text'   name='username' className='formInput'></input>
@@ -103,11 +104,12 @@ const MenuUI = function({setView, user}) {
   };
 
   var renderLeaderboard = function() {
-    if (!boardOpen) {
+    var style = {opacity: (boardOpen ? 1 : 0)};
+    var entries = [];
+
+    if (!Game.leaderBoard) {
       return;
     }
-
-    var entries = [];
 
     Game.leaderBoard.map(function(entry, i) {
       entries.push(
@@ -119,7 +121,7 @@ const MenuUI = function({setView, user}) {
     })
 
     var board = (
-      <div className='leaderBoard v'>
+      <div className='leaderBoard v' style={style}>
         <h1>HIGH SCORES</h1>
         {entries}
       </div>
@@ -130,6 +132,7 @@ const MenuUI = function({setView, user}) {
 
   return (
     <div className='menuUi float v'>
+      <Loading />
       {renderForm()}
       {renderLeaderboard()}
       <div></div>

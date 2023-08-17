@@ -92,8 +92,6 @@ const App = function() {
       <div className='wing v'>
         this is jupiterFalls, an edutainment proof of concept for early math education (and beyond!)
         <br/><br/>
-        there is an increasing need for alternative education solutions and this aims to be accessible and effective.
-        <br/><br/>
         it's still a work in progress, but the long term goal is to expand this into a suite of games that can supplement a complete K-12 curriculum,
         with individualized content generated in real time.
         <br/><br/>

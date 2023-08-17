@@ -49,7 +49,8 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  margin-top: 8vh;
+  position: absolute;
+  top: 8vh;
   width: 80%;
   aspect-ratio: auto 26/21;
   color: rgb(70, 32, 21);
@@ -116,7 +117,8 @@ input {
   background-repeat: no-repeat;
   background-size: contain;
 
-  margin-top: 8vh;
+  position: absolute;
+  top: 8vh;
   width: 80%;
   aspect-ratio: auto 64/51;
   color: rgb(70, 32, 21);

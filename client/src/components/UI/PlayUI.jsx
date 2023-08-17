@@ -5,6 +5,7 @@ import Button      from './Button.jsx';
 import DeadButton  from './DeadButton.jsx';
 import MathButton  from './MathButton.jsx';
 import Expression  from './Expression.jsx';
+import Loading     from './Loading.jsx';
 
 const PlayUI = function({user}) {
   const [loaded, setLoaded] = useState(false);
@@ -64,11 +65,11 @@ const PlayUI = function({user}) {
       <div className='info v'>
         Do math because the sky is falling!
         <br/><br/>
-        Click on the buttons or use numpad, then click on the expression or press Enter to fire.
+        click on the buttons or use (numpad), then click on the expression (Enter).
         <br/><br/>
-        <small>Press Spacebar to refill your numbers.</small>
+        <small>click an empty square (Spacebar) to refill/refresh your numbers.</small>
         <br/>
-        <small>Press M to mute, Escape to pause.</small>
+        <small>press M to mute, Escape to pause.</small>
       </div>
     );
 
@@ -76,9 +77,13 @@ const PlayUI = function({user}) {
   };
 
   useEffect(()=>{
+    Game.paused = true;
+
     setTimeout(function() {
       openInfo(false);
       setLoaded(true);
+
+      Game.paused = false;
     }, 8000);
   }, []);
 
@@ -94,6 +99,7 @@ const PlayUI = function({user}) {
 
   return (
     <div className='playUi float v'>
+      <Loading />
       {renderInfo()}
       <div className='score h'>
         <div>

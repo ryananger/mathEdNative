@@ -103,7 +103,7 @@ a {
   }
 }
 
-.gameOver {
+.gameOver, .loading {
   z-index: 100;
   background-color: #462015;
   width: 100%;
@@ -111,4 +111,8 @@ a {
   font-size: 5vh;
   color: #e2bab5;
   text-align: center;
+}
+
+.loading {
+  transition: opacity 1s;
 }
