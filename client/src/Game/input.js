@@ -24,15 +24,19 @@ var keypressListener = function() {
         }
         break;
       case '+':
+      case 'q':
         Game.mod = '+';
         break;
       case '-':
+      case 'w':
         Game.mod = '-';
         break;
       case '*':
+      case 'e':
         Game.mod = '×';
         break;
       case '/':
+      case 'r':
         Game.mod = '÷';
         break;
 
@@ -56,11 +60,12 @@ var keypressListener = function() {
         break;
     }
 
-    if (Number(event.key) && !Game.paused) {
+    if ((Number(event.key) || event.key === 'x') && !Game.paused) {
       for (var i = 0; i < Game.numbers.length; i++) {
         var num = Game.numbers[i];
+        var value = Number(event.key) || 'x';
 
-        if (num.value === Number(event.key) && Game.buttonsPressed.indexOf(num.id) === -1) {
+        if (num.value === value && Game.buttonsPressed.indexOf(num.id) === -1) {
           Game.playAudio(Game.audio.click);
 
           Game.buttonsPressed.push(num.id);

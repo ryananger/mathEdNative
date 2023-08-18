@@ -25,7 +25,10 @@ var Game = {
     Game.over =    false;
 
     Game.score = 0;
+    Game.last1000 = 0;
     Game.hp = 0;
+    Game.level = 1;
+    Game.xEquals = 2;
 
     Game.expression = '';
     Game.display = '';
@@ -137,8 +140,14 @@ var Game = {
       n = 10;
     }
 
+    var nums = [1, 2, 3];
+
+    if (Game.level === 3) {
+      nums.push('x');
+    }
+
     for (var i = 0; i < n; i++) {
-      num.push({value: Math.floor(Math.random() * 3) + 1, id: buttonId++});
+      num.push({value: nums[(Math.floor(Math.random() * nums.length))], id: buttonId++});
     }
 
     Game.numbers = Game.numbers.concat(num);
@@ -149,6 +158,14 @@ var Game = {
     }
 
     var split = Game.expression.split(' ');
+
+    if (Game.level === 3) {
+      split.map(function(value, i) {
+        if (value === 'x') {
+          split[i] = Game.xEquals;
+        }
+      })
+    }
 
     if (split.length === 3) {
       var a = Number(split[0]);
@@ -229,6 +246,21 @@ var Game = {
 
     if (Game.buttonsPressed.length === 3) {
       Game.score += 100;
+    }
+
+    if (Game.score >= 1000 && Game.level === 1) {
+      Game.level = 2;
+    }
+
+    if (Game.score >= 10000 && Game.level === 2) {
+      Game.level = 3;
+    }
+
+    if (Game.score > 10000 && Math.floor(Game.score/1000) > Game.last1000) {
+      var nums = [1, 2, 3, 4];
+
+      Game.xEquals = nums[Math.floor(Math.random() * 4)];
+      Game.last1000 = Math.floor(Game.score/1000);
     }
 
     if (Game.buttonsPressed.length >= Game.numbers.length) {

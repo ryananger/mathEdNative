@@ -30,7 +30,7 @@ const MathButton = function({type}) {
   }, [Game.mod]);
 
   return (
-    <div className='mathButton h' onClick={setMod}>
+    <div className='mathButtonContainer h' onClick={setMod}>
       <img src={selected ? src2 : src1} className={`mathButton ${selected ? 'mathSelect' : ''} v`}/>
     </div>
   )

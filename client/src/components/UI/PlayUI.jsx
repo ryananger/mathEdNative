@@ -48,6 +48,26 @@ const PlayUI = function({user}) {
     return buttons;
   };
 
+  var renderMathButtons = function() {
+    if (Game.level === 1) {
+      return (
+        <div className='mathButtons h'>
+          <MathButton Game={Game} type={0}/>
+          <MathButton Game={Game} type={1}/>
+        </div>
+      )
+    }
+
+    return (
+      <div className='mathButtons h'>
+        <MathButton Game={Game} type={0}/>
+        <MathButton Game={Game} type={1}/>
+        <MathButton Game={Game} type={2}/>
+        <MathButton Game={Game} type={3}/>
+      </div>
+    )
+  };
+
   var renderHighscore = function() {
     if (user) {
       return user.highScore;
@@ -104,6 +124,8 @@ const PlayUI = function({user}) {
       <div className='score h'>
         <div>
           {Game.score}
+          <br/>
+          {Game.level === 3 ? `x = ${Game.xEquals}` : ''}
           {/* <br/>
           {Game.questionSpeed}, {Game.spawnRate} */}
         </div>
@@ -112,12 +134,7 @@ const PlayUI = function({user}) {
         </div>
       </div>
       <div className='uiHead h'>
-        <div className='mathButtons h'>
-          <MathButton Game={Game} type={0}/>
-          <MathButton Game={Game} type={1}/>
-          <MathButton Game={Game} type={2}/>
-          <MathButton Game={Game} type={3}/>
-        </div>
+        {renderMathButtons()}
         <Expression  Game={Game}/>
       </div>
       <div className='buttons h'>
