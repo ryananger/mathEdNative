@@ -33,13 +33,16 @@ var keypressListener = function() {
         break;
       case '*':
       case 'e':
+        if (Game.level === 1) {break;}
+
         Game.mod = '×';
         break;
       case '/':
       case 'r':
+        if (Game.level === 1) {break;}
+
         Game.mod = '÷';
         break;
-
       case 'Enter':
         Game.evaluate();
         break;
