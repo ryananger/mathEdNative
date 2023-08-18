@@ -260,8 +260,7 @@ var Game = {
     }
 
     if (Game.level === 3 &&
-        !Game.alert &&
-        Game.score > 10000 &&
+        Game.score >= 11000 &&
         Math.floor(Game.score/1000) > Game.last1000) {
       var nums = [1, 2, 3, 4];
 
