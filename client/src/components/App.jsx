@@ -112,9 +112,9 @@ const App = function() {
         {renderView()}
       </div>
       <div className='wing v'>
-        click on the buttons or use the (keyboard), then click on the expression (Enter).
-        <br/><br/>up to 3 numbers can be added to an expression.
-        <br/><small>&emsp;(ex. (2 + 1) x 2 = 6)</small>
+        <small>click on the buttons or use the (keyboard), then click on the expression (Enter).</small>
+        <br/><small>up to 3 numbers can be added to an expression.</small>
+        <small>&emsp;(ex. (2 + 1) x 2 = 6)</small>
         <br/>
         <small>click an empty square (Spacebar) to refill/refresh your numbers.</small>
         <br/>
