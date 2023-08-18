@@ -85,7 +85,7 @@ const PlayUI = function({user}) {
       <div className='info v'>
         Do math because the sky is falling!
         <br/><br/>
-        click on the buttons or use (numpad), then click on the expression (Enter).
+        click on the buttons or use the (keyboard), then click on the expression (Enter).
         <br/><br/>
         <small>click an empty square (Spacebar) to refill/refresh your numbers.</small>
         <br/>
