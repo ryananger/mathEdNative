@@ -6,6 +6,7 @@ import DeadButton  from './DeadButton.jsx';
 import MathButton  from './MathButton.jsx';
 import Expression  from './Expression.jsx';
 import Loading     from './Loading.jsx';
+import GameAlert   from './GameAlert.jsx';
 
 const PlayUI = function({user}) {
   const [loaded, setLoaded] = useState(false);
@@ -120,6 +121,7 @@ const PlayUI = function({user}) {
   return (
     <div className='playUi float v'>
       <Loading />
+      {Game.alert && <GameAlert />}
       {renderInfo()}
       <div className='score h'>
         <div>

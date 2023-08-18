@@ -21,8 +21,9 @@ var Game = {
     Game.tick = 0;
 
     Game.playing = false;
-    Game.paused =  false;
-    Game.over =    false;
+    Game.paused  = false;
+    Game.over    = false;
+    Game.alert   = null;
 
     Game.score = 0;
     Game.last1000 = 0;
@@ -250,17 +251,24 @@ var Game = {
 
     if (Game.score >= 1000 && Game.level === 1) {
       Game.level = 2;
+      Game.alert = 'multiply and divide!';
     }
 
     if (Game.score >= 10000 && Game.level === 2) {
       Game.level = 3;
+      Game.alert = 'x = 2!'
     }
 
-    if (Game.score > 10000 && Math.floor(Game.score/1000) > Game.last1000) {
+    if (Game.level === 3 &&
+        !Game.alert &&
+        Game.score > 10000 &&
+        Math.floor(Game.score/1000) > Game.last1000) {
       var nums = [1, 2, 3, 4];
 
       Game.xEquals = nums[Math.floor(Math.random() * 4)];
       Game.last1000 = Math.floor(Game.score/1000);
+
+      Game.alert = `x = ${Game.xEquals}!`
     }
 
     if (Game.buttonsPressed.length >= Game.numbers.length) {
