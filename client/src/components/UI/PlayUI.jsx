@@ -128,8 +128,8 @@ const PlayUI = function({user}) {
           {Game.score}
           <br/>
           {Game.level === 3 ? `x = ${Game.xEquals}` : ''}
-          {/* <br/>
-          {Game.questionSpeed}, {Game.spawnRate} */}
+          <br/>
+          {/* {Game.questionSpeed}, {Game.spawnRate} */}
         </div>
         <div>
           {renderHighscore()}

@@ -328,10 +328,10 @@ var jupiterFalls = function(ctx) {
 
 var adjustDifficulty = function() {
   if (Game.score >= 0) {
-    Game.questionSpeed = 3 + (Game.score/4000);
+    Game.questionSpeed = 1.5 + (Game.score/4000);
   }
 
-  var mod = Math.floor(Game.score/175);
+  var mod = Math.floor(Game.score/100);
 
   Game.spawnRate = baseRate - mod;
 };

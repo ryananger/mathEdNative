@@ -88,7 +88,7 @@ const MenuUI = function({setView, user}) {
   };
 
   var renderForm = function() {
-    var style = {opacity: (formOpen ? 1 : 0)};
+    var style = formOpen ? {opacity: 1, zIndex: 10} : {opacity: 0, zIndex: -10};
 
     var form = (
       <form className='form v' id='userForm' style={style}>
@@ -104,7 +104,7 @@ const MenuUI = function({setView, user}) {
   };
 
   var renderLeaderboard = function() {
-    var style = {opacity: (boardOpen ? 1 : 0)};
+    var style = boardOpen ? {opacity: 1, zIndex: 10} : {opacity: 0, zIndex: -10};
     var entries = [];
 
     if (!Game.leaderBoard) {
