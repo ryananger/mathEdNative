@@ -14,6 +14,7 @@ var bgs = images.loaded.bgImages;
 var renderTimeout;
 var buttonId = 0;
 var baseRate = 500;
+var chickenCount = 4;
 
 var Game = {
   init: function() {
@@ -51,9 +52,11 @@ var Game = {
 
     Game.chickens = [];
 
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < chickenCount; i++) {
       Game.chickens.push(Chicken(i * 15));
     }
+
+    chickenCount = chickenCount + 1;
 
     Game.getNumbers();
     Game.leaderBoard;
