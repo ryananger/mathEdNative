@@ -26,6 +26,10 @@ h3 {
   font-size: 3vh;
 }
 
+.br {
+  height: 2vh;
+}
+
 /* ----------------------------------- */
 
 html, body, #root {

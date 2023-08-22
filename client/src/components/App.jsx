@@ -8,6 +8,7 @@ import MenuUI   from './UI/MenuUI.jsx';
 import PlayUI   from './UI/PlayUI.jsx';
 
 const barNums = [];
+const Br = ()=>{return <div class='br'/>;}
 
 for (var i = 0; i < 5; i++) {
   var rand = Math.floor(Math.random()*25);
@@ -79,14 +80,14 @@ const App = function() {
       <div style={{textAlign: 'center', color: '#ffc89d'}}>
         {makeBars(5)}
         please view on desktop,
-        <br/>
+        <Br/>
         mobile coming soon
-        <br/>
-        <br/>
+        <Br/>
+        <Br/>
         <small>
           or check out my art store at <a href='https://inkvessels.art'>ink.vessels</a>
         </small>
-        <br/><br/>
+        <Br/><Br/>
         thx
       </div>
     )
@@ -100,10 +101,10 @@ const App = function() {
       {makeBars(5)}
       <div className='wing v'>
         this is jupiterFalls, an edutainment proof of concept for early math education (and beyond!)
-        <br/><br/>
+        <Br/><Br/>
         it's still a work in progress, but the long term goal is to expand this into a suite of games that can supplement a complete K-12 curriculum,
         with individualized content generated in real time.
-        <br/><br/>
+        <Br/><Br/>
         math seemed an easy enough subject to start with, and I'm trying to think through game concepts that could increase in difficulty as the learner progresses. I'm open to ideas and feedback.
       </div>
       <div id='play' className='play v'>
@@ -113,22 +114,22 @@ const App = function() {
       </div>
       <div className='wing v'>
         <small>click on the buttons or use the (keyboard), then click on the expression (Enter).</small>
-        <br/><small>up to 3 numbers can be added to an expression.</small>
+        <Br/><small>up to 3 numbers can be added to an expression.</small>
         <small>&emsp;(ex. (2 + 1) x 2 = 6)</small>
-        <br/>
+        <Br/>
         <small>click an empty square (Spacebar) to refill/refresh your numbers.</small>
-        <br/>
+        <Br/>
         <small>press M to mute, Escape to pause.</small>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <Br/>
+        <Br/>
+        <Br/>
+        <Br/>
         <div style={{textAlign: 'center'}}>
           --xx--
-          <br/><br/>
+          <Br/><Br/>
           I made the art, too. Related projects below.
-          <br/><br/>
-          <a href='https://gen.inkvessels.art'>ink.gen</a><br/>
+          <Br/><Br/>
+          <a href='https://gen.inkvessels.art'>ink.gen</a><Br/>
           <a href='https://inkvessels.art'>ink.vessels</a>
         </div>
       </div>
