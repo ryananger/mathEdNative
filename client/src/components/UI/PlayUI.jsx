@@ -8,6 +8,8 @@ import Expression  from './Expression.jsx';
 import Loading     from './Loading.jsx';
 import GameAlert   from './GameAlert.jsx';
 
+const Br = ()=>{return <div class='br'/>;}
+
 const PlayUI = function({user}) {
   const [loaded, setLoaded] = useState(false);
   const [infoOpen, openInfo] = useState(true);
@@ -85,11 +87,11 @@ const PlayUI = function({user}) {
     var info = (
       <div className='info v'>
         Do math because the sky is falling!
-        <br/><br/>
+        <Br/><Br/>
         <small>click on the buttons or use the (keyboard), then click on the expression (Enter).</small>
-        <br/>
+        <Br/>
         <small>click an empty square (Spacebar) to refill/refresh your numbers.</small>
-        <br/>
+        <Br/>
         <small>press M to mute, Escape to pause.</small>
       </div>
     );
@@ -126,9 +128,9 @@ const PlayUI = function({user}) {
       <div className='score h'>
         <div>
           {Game.score}
-          <br/>
+          <Br/>
           {Game.level === 3 ? `x = ${Game.xEquals}` : ''}
-          <br/>
+          <Br/>
           {/* {Game.questionSpeed}, {Game.spawnRate} */}
         </div>
         <div>
