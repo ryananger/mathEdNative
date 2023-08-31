@@ -41,13 +41,13 @@ html, body, #root {
 
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, #72434c, rgb(169 120 116) 80%);
+  background: #b5e074;
 
   font-family: 'Jost';
 }
 
 a {
-  color: #ffc89d;
+  color: #421f14;
 }
 
 .main {
@@ -60,7 +60,7 @@ a {
   width: 100%;
   height: 1px;
   left: 0;
-  background-color: #ffc89d;
+  background-color: #421f14;
 }
 
 .play {
@@ -75,7 +75,7 @@ a {
   box-sizing: border-box;
   width: 25%;
   height: 100%;
-  color: #ffc89d;
+  color: #421f14;
   font-size: 2.2vh;
   justify-content: center;
   text-align: left;
@@ -92,7 +92,7 @@ a {
   background-image: url('../images/bgs/mathgame.webp');
 
   height: 100%;
-  border: 4px solid rgb(66, 31, 20);
+  border: 4px solid #421f14;
 }
 
 @media screen and (max-width: 520px) {

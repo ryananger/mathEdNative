@@ -104,8 +104,6 @@ const App = function() {
         <Br/><Br/>
         it's still a work in progress, but the long term goal is to expand this into a suite of games that can supplement a complete K-12 curriculum,
         with individualized content generated in real time.
-        <Br/><Br/>
-        math seemed an easy enough subject to start with, and I'm trying to think through game concepts that could increase in difficulty as the learner progresses. I'm open to ideas and feedback.
       </div>
       <div id='play' className='play v'>
         <canvas id='canvas' className='canvas float' width='800' height='1420'/>
