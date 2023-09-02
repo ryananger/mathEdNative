@@ -77,7 +77,7 @@ const App = function() {
 
   if (isMobile() || window.innerWidth < 640) {
     return (
-      <div style={{textAlign: 'center', color: '#ffc89d'}}>
+      <div style={{textAlign: 'center'}}>
         {makeBars(5)}
         please view on desktop,
         <Br/>
