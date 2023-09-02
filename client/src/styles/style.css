@@ -41,7 +41,7 @@ html, body, #root {
 
   width: 100%;
   height: 100%;
-  background: #b5e074;
+  background: #a2bd7a;
 
   font-family: 'Jost';
 }
@@ -113,7 +113,6 @@ a {
   width: 100%;
   height: 100%;
   font-size: 5vh;
-  color: #e2bab5;
   text-align: center;
 }
 
