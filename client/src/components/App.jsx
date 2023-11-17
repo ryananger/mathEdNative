@@ -128,7 +128,7 @@ const App = function() {
           I made the art, too. Related projects below.
           <Br/><Br/>
           <a href='https://gen.inkvessels.art'>ink.gen</a><Br/>
-          <a href='https://inkvessels.art'>ink.vessels</a>
+          <a href='https://instagram.com/ink.vessels'>ink.vessels</a>
         </div>
       </div>
     </div>
