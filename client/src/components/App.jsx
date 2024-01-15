@@ -84,10 +84,6 @@ const App = function() {
         mobile coming soon
         <Br/>
         <Br/>
-        <small>
-          or check out my art store at <a href='https://inkvessels.art'>ink.vessels</a>
-        </small>
-        <Br/><Br/>
         thx
       </div>
     )
