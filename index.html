@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preload" href="bundle.js" as="script"/>
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost" as="font" crossorigin/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost">
+    <title>jupiterFalls</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+    <audio id='music' loop>
+      <source src="public/music2.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+      var audio = document.getElementById('music');
+
+      audio.volume = 0.15;
+    </script>
+  </body>
+</html>
