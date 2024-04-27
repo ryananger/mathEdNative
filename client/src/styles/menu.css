@@ -110,25 +110,6 @@ input {
   filter: drop-shadow(0px 2px 1px rgba(66, 31, 20, 0.4));
 }
 
-/* LEADERBOARD */
-
-.leaderBoard {
-  background-image: url('../images/formBg.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-
-  position: absolute;
-  top: 8vh;
-  width: 80%;
-  aspect-ratio: auto 64/51;
-  color: rgb(70, 32, 21);
-}
-
-.leaderBoard {
-  padding: 1vw;
-  justify-content: flex-start;
-}
-
 .highScore {
   width: 90%;
   font-size: 3vh;

@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import Game   from '../Game/Game.js';
-import ax     from '../util/ax.js';
 
 const GameOver = function({setView, user}) {
   var mod = '';
@@ -10,8 +9,6 @@ const GameOver = function({setView, user}) {
       mod = 'New HIGH ';
 
       document.cookie = `highScore=${Game.score}`;
-
-      ax.postScore(Game.score, user.sessionId);
     }
   }
 

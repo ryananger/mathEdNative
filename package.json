@@ -8,7 +8,8 @@
   "scripts": {
     "start": "webpack --mode=production -w",
     "dev": "webpack serve --open",
-    "server": "node server/index.js -w"
+    "server": "node server/index.js -w",
+    "deploy": "gh-pages -d client/dist"
   },
   "dependencies": {
     "babel-plugin-file-loader": "^2.0.0",
@@ -17,6 +18,7 @@
     "express": "^4.18.2",
     "file-loader": "^6.2.0",
     "fs": "^0.0.1-security",
+    "gh-pages": "^6.1.1",
     "http": "^0.0.1-security",
     "https": "^1.0.0",
     "mongoose": "^6.8.3",

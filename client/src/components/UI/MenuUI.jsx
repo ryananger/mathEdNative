@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import Game   from '../../Game/Game.js';
-import ax     from '../../util/ax.js';
 import images from '../../util/loadImages.js';
 
 import Loading     from './Loading.jsx';
@@ -37,16 +36,8 @@ const MenuUI = function({setView, user}) {
       )
     }
 
-    var leaderboardButton = (
-      <div key={'leaderboardButton'} className='menuButton v'>
-        <img className='menuButtonImg' src={menuBar} onClick={boardToggle}/>
-        <div className='menuButtonTxt'>LEADERBOARD</div>
-      </div>
-    );
-
     buttons.push(playButton);
     buttons.push(loginButton);
-    buttons.push(leaderboardButton);
 
     return buttons;
   };
@@ -80,8 +71,6 @@ const MenuUI = function({setView, user}) {
       highScore: 0
     };
 
-    ax.newUser(user);
-
     document.cookie = `user=${username};`;
     document.cookie = `sessionId=${sessionId};`;
     document.cookie = `highScore=0`;
@@ -103,39 +92,11 @@ const MenuUI = function({setView, user}) {
     return form;
   };
 
-  var renderLeaderboard = function() {
-    var style = boardOpen ? {opacity: 1, zIndex: 10} : {opacity: 0, zIndex: -10};
-    var entries = [];
-
-    if (!Game.leaderBoard) {
-      return;
-    }
-
-    Game.leaderBoard.map(function(entry, i) {
-      entries.push(
-        <div key={'hs' + i} className='highScore h'>
-          <div>{entry.username}</div>
-          <div>{entry.highScore}</div>
-        </div>
-      )
-    })
-
-    var board = (
-      <div className='leaderBoard v' style={style}>
-        <h1>HIGH SCORES</h1>
-        {entries}
-      </div>
-    )
-
-    return board;
-  };
-
   return (
     <div className='menuUi float v'>
       <Loading />
       {renderForm()}
-      {renderLeaderboard()}
-      <div></div>
+      <div/>
       <div className='menuButtons v'>
         {renderButtons()}
       </div>

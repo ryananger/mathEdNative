@@ -98,7 +98,7 @@ const App = function() {
       <div className='wing v'>
         this is jupiterFalls, an edutainment proof of concept for early math education (and beyond!)
         <Br/><Br/>
-        it's still a work in progress, but the long term goal is to expand this into a suite of games that can supplement a complete K-12 curriculum,
+        in time, this will be expanded into a suite of games that can supplement a complete K-12 curriculum,
         with individualized content generated in real time.
       </div>
       <div id='play' className='play v'>
@@ -106,26 +106,19 @@ const App = function() {
 
         {renderView()}
       </div>
-      <div className='wing v'>
-        <small>click on the buttons or use the (keyboard), then click on the expression (Enter).</small>
-        <Br/><small>up to 3 numbers can be added to an expression.</small>
-        <small>&emsp;(ex. (2 + 1) x 2 = 6)</small>
-        <Br/>
-        <small>click an empty square (Spacebar) to refill/refresh your numbers.</small>
-        <Br/>
-        <small>press M to mute, Escape to pause.</small>
-        <Br/>
-        <Br/>
-        <Br/>
-        <Br/>
-        <div style={{textAlign: 'center'}}>
-          --xx--
-          <Br/><Br/>
-          I made the art, too. Related projects below.
-          <Br/><Br/>
-          <a href='https://gen.inkvessels.art'>ink.gen</a><Br/>
-          <a href='https://instagram.com/ink.vessels'>ink.vessels</a>
-        </div>
+      <div className='wing v' style={{justifyContent: 'space-between'}}>
+        <small>
+          click on the buttons or use the (keyboard), then click on the expression (Enter).
+          <Br/>up to 3 numbers can be added to an expression.
+          <Br/>&emsp;(ex. (2 + 1) x 2 = 6)
+          <Br/>
+          click an empty square (Spacebar) to refill/refresh your numbers.
+          <Br/>
+          press M to mute, Escape to pause.
+        </small>
+        <small style={{textAlign: 'center'}}>
+          <a href='https://earthpunk.art'>created by ________</a>
+        </small>
       </div>
     </div>
 

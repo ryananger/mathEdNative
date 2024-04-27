@@ -1,4 +1,3 @@
-import ax     from '../util/ax.js';
 import images from '../util/loadImages.js';
 import audio  from '../util/audio.js';
 import input  from './input.js';
@@ -59,9 +58,6 @@ var Game = {
     chickenCount = chickenCount + 1;
 
     Game.getNumbers();
-    Game.leaderBoard;
-
-    ax.getLeaderboard(Game);
   },
   togglePause: function() {
     Game.playing = !Game.playing;
